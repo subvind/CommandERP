@@ -4,6 +4,8 @@
 
   // export let auth: any
 
+  let firstName = ''
+  let lastName = ''
 	let email = ''
   let password = ''
   let passwordRepeat = ''
@@ -11,22 +13,38 @@
 	async function register(event: any) {
     event.preventDefault()
 
+    if (firstName === '') return alert('First name must be defined.')
+    if (lastName === '') return alert('Last name must be defined.')
     if (email === '') return alert('Email must be defined.')
     if (password === '') return alert('Password must be defined.')
     if (passwordRepeat === '') return alert('Confirm Password must be defined.')
     if (passwordRepeat !== password) return alert('Passwords must match.')
     
-    // createUserWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     // Signed in 
-    //     const user = userCredential.user;
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     // ..
-    //     alert(errorMessage)
-    //   });
+    try {
+      const response = await fetch('https://backend.subvind.com/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          password
+        }),
+      });
+
+      if (response.ok) {
+        alert('Registration successful!');
+        // You can redirect the user to a new page or handle the success scenario in your app
+      } else {
+        const errorData = await response.json();
+        alert(errorData.error);
+      }
+    } catch (error) {
+      console.error('Error registering user:', error);
+      alert('An error occurred during registration.');
+    }
   }
 </script>
 
@@ -42,6 +60,14 @@
   <form class="card" on:submit={(e) => register(e)}>
     <div class="card-content">
       <div class="row">
+        <div class="input-field col s6">
+          <input id="firstName" type="text" class="validate" bind:value={firstName}>
+          <label for="firstName">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="lastName" type="text" class="validate" bind:value={lastName}>
+          <label for="lastName">Last Name</label>
+        </div>
         <div class="input-field col s12">
           <input id="email" type="email" class="validate" bind:value={email}>
           <label for="email">Email</label>

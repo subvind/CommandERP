@@ -14,16 +14,29 @@
     if (email === '') return alert('Email must be defined.')
     if (password === '') return alert('Password must be defined.')
 
-    // signInWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     // Signed in 
-    //     const user = userCredential.user;
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     alert(errorMessage)
-    //   });
+    try {
+      const response = await fetch('https://backend.subvind.com/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password
+        }),
+      });
+
+      if (response.ok) {
+        alert('Login successful!');
+        // You can redirect the user to a new page or handle the success scenario in your app
+      } else {
+        const errorData = await response.json();
+        alert(errorData.error);
+      }
+    } catch (error) {
+      console.error('Error logging in user:', error);
+      alert('An error occurred during login.');
+    }
   }
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import Login from "$lib/Login.svelte";
+    import Login from "$lib/auth/Login.svelte";
 
 </script>
 
