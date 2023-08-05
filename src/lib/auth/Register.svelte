@@ -4,6 +4,7 @@
 
   // export let auth: any
 
+  let username = ''
   let firstName = ''
   let lastName = ''
 	let email = ''
@@ -13,6 +14,7 @@
 	async function register(event: any) {
     event.preventDefault()
 
+    if (username === '') return alert('Username must be defined.')
     if (firstName === '') return alert('First name must be defined.')
     if (lastName === '') return alert('Last name must be defined.')
     if (email === '') return alert('Email must be defined.')
@@ -27,6 +29,7 @@
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          username,
           firstName,
           lastName,
           email,
@@ -60,6 +63,10 @@
   <form class="card" on:submit={(e) => register(e)}>
     <div class="card-content">
       <div class="row">
+        <div class="input-field col s12">
+          <input id="username" type="text" class="validate" bind:value={username}>
+          <label for="username">Username</label>
+        </div>
         <div class="input-field col s6">
           <input id="firstName" type="text" class="validate" bind:value={firstName}>
           <label for="firstName">First Name</label>
@@ -81,7 +88,7 @@
           <label for="passwordRepeat">Password Confirm</label>
         </div>
         <br />
-        <button style="margin-left: 1em;" type='submit' class="waves-effect red lighten-2 btn">Submit</button>
+        <button style="margin-left: 1em;" type='submit' class="waves-effect yellow black-text lighten-2 btn">Submit</button>
       </div>
     </div>
   </form>

@@ -38,6 +38,10 @@
       alert('An error occurred during login.');
     }
   }
+
+  onMount(() => {
+    M.updateTextFields();
+  })
 </script>
 
 <div class="contain">
@@ -53,15 +57,15 @@
     <div class="card-content">
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate" bind:value={email}>
+          <input id="email" type="email" placeholder="test@test.com" class="validate" bind:value={email}>
           <label for="email">Email</label>
         </div>
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate" bind:value={password}>
+          <input id="password" type="password" placeholder="test123" class="validate" bind:value={password}>
           <label for="password">Password</label>
         </div>
         <br />
-        <button style="margin-left: 1em;" type='submit' class="waves-effect red lighten-2 btn">Submit</button>
+        <button style="margin-left: 1em;" type='submit' class="waves-effect yellow black-text lighten-2 btn">Submit</button>
       </div>
     </div>
   </form>
