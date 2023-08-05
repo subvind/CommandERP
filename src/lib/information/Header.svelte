@@ -4,9 +4,9 @@
 
 <nav class="black">
   <div class="nav-wrapper">
-    <a href="/organizations/acme/suppliers" class="brand-logo left">suppliers</a>
-    <a href="/organizations/acme/employees" class="brand-logo center">employees</a>
-    <a href="/organizations/acme/customers" class="brand-logo right">customers</a>
+    <a href="/organizations/acme/suppliers" class="brand-logo left">suppliers &larr;</a>
+    <a href="/organizations/acme/employees" class="brand-logo center">&larr; employees &rarr; </a>
+    <a href="/organizations/acme/customers" class="brand-logo right">&larr;	customers</a>
   </div>
 </nav>
 <nav class="blue darken-2">
