@@ -23,16 +23,16 @@
       }
     },
     {
-      id: 'username',
-      name: 'Username'
+      id: 'orgname',
+      name: 'Orgname'
     },
     {
-      id: 'fullName',
-      name: 'Full Name'
+      id: 'displayName',
+      name: 'Display Name'
     },
     {
-      id: 'joinDate',
-      name: 'Join Date'
+      id: 'createdAt',
+      name: 'Created At'
     },
     { 
       name: '',
@@ -40,7 +40,7 @@
       hidden: false,
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `/${row.cells[1].data}`,
+          href: `/${user.username}/${row.cells[1].data}`,
           className: 'btn btn-small yellow black-text lighten-2 right',
         }, 'VIEW');
       }
@@ -49,8 +49,8 @@
   function mapResultsFunc(value: any) {
     return [
       value.id,
-      value.username,
-      `${value.firstName} ${value.lastName}`,
+      value.orgname,
+      value.displayName,
       value.createdAt
     ]
   }
