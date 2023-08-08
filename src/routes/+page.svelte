@@ -1,10 +1,13 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import jwt_decode from 'jwt-decode';
 
   let accessToken: any = undefined
+  let decoded: any = undefined
 
   onMount(() => {
     accessToken = localStorage.getItem('access_token');
+    decoded = jwt_decode(accessToken);
   })
 </script>
 
@@ -26,6 +29,7 @@
       <p>in an organization.</p>
       <br />
       {#if accessToken}
+        <a href={`/${decoded.username}`} class="waves-effect yellow black-text lighten-2 btn username">username: {decoded.username}</a>
         <a href="/auth/logout" class="waves-effect black white-text btn">Logout</a>
       {:else}
         <a href="/auth/login" class="waves-effect black white-text btn">Login</a>
@@ -36,9 +40,8 @@
 </div>
 
 <style>
-  .yellow {
-    color: yellow;
-    background-color: transparent !important;
+  .username {
+    text-transform: none;
   }
   .green {
     color: green;
