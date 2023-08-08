@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
 
   import Settings from '$lib/users/Settings.svelte'
+  import Organizations from '$lib/users/Organizations.svelte'
 
   export let data: any;
   let user: any = null;
@@ -62,13 +63,14 @@
 
 <div class="container">
   <div class="card main">
-    <div id="test1" class="col s12">Test 1</div>
+    <div id="test1" class="col s12">
+      {JSON.stringify(user, null, 2)}
+      test
+    </div>
     <div id="test2" class="col s12">Test 2</div>
     <div id="test3" class="col s12">Test 3</div>
-    <div id="test4" class="col s12">Test 4</div>
+    <div id="test4" class="col s12"><Organizations user={user} /></div>
     
-    {JSON.stringify(user, null, 2)}
-    test
   </div>
 </div>
 

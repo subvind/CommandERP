@@ -3,10 +3,10 @@
 
   export let userId: any = null;
   let instances: any = undefined;
-  let user: any = undefined;
+  let user: any = null;
 
   onMount(async () => {
-    var elems = document.querySelectorAll('.sdcebryytpozdscqwm');
+    var elems = document.querySelectorAll('.jdfbuywxzqopmwef');
     instances = M.Modal.init(elems, {});
 
     const response = await fetch(`https://backend.subvind.com/users/${userId}`, {
@@ -18,10 +18,6 @@
 
     if (response.ok) {
       user = await response.json();
-      username = user.username
-      firstName = user.firstName
-      lastName = user.lastName
-      email = user.email
 
       setTimeout(() => {
         M.updateTextFields();
@@ -30,39 +26,33 @@
       const errorData = await response.json();
       alert(errorData.error);
     }
-
   })
 
-  let username = ''
-  let firstName = ''
-  let lastName = ''
-	let email = ''
+  let orgname = ''
+  let displayName = ''
 
 	async function submit(event: any) {
     event.preventDefault()
 
-    if (username === '') return alert('Username must be defined.')
-    if (firstName === '') return alert('First name must be defined.')
-    if (lastName === '') return alert('Last name must be defined.')
-    if (email === '') return alert('Email must be defined.')
+    if (orgname === '') return alert('orgname must be defined.')
+    if (displayName === '') return alert('First name must be defined.')
     
     try {
-      const response = await fetch(`https://backend.subvind.com/users/${userId}`, {
-        method: 'PATCH',
+      const response = await fetch(`https://backend.subvind.com/organizations`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username,
-          firstName,
-          lastName,
-          email,
+          orgname,
+          displayName,
+          owner: userId
         }),
       });
 
       if (response.ok) {
-        user = await response.json();
-        window.location.href = `/${user.username}`
+        let org = await response.json();
+        window.location.href = `${user.username}/${org.orgname}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);
@@ -75,30 +65,22 @@
 </script>
 
 <!-- Modal Trigger -->
-<a class="btn white black-text" href="#!" on:click={() => { instances[0].open() }}>SETTINGS</a>
+<a class="btn yellow lighten-2 black-text" href="#!" on:click={() => { instances[0].open() }}>CREATE ORGANIZATION</a>
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>
-  <div class="modal sdcebryytpozdscqwm">
+  <div class="modal jdfbuywxzqopmwef">
     <div class="modal-content">
-      <h4>Settings</h4>
+      <h4>Create Organization</h4>
       <br />
       <div class="row">
-        <div class="input-field col s12">
-          <input id="username" type="text" class="validate" bind:value={username}>
-          <label for="username">Username</label>
+        <div class="input-field col s6">
+          <input id="orgname" type="text" class="validate" bind:value={orgname}>
+          <label for="orgname">Orgname</label>
         </div>
         <div class="input-field col s6">
-          <input id="firstName" type="text" class="validate" bind:value={firstName}>
-          <label for="firstName">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="lastName" type="text" class="validate" bind:value={lastName}>
-          <label for="lastName">Last Name</label>
-        </div>
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate" bind:value={email}>
-          <label for="email">Email</label>
+          <input id="displayName" type="text" class="validate" bind:value={displayName}>
+          <label for="displayName">Display Name</label>
         </div>
       </div>
     </div>
