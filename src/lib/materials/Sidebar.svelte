@@ -37,6 +37,7 @@
 
 <ul id="nav-mobile" class="center hide-on-med-and-down" style="margin: 0 auto;">
   <li><a href="#">Inventory</a></li>
+  <li><a href="#">Production</a></li>
 </ul>
 <!-- <a href="#" class="brand-logo center"></a> -->
 

@@ -21,6 +21,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"gridjs": "^6.0.6"
+		"gridjs": "^6.0.6",
+		"jwt-decode": "^3.1.2"
 	}
 }

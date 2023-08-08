@@ -1,6 +1,8 @@
 
 <script lang="ts">
   import { onMount } from 'svelte';
+  import jwt_decode from 'jwt-decode';
+
   // import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
   // export let auth: any
@@ -27,8 +29,20 @@
       });
 
       if (response.ok) {
-        alert('Login successful!');
+        let res = await response.json();
+
+        console.log('access_token', res.access_token)
+
+        // Save the access token to localStorage
+        localStorage.setItem('access_token', res.access_token);
+
+        // Decode the JWT
+        let decodedToken: any = jwt_decode(res.access_token);
+
+        console.log('decoded_token', decodedToken)
+
         // You can redirect the user to a new page or handle the success scenario in your app
+        window.location.href = `/users/${decodedToken.username}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);

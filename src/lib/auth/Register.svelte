@@ -1,8 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  // import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-
-  // export let auth: any
+  import jwt_decode from 'jwt-decode';
 
   let username = ''
   let firstName = ''
@@ -38,8 +36,36 @@
       });
 
       if (response.ok) {
-        alert('Registration successful!');
-        // You can redirect the user to a new page or handle the success scenario in your app
+        const response = await fetch('https://backend.subvind.com/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            password
+          }),
+        });
+
+        if (response.ok) {
+          let res = await response.json();
+
+          console.log('access_token', res.access_token)
+
+          // Save the access token to localStorage
+          localStorage.setItem('access_token', res.access_token);
+
+          // Decode the JWT
+          let decodedToken: any = jwt_decode(res.access_token);
+
+          console.log('decoded_token', decodedToken)
+
+          // You can redirect the user to a new page or handle the success scenario in your app
+          window.location.href = `/users/${decodedToken.username}`
+        } else {
+          const errorData = await response.json();
+          alert(errorData.error);
+        }
       } else {
         const errorData = await response.json();
         alert(errorData.error);
