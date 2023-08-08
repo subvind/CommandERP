@@ -61,7 +61,7 @@
           console.log('decoded_token', decodedToken)
 
           // You can redirect the user to a new page or handle the success scenario in your app
-          window.location.href = `/users/${decodedToken.username}`
+          window.location.href = `/${decodedToken.username}`
         } else {
           const errorData = await response.json();
           alert(errorData.error);
