@@ -1,5 +1,11 @@
 <script lang="ts">
+  import { onMount } from "svelte";
 
+  let accessToken: any = undefined
+
+  onMount(() => {
+    accessToken = localStorage.getItem('access_token');
+  })
 </script>
 
 <br />
@@ -19,8 +25,12 @@
       </h4>
       <p>in an organization.</p>
       <br />
-      <a href="/auth/login" class="waves-effect black white-text btn">Login</a>
-      <a href="/auth/register" class="waves-effect black white-text btn">Register</a>
+      {#if accessToken}
+        <a href="/auth/logout" class="waves-effect black white-text btn">Logout</a>
+      {:else}
+        <a href="/auth/login" class="waves-effect black white-text btn">Login</a>
+        <a href="/auth/register" class="waves-effect black white-text btn">Register</a>
+      {/if}
     </div>
   </div>
 </div>
