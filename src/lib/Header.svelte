@@ -21,7 +21,7 @@
         <Sidebar />
       {:else}
         <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li><a href="/select-organization">select organization</a></li>
+          <li><a href={`/${decodedToken.username}#organizations`}>select organization</a></li>
         </ul>
       {/if}
     {:else}

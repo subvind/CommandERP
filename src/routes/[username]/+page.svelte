@@ -43,10 +43,10 @@
     </div>
     <div class="nav-content">
       <ul class="tabs tabs-transparent black lighten-2">
-        <li class="tab"><a class="active" href="#test1">profile</a></li>
-        <li class="tab"><a href="#test4">organizations</a></li>
-        <li class="tab"><a href="#test2">followers</a></li>
-        <li class="tab"><a href="#test3">following</a></li>
+        <li class="tab"><a class="active" href="#profile">profile</a></li>
+        <li class="tab"><a href="#organizations">organizations</a></li>
+        <li class="tab"><a href="#followers">followers</a></li>
+        <li class="tab"><a href="#following">following</a></li>
         {#if user}
           <div class="right" style="margin: 0.5em 0;"><Settings userId={user.id} /></div>
         {/if}
@@ -63,13 +63,12 @@
 
 <div class="container">
   <div class="card main">
-    <div id="test1" class="col s12">
+    <div id="profile" class="col s12">
       {JSON.stringify(user, null, 2)}
-      test
     </div>
-    <div id="test2" class="col s12">Test 2</div>
-    <div id="test3" class="col s12">Test 3</div>
-    <div id="test4" class="col s12"><Organizations user={user} /></div>
+    <div id="organizations" class="col s12"><Organizations user={user} /></div>
+    <div id="followers" class="col s12">followers</div>
+    <div id="following" class="col s12">following</div>
     
   </div>
 </div>
