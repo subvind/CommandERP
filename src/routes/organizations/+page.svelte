@@ -21,7 +21,7 @@
     },
     {
       id: 'orgname',
-      name: 'Username'
+      name: 'Orgname'
     },
     {
       id: 'displayName',
