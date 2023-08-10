@@ -8,12 +8,7 @@
   let user: any;
   let loading = true;
 
-  onMount(async () => {
-    let accessToken: any = localStorage.getItem('access_token');
-
-    // Decode the JWT
-    decodedToken = jwt_decode(accessToken);
-
+  async function load() {
     const response = await fetch(`https://backend.subvind.com/users/username/${decodedToken.username}`, {
       method: 'GET',
       headers: {
@@ -27,6 +22,17 @@
       const errorData = await response.json();
       alert(errorData.error);
     }
+  }
+
+  onMount(async () => {
+    let accessToken: any = localStorage.getItem('access_token');
+
+    // Decode the JWT
+    decodedToken = jwt_decode(accessToken);
+
+    await load()
+    setTimeout(load, 1000) // load again for defaultOrganization change
+
     loading = false;
   })
 </script>
