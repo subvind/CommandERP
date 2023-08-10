@@ -1,6 +1,5 @@
-
 import { error } from '@sveltejs/kit';
-  
+
 export function load({ params }: any) {
   if (params.username && params.orgname) {
     return {
@@ -8,6 +7,6 @@ export function load({ params }: any) {
       orgname: params.orgname,
     };
   }
-  
+
   throw error(404, 'Not found');
 }
