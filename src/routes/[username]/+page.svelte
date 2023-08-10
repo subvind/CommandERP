@@ -35,10 +35,10 @@
       {/if}
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a class="black-text" href="collapsible.html">YouTube</a></li>
+        <li><a class="black-text" href="collapsible.html">eBay</a></li>
+        <li><a class="black-text" href="collapsible.html">Etsy</a></li>
+        <li><a class="black-text" href="collapsible.html">Shopify</a></li>
         <li><a class="black-text" href="collapsible.html">Twitter</a></li>
-        <li><a class="black-text" href="collapsible.html">LinkedIn</a></li>
-        <li><a class="black-text" href="collapsible.html">Github</a></li>
       </ul>
     </div>
     <div class="nav-content">

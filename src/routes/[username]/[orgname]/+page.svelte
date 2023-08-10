@@ -16,15 +16,7 @@
       if (response.ok) {
         let res = await response.json();
 
-        console.log('access_token', res.access_token)
-
-        // Save the access token to localStorage
-        localStorage.setItem('access_token', res.access_token);
-
-        // Decode the JWT
-        let decodedToken: any = jwt_decode(res.access_token);
-
-        console.log('defaultOrganization decoded_token', decodedToken)
+        console.log('user', res)
       } else {
         const errorData = await response.json();
         alert(errorData.message);

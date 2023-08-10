@@ -5,19 +5,36 @@
   import Sidebar from "./Sidebar.svelte"
 
   let decodedToken: any = null;
+  let user: any;
+  let loading = true;
 
-  onMount(() => {
+  onMount(async () => {
     let accessToken: any = localStorage.getItem('access_token');
 
     // Decode the JWT
     decodedToken = jwt_decode(accessToken);
+
+    const response = await fetch(`https://backend.subvind.com/users/username/${decodedToken.username}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+
+    if (response.ok) {
+      user = await response.json();
+    } else {
+      const errorData = await response.json();
+      alert(errorData.error);
+    }
+    loading = false;
   })
 </script>
 
 <nav class="black">
   <div class="nav-wrapper">
-    {#if decodedToken}
-      {#if decodedToken.organization}
+    {#if user}
+      {#if user.defaultOrganization}
         <Sidebar />
       {:else}
         <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -25,27 +42,31 @@
         </ul>
       {/if}
     {:else}
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="https://subvind.com">subvind.com</a></li>
-      </ul>
+      {#if loading === false}
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="https://subvind.com">subvind.com</a></li>
+        </ul>
+      {/if}
     {/if}
     
     <a href="/" class="brand-logo center"><span class="yellow">inom</span>.<span class="green">E</span><span class="red">R</span><span class="blue">P</span></a>
 
-    {#if decodedToken}
+    {#if user}
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/users"><span class="yellow">users</span></a></li>
         <li><a href={`/${decodedToken.username}`}>{decodedToken.fullName}</a></li>
         <li><a href="/organizations"><span class="yellow">organizations</span></a></li>
-        {#if decodedToken.organization}
-          <li><a href={`/${decodedToken.username}/${decodedToken.organization.slug}`}>{decodedToken.organization.name}</a></li>
+        {#if user.defaultOrganization}
+          <li><a href={`/${decodedToken.username}/${user.defaultOrganization.orgname}`}>{user.defaultOrganization.displayName}</a></li>
         {/if}
       </ul>
     {:else}
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/auth/login">login</a></li>
-        <li><a href="/auth/register">register</a></li>
-      </ul>
+      {#if loading === false}
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/auth/login">login</a></li>
+          <li><a href="/auth/register">register</a></li>
+        </ul>
+      {/if}
     {/if}
   </div>
 </nav>
