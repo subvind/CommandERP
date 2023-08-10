@@ -66,7 +66,11 @@
     <div id="profile" class="col s12">
       {JSON.stringify(user, null, 2)}
     </div>
-    <div id="organizations" class="col s12"><Organizations user={user} /></div>
+    <div id="organizations" class="col s12">
+      {#if user}
+        <Organizations user={user} />
+      {/if}
+    </div>
     <div id="followers" class="col s12">followers</div>
     <div id="following" class="col s12">following</div>
     
