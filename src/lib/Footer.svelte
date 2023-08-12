@@ -19,15 +19,15 @@
       </p>
     </div>
     <div class="col s8">
-      <a href="https://github.com/subvind/ucimecu" class="nav">top</a>
-      <a href="https://github.com/subvind/entropy" class="nav">stream</a>
-      <a href="https://github.com/subvind/FlowERP" class="nav">backend</a>
       <a href="https://github.com/subvind/CommandERP" class="nav">frontend</a>
+      <a href="https://github.com/subvind/FlowERP" class="nav">backend</a>
+      <a href="https://github.com/subvind/entropy" class="nav">stream</a>
+      <a href="https://github.com/subvind/ucimecu" class="nav">top</a>
       <br />
-      <a href="https://github.com/subvind/inomlang" class="nav">sync</a>
-      <a href="https://github.com/subvind/autoide" class="nav">base</a>
-      <a href="https://github.com/subvind/inom" class="nav">cli</a>
       <a href="https://github.com/subvind/flowtube" class="nav">tv</a>
+      <a href="https://github.com/subvind/inom" class="nav">cli</a>
+      <a href="https://github.com/subvind/autoide" class="nav">base</a>
+      <a href="https://github.com/subvind/inomlang" class="nav">sync</a>
     </div>
   </div>
 </div>
