@@ -8,9 +8,6 @@
   let user: any = null;
 
   onMount(async () => {
-		let elms = document.querySelectorAll('.tabs')
-    var instance = M.Tabs.init(elms, {});
-
     const response = await fetch(`https://backend.subvind.com/users/username/${data.username}`, {
       method: 'GET',
       headers: {
@@ -20,6 +17,11 @@
 
     if (response.ok) {
       user = await response.json();
+
+      setTimeout(() => {
+        let elms = document.querySelectorAll('.tabs')
+        var instance = M.Tabs.init(elms, {});
+      }, 0)
     } else {
       const errorData = await response.json();
       alert(errorData.error);
@@ -31,19 +33,24 @@
   <div class="container">
     <div class="nav-wrapper">
       {#if user}
-        <a href="#" class="brand-logo black-text">{user.username} ({user.firstName} {user.lastName})</a>
+        <a href="#" class="brand-logo black-text">{user.firstName} {user.lastName}</a>
       {/if}
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a class="black-text" href="collapsible.html">eBay</a></li>
-        <li><a class="black-text" href="collapsible.html">Etsy</a></li>
-        <li><a class="black-text" href="collapsible.html">Shopify</a></li>
         <li><a class="black-text" href="collapsible.html">Twitter</a></li>
+        <li><a class="black-text" href="collapsible.html">YouTube</a></li>
+        <li><a class="black-text" href="collapsible.html">LinkedIn</a></li>
       </ul>
     </div>
     <div class="nav-content">
       <ul class="tabs tabs-transparent black lighten-2">
-        <li class="tab"><a class="active" href="#profile">profile</a></li>
+        {#if user}
+          <li class="tab">
+            <a class="active" href="#profile">
+              {user.username}
+            </a>
+          </li>
+        {/if}
         <li class="tab"><a href="#organizations">organizations</a></li>
         <li class="tab"><a href="#followers">followers</a></li>
         <li class="tab"><a href="#following">following</a></li>
@@ -61,21 +68,21 @@
   <li><a href="collapsible.html">JavaScript</a></li>
 </ul>
 
-<div class="container">
-  <div class="card main">
-    <div id="profile" class="col s12">
-      {JSON.stringify(user, null, 2)}
-    </div>
-    <div id="organizations" class="col s12">
-      {#if user}
+{#if user}
+  <div class="container">
+    <div class="card main">
+      <div id="profile" class="col s12">
+        {JSON.stringify(user, null, 2)}
+      </div>
+      <div id="organizations" class="col s12">
         <Organizations user={user} />
-      {/if}
+      </div>
+      <div id="followers" class="col s12">followers</div>
+      <div id="following" class="col s12">following</div>
+      
     </div>
-    <div id="followers" class="col s12">followers</div>
-    <div id="following" class="col s12">following</div>
-    
   </div>
-</div>
+{/if}
 
 <style>
   .main {
