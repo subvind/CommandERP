@@ -77,7 +77,7 @@
     <div class="col s4">
       <h5 style="margin: 0 0 0.5em;">SaaS pricing start from 99$/month</h5>
       <ul class="collection">
-        <li class="collection-item">Replace many apps like CRM, HR, Inventory, Supply Chain, Expenses, Reports, Accounting all into one easy solution.</li>
+        <li class="collection-item">Replace many apps like CRM, HR, Purchases, Orders, Payments, Invoices, Quotes, Inventory, Supply Chain, Expenses, Reports, Accounting all into one easy solution.</li>
         <li class="collection-item">Integrate with Ebay, Shopify, Magento, Etsy and add other products.</li>
         <li class="collection-item">Get fast customizations and support.</li>
       </ul>
