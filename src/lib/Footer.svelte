@@ -15,7 +15,7 @@
         inom.ERP, powered by subvind, is fast growing IT solution for E-Commerce.
       </p>
       <p>
-        It contains CRM, HRM, Purchases, Inventory, Expenses, Reports, Accounting.
+        It contains CRM, HR, Purchases, Inventory, Supply Chain, Expenses, Reports, Accounting.
       </p>
     </div>
     <div class="col s8">
