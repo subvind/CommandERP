@@ -1,12 +1,12 @@
 <script lang="ts">
-  import CreateInventory from "./CreateInventory.svelte";
+  import CreateProduct from "./CreateProduct.svelte";
 
   import Table from "$lib/Table.svelte"
   import * as gridjs from "gridjs";
 
   export let organization: any;
   let sort: boolean = true;
-  let url: string = `https://backend.subvind.com/inventory/orgRelated/${organization.id}`;
+  let url: string = `https://backend.subvind.com/products/orgRelated/${organization.id}`;
   let limit: number = 25;
   let columns = [
     {
@@ -21,38 +21,23 @@
       }
     },
     {
-      id: 'building',
-      name: 'Building',
+      id: 'stockKeepingUnit',
+      name: 'SKU',
       width: '200px',
     },
     {
-      id: 'floor',
-      name: 'Floor',
+      id: 'photoUrl',
+      name: 'Photo URL',
       width: '150px',
     },
     {
-      id: 'room',
-      name: 'Room',
+      id: 'flickrAlbum',
+      name: 'Flickr Album',
       width: '200px',
     },
     {
-      id: 'rack',
-      name: 'Rack',
-      width: '200px',
-    },
-    {
-      id: 'rackLevel',
-      name: 'RackLevel',
-      width: '150px',
-    },
-    {
-      id: 'rackSection',
-      name: 'RackSection',
-      width: '200px',
-    },
-    {
-      id: 'container',
-      name: 'Container',
+      id: 'ebayListing',
+      name: 'Ebay Listing',
       width: '200px',
     },
     {
@@ -67,7 +52,7 @@
       hidden: false,
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `/${organization.owner.username}/${organization.orgname}/materials/inventory/${row.cells[1].data}`,
+          href: `/${organization.orgname}/${organization.orgname}/${row.cells[1].data}`,
           target: "_self",
           className: 'btn btn-small red right',
         }, 'VIEW');
@@ -77,13 +62,10 @@
   function mapResultsFunc(value: any) {
     return [
       value.id,
-      value.building,
-      value.floor,
-      value.room,
-      value.rack,
-      value.rackLevel,
-      value.rackSection,
-      value.container,
+      value.stockKeepingUnit,
+      value.photoUrl,
+      value.flickrAlbum,
+      value.ebayListing,
       value.createdAt
     ]
   }
@@ -92,7 +74,7 @@
 <div class="table">
   <Table url={url} columns={columns} limit={limit} mapResultsFunc={mapResultsFunc} sort={sort} />
   {#if organization}
-    <CreateInventory />
+    <CreateProduct />
   {/if}
 </div>
 
