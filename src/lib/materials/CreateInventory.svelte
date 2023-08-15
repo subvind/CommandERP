@@ -1,15 +1,22 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import jwt_decode from 'jwt-decode';
 
-  export let userId: any = null;
   let instances: any = undefined;
   let user: any = null;
+  let decodedToken: any;
 
   onMount(async () => {
+    let accessToken: any = localStorage.getItem('access_token');
+
+    // Decode the JWT
+    decodedToken = jwt_decode(accessToken);
+
     var elems = document.querySelectorAll('.jnerdfjkbgsdlkjgn');
     instances = M.Modal.init(elems, {});
 
-    const response = await fetch(`https://backend.subvind.com/users/${userId}`, {
+    console.log('user')
+    const response = await fetch(`https://backend.subvind.com/users/username/${decodedToken.username}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -28,31 +35,41 @@
     }
   })
 
-  let orgname = ''
-  let displayName = ''
+  let building = ''
+  let floor = ''
+  let room = ''
+  let rack = ''
+  let rackLevel = ''
+  let rackSection = ''
+  let container = ''
 
 	async function submit(event: any) {
     event.preventDefault()
 
-    if (orgname === '') return alert('orgname must be defined.')
-    if (displayName === '') return alert('First name must be defined.')
+    if (building === '') return alert('Building must be defined.')
+    if (floor === '') return alert('Floor name must be defined.')
     
     try {
-      const response = await fetch(`https://backend.subvind.com/organizations`, {
+      const response = await fetch(`https://backend.subvind.com/inventory`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          orgname,
-          displayName,
-          owner: userId
+          building,
+          floor,
+          room,
+          rack,
+          rackLevel,
+          rackSection,
+          container,
+          organization: user.defaultOrganization.id
         }),
       });
 
       if (response.ok) {
-        let org = await response.json();
-        window.location.href = `${user.username}/${org.orgname}`
+        let inventory = await response.json();
+        window.location.href = `/${user.username}/${user.defaultOrganization.orgname}/materials/inventory/${inventory.id}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);
@@ -75,12 +92,38 @@
       <br />
       <div class="row">
         <div class="input-field col s6">
-          <input id="orgname" type="text" class="validate" bind:value={orgname}>
-          <label for="orgname">Orgname</label>
+          <input id="building" type="text" class="validate" bind:value={building}>
+          <label for="building">Building</label>
         </div>
         <div class="input-field col s6">
-          <input id="displayName" type="text" class="validate" bind:value={displayName}>
-          <label for="displayName">Display Name</label>
+          <input id="floor" type="number" class="validate" bind:value={floor}>
+          <label for="floor">Floor</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="room" type="text" class="validate" bind:value={room}>
+          <label for="room">Room</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="rack" type="text" class="validate" bind:value={rack}>
+          <label for="rack">Rack</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="rackLevel" type="number" class="validate" bind:value={rackLevel}>
+          <label for="rackLevel">Rack Level</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="rackSection" type="text" class="validate" bind:value={rackSection}>
+          <label for="rackSection">Rack Section</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="container" type="text" class="validate" bind:value={container}>
+          <label for="container">Container</label>
         </div>
       </div>
     </div>

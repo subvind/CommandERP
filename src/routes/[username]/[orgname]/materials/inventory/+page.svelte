@@ -16,7 +16,7 @@
     /**
      * fetch org
      */
-     const responseOrg = await fetch(`https://backend.subvind.com/organizations/orgname/${data.orgname}`, {
+    const responseOrg = await fetch(`https://backend.subvind.com/organizations/orgname/${data.orgname}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

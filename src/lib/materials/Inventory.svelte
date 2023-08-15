@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-
   import CreateInventory from "./CreateInventory.svelte";
 
   import Table from "$lib/Table.svelte"
@@ -23,26 +21,55 @@
       }
     },
     {
-      id: 'orgname',
-      name: 'Orgname'
+      id: 'building',
+      name: 'Building',
+      width: '200px',
     },
     {
-      id: 'displayName',
-      name: 'Display Name'
+      id: 'floor',
+      name: 'Floor',
+      width: '150px',
+    },
+    {
+      id: 'room',
+      name: 'Room',
+      width: '200px',
+    },
+    {
+      id: 'rack',
+      name: 'Rack',
+      width: '200px',
+    },
+    {
+      id: 'rackLevel',
+      name: 'RackLevel',
+      width: '150px',
+    },
+    {
+      id: 'rackSection',
+      name: 'RackSection',
+      width: '200px',
+    },
+    {
+      id: 'container',
+      name: 'Container',
+      width: '200px',
     },
     {
       id: 'createdAt',
-      name: 'Created At'
+      name: 'Created At',
+      width: '200px',
     },
     { 
       name: '',
+      width: '100px',
       sort: false,
       hidden: false,
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `/${organization.orgname}/${row.cells[1].data}`,
+          href: `/${organization.orgname}/${organization.orgname}/${row.cells[1].data}`,
           target: "_self",
-          className: 'btn btn-small yellow black-text lighten-2 right',
+          className: 'btn btn-small red right',
         }, 'VIEW');
       }
     },
@@ -50,8 +77,13 @@
   function mapResultsFunc(value: any) {
     return [
       value.id,
-      value.orgname,
-      value.displayName,
+      value.building,
+      value.floor,
+      value.room,
+      value.rack,
+      value.rackLevel,
+      value.rackSection,
+      value.container,
       value.createdAt
     ]
   }
@@ -60,7 +92,7 @@
 <div class="table">
   <Table url={url} columns={columns} limit={limit} mapResultsFunc={mapResultsFunc} sort={sort} />
   {#if organization}
-    <CreateInventory userId={organization.id} />
+    <CreateInventory />
   {/if}
 </div>
 
