@@ -12,7 +12,7 @@
         subvind was formed in 2023 as a factory for generating open source products.
       </p>
       <p>
-        inom.ERP, powered by subvind, is fast growing IT solution for E-Commerce.
+        inam.ERP, powered by subvind, is fast growing IT solution for E-Commerce.
       </p>
       <p>
         It contains CRM, HR, Purchases, Orders, Payments, Invoices, Quotes, Inventory, Supply Chain, Expenses, Reports, Accounting.
@@ -25,9 +25,10 @@
       <a href="https://github.com/subvind/ucimecu" class="nav">top</a>
       <br />
       <a href="https://github.com/subvind/flowtube" class="nav">tv</a>
-      <a href="https://github.com/subvind/inom" class="nav">cli</a>
+      <a href="https://github.com/subvind/inam" class="nav">cli</a>
       <a href="https://github.com/subvind/autoide" class="nav">base</a>
-      <a href="https://github.com/subvind/inomlang" class="nav">sync</a>
+      <a href="https://github.com/subvind/inamlang" class="nav">sync</a>
+      <a href="https://github.com/subvind/DisplayERP" class="nav">main</a>
     </div>
   </div>
 </div>
@@ -35,7 +36,7 @@
 <div class="container">
   <a href="/terms-and-conditions" class="nav">Terms & Conditions</a>
   <a href="/terms-and-conditions" class="nav">Privacy Policy</a>
-  <h3 class="logo">inom.ERP</h3>
+  <h3 class="logo">inam.ERP</h3>
 </div>
 <hr>
 <div class="container">

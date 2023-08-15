@@ -41,7 +41,7 @@
   <div class="nav-wrapper">
     {#if user}
       {#if user.defaultOrganization}
-        <Sidebar />
+        <Sidebar username={decodedToken.username} orgname={user.defaultOrganization.orgname} />
       {:else}
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li><a href={`/${decodedToken.username}#organizations`}>select organization</a></li>
@@ -55,7 +55,7 @@
       {/if}
     {/if}
     
-    <a href="/" class="brand-logo center"><span class="yellow">inom</span>.<span class="green">E</span><span class="red">R</span><span class="blue">P</span></a>
+    <a href="/" class="brand-logo center"><span class="yellow">inam</span>.<span class="green">E</span><span class="red">R</span><span class="blue">P</span></a>
 
     {#if user}
       <ul id="nav-mobile" class="right hide-on-med-and-down">
