@@ -12,7 +12,7 @@
         subvind was formed in 2023 as a factory for generating open source products.
       </p>
       <p>
-        inam.ERP, powered by subvind, is fast growing IT solution for E-Commerce.
+        inam.ERP, powered by subvind, is a fast growing IT solution for E-Commerce.
       </p>
       <p>
         It contains CRM, HR, Purchases, Orders, Payments, Invoices, Quotes, Inventory, Supply Chain, Expenses, Reports, Accounting.

@@ -21,6 +21,7 @@
     <ul class="center hide-on-med-and-down" style="margin: 0 auto;">
       <li><a href={`/${username}/${orgname}/materials/inventory`}>Inventory</a></li>
       <li><a href={`/${username}/${orgname}/materials/products`}>Products</a></li>
+      <li><a href={`/${username}/${orgname}/materials/categories`}>Categories</a></li>
       <li><a href={`/${username}/${orgname}/materials/production`}>Production</a></li>
     </ul>
     <!-- <a href="#" class="brand-logo center"></a> -->
