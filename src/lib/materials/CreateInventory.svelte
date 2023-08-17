@@ -76,7 +76,7 @@
       }
     } catch (error) {
       console.error('Error registering user:', error);
-      alert('An error occurred during registration.');
+      alert('An error occurred during submission.');
     }
   }
 </script>

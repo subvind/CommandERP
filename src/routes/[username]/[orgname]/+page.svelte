@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import Settings from '$lib/users/Settings.svelte'
+  import Settings from '$lib/organizations/Settings.svelte'
   import Organizations from '$lib/users/Organizations.svelte'
 
   export let data: any;
@@ -103,8 +103,8 @@
           <li class="tab"><a href="#employees">employees</a></li>
           <li class="tab"><a href="#customers">customers</a></li>
 
-          {#if user}
-            <div class="right" style="margin: 0.5em 0;"><Settings userId={user.id} /></div>
+          {#if organization}
+            <div class="right" style="margin: 0.5em 0;"><Settings user={user} organizationId={organization.id} /></div>
           {/if}
         </ul>
     </div>

@@ -1,15 +1,16 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  export let userId: any = null;
+  export let user: any;
+  export let organizationId: any = null;
   let instances: any = undefined;
-  let user: any = null;
+  let organization: any = undefined;
 
   onMount(async () => {
-    var elems = document.querySelectorAll('.jdfbuywxzqopmwef');
+    var elems = document.querySelectorAll('.sdcebryytpozdscqwm');
     instances = M.Modal.init(elems, {});
 
-    const response = await fetch(`https://backend.subvind.com/users/${userId}`, {
+    const response = await fetch(`https://backend.subvind.com/organizations/${organizationId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -17,7 +18,10 @@
     });
 
     if (response.ok) {
-      user = await response.json();
+      organization = await response.json();
+      orgname = organization.orgname
+      displayName = organization.displayName
+      hostname = organization.hostname
 
       setTimeout(() => {
         M.updateTextFields();
@@ -26,52 +30,55 @@
       const errorData = await response.json();
       alert(errorData.error);
     }
+
   })
 
   let orgname = ''
   let displayName = ''
+	let hostname = ''
 
 	async function submit(event: any) {
     event.preventDefault()
 
-    if (orgname === '') return alert('orgname must be defined.')
+    if (orgname === '') return alert('Username must be defined.')
     if (displayName === '') return alert('First name must be defined.')
+    if (hostname === '') return alert('Email must be defined.')
     
     try {
-      const response = await fetch(`https://backend.subvind.com/organizations`, {
-        method: 'POST',
+      const response = await fetch(`https://backend.subvind.com/organizations/${organizationId}`, {
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           orgname,
           displayName,
-          owner: userId
+          hostname,
         }),
       });
 
       if (response.ok) {
-        let org = await response.json();
-        window.location.href = `${user.username}/${org.orgname}`
+        organization = await response.json();
+        window.location.href = `/${user.username}/${organization.orgname}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);
       }
     } catch (error) {
-      console.error('Error registering user:', error);
+      console.error('Error registering organization:', error);
       alert('An error occurred during submission.');
     }
   }
 </script>
 
 <!-- Modal Trigger -->
-<a class="btn yellow lighten-2 black-text" href="#!" on:click={() => { instances[0].open() }}>CREATE ORGANIZATION</a>
+<a class="btn white black-text" href="#!" on:click={() => { instances[0].open() }}>SETTINGS</a>
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>
-  <div class="modal jdfbuywxzqopmwef">
+  <div class="modal sdcebryytpozdscqwm">
     <div class="modal-content">
-      <h4>Create Organization</h4>
+      <h4>Settings</h4>
       <br />
       <div class="row">
         <div class="input-field col s6">
@@ -81,6 +88,10 @@
         <div class="input-field col s6">
           <input id="displayName" type="text" class="validate" bind:value={displayName}>
           <label for="displayName">Display Name</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="hostname" type="text" class="validate" bind:value={hostname}>
+          <label for="hostname">Hostname</label>
         </div>
       </div>
     </div>
