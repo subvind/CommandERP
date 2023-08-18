@@ -6,7 +6,7 @@
 <hr>
 <div class="container">
   <div class="row" style="margin: 0 -1em;">
-    <div class="col s4">
+    <div class="col s12 m4">
       <h6>About us</h6>
       <p>
         subvind was formed in 2023 as a factory for generating open source products.
@@ -18,7 +18,7 @@
         It contains CRM, HR, Purchases, Orders, Payments, Invoices, Quotes, Inventory, Supply Chain, Expenses, Reports, Accounting.
       </p>
     </div>
-    <div class="col s8">
+    <div class="col s12 m8 hide-on-med-and-down">
       <a href="https://github.com/subvind/CommandERP" class="nav">frontend</a>
       <a href="https://github.com/subvind/FlowERP" class="nav">backend</a>
       <a href="https://github.com/subvind/entropy" class="nav">stream</a>
@@ -34,8 +34,8 @@
 </div>
 <hr>
 <div class="container">
-  <a href="/terms-and-conditions" class="nav">Terms & Conditions</a>
-  <a href="/terms-and-conditions" class="nav">Privacy Policy</a>
+  <a href="/terms-and-conditions" class="nav hide-on-med-and-down">Terms & Conditions</a>
+  <a href="/terms-and-conditions" class="nav hide-on-med-and-down">Privacy Policy</a>
   <h3 class="logo">inam.ERP</h3>
 </div>
 <hr>
