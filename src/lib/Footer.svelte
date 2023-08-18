@@ -35,7 +35,7 @@
 <hr>
 <div class="container">
   <a href="/terms-and-conditions" class="nav hide-on-med-and-down">Terms & Conditions</a>
-  <a href="/terms-and-conditions" class="nav hide-on-med-and-down">Privacy Policy</a>
+  <a href="/privacy-policy" class="nav hide-on-med-and-down">Privacy Policy</a>
   <h3 class="logo">inam.ERP</h3>
 </div>
 <hr>
