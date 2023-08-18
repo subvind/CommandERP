@@ -20,7 +20,7 @@
   <br />
   <br />
   <br />
-  <div class="container" style="width: 600px;">
+  <div class="container" style="max-width: 600px;">
     <div class="card">
       <div class="card-content">
         <strong>What is ERP?</strong>
@@ -52,7 +52,7 @@
 <nav class="nav-extended yellow lighten-2">
   <div class="container">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo black-text">Software as a Service (SaaS)</a>
+      <a href="#" class="brand-logo black-text hide-on-med-and-down">Software as a Service (SaaS)</a>
     </div>
     
     <a href="#" data-target='dropdown1' class="btn-floating btn-large waves-effect waves-light black dropdown-trigger right" style="margin-top: -1.9em;"><i class="material-icons">more_vert</i></a>
@@ -71,10 +71,10 @@
 <br />
 <br />
 
-<div class="container">
+<div class="container" style="overflow: hidden;">
   <h2 style="text-align: center;">Best Open-Source ERP for Small and Medium Business</h2>
   <div class="row">
-    <div class="col s4">
+    <div class="col s12 m4">
       <h5 style="margin: 0 0 0.5em;">SaaS pricing start from 99$/month</h5>
       <ul class="collection">
         <li class="collection-item">Replace many apps like CRM, HR, Purchases, Orders, Payments, Invoices, Quotes, Inventory, Supply Chain, Expenses, Reports, Accounting all into one easy solution.</li>
@@ -82,8 +82,10 @@
         <li class="collection-item">Get fast customizations and support.</li>
       </ul>
       <a class="btn btn-large black" href="https://subvind.com">TRY FOR FREE</a>
+      <br />
+      <br />
     </div>
-    <div class="col s8" style="max-height: 700px;">
+    <div class="col s12 m8" style="max-height: 700px;">
       <iframe class="zoomedIframe" src="https://autoide.subvind.com" frameborder="0" style="width: 205%; height: 2800px;"></iframe>
     </div>
   </div>
