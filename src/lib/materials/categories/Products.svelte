@@ -53,8 +53,8 @@
   function mapResultsFunc(value: any) {
     return [
       value.id,
-      value.orgname,
-      value.displayName,
+      value.stockKeepingUnit,
+      value.photoUrl,
       value.createdAt
     ]
   }
