@@ -44,7 +44,7 @@
     if (description === '') return alert('Description must be defined.')
     
     try {
-      const response = await fetch(`https://backend.subvind.com/users/${categoryId}`, {
+      const response = await fetch(`https://backend.subvind.com/categories/${categoryId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +64,7 @@
         alert(errorData.error);
       }
     } catch (error) {
-      console.error('Error registering user:', error);
+      console.error('Error updating category:', error);
       alert('An error occurred during submission.');
     }
   }

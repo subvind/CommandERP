@@ -58,7 +58,7 @@
         alert(errorData.error);
       }
     } catch (error) {
-      console.error('Error registering user:', error);
+      console.error('Error creating organization:', error);
       alert('An error occurred during submission.');
     }
   }
