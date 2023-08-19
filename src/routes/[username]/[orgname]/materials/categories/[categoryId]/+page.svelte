@@ -34,7 +34,6 @@
     <div class="nav-wrapper">
       <a href="#" class="brand-logo white-text">Categories</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
     </div>
   </div>
 </nav>
@@ -85,11 +84,10 @@
         {JSON.stringify(category, null, 2)}
       </div>
       <div id="products" class="col s12">
-        <Products user={category} />
+        <Products data={data} category={category} />
       </div>
       <div id="subcategories" class="col s12">sub categories</div>
       <div id="parentcategory" class="col s12">parent category</div>
-      
     </div>
   </div>
 {/if}

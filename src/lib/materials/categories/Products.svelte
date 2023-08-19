@@ -1,14 +1,15 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import CreateProduct from "./CreateProduct.svelte";
+  import CreateProduct from "../CreateProduct.svelte";
 
   import Table from "$lib/Table.svelte"
   import * as gridjs from "gridjs";
 
-  export let user: any;
+  export let data: any;
+  export let category: any;
   let sort: boolean = true;
-  let url: string = `https://backend.subvind.com/organizations/userRelated/${user.id}`;
+  let url: string = `https://backend.subvind.com/products/categoryRelated/${category.id}`;
   let limit: number = 25;
   let columns = [
     {
@@ -23,12 +24,14 @@
       }
     },
     {
-      id: 'orgname',
-      name: 'Orgname'
+      id: 'stockKeepingUnit',
+      name: 'SKU',
+      width: '200px',
     },
     {
-      id: 'displayName',
-      name: 'Display Name'
+      id: 'photoUrl',
+      name: 'Photo URL',
+      width: '150px',
     },
     {
       id: 'createdAt',
@@ -40,7 +43,7 @@
       hidden: false,
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `/${user.username}/${row.cells[1].data}`,
+          href: `/${data.username}/${row.cells[1].data}`,
           target: "_self",
           className: 'btn btn-small yellow black-text lighten-2 right',
         }, 'VIEW');
@@ -59,9 +62,7 @@
 
 <div class="table">
   <Table url={url} columns={columns} limit={limit} mapResultsFunc={mapResultsFunc} sort={sort} />
-  {#if user}
-    <CreateProduct userId={user.id} />
-  {/if}
+  <CreateProduct  />
 </div>
 
 <style>
