@@ -68,7 +68,6 @@
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
           href: `/${organization.owner.username}/${organization.orgname}/materials/inventory/${row.cells[1].data}`,
-          target: "_self",
           className: 'btn btn-small red right',
         }, 'VIEW');
       }

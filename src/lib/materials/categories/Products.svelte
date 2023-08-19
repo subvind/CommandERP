@@ -1,12 +1,14 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   import CreateProduct from "./CreateProduct.svelte";
 
   import Table from "$lib/Table.svelte"
   import * as gridjs from "gridjs";
 
-  export let organization: any;
+  export let user: any;
   let sort: boolean = true;
-  let url: string = `https://backend.subvind.com/products/orgRelated/${organization.id}`;
+  let url: string = `https://backend.subvind.com/organizations/userRelated/${user.id}`;
   let limit: number = 25;
   let columns = [
     {
@@ -21,39 +23,26 @@
       }
     },
     {
-      id: 'stockKeepingUnit',
-      name: 'SKU',
-      width: '200px',
+      id: 'orgname',
+      name: 'Orgname'
     },
     {
-      id: 'photoUrl',
-      name: 'Photo URL',
-      width: '150px',
-    },
-    {
-      id: 'flickrAlbum',
-      name: 'Flickr Album',
-      width: '200px',
-    },
-    {
-      id: 'ebayListing',
-      name: 'Ebay Listing',
-      width: '200px',
+      id: 'displayName',
+      name: 'Display Name'
     },
     {
       id: 'createdAt',
-      name: 'Created At',
-      width: '200px',
+      name: 'Created At'
     },
     { 
       name: '',
-      width: '100px',
       sort: false,
       hidden: false,
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `/${organization.orgname}/${organization.orgname}/materials/products/${row.cells[1].data}`,
-          className: 'btn btn-small red right',
+          href: `/${user.username}/${row.cells[1].data}`,
+          target: "_self",
+          className: 'btn btn-small yellow black-text lighten-2 right',
         }, 'VIEW');
       }
     },
@@ -61,10 +50,8 @@
   function mapResultsFunc(value: any) {
     return [
       value.id,
-      value.stockKeepingUnit,
-      value.photoUrl,
-      value.flickrAlbum,
-      value.ebayListing,
+      value.orgname,
+      value.displayName,
       value.createdAt
     ]
   }
@@ -72,14 +59,14 @@
 
 <div class="table">
   <Table url={url} columns={columns} limit={limit} mapResultsFunc={mapResultsFunc} sort={sort} />
-  {#if organization}
-    <CreateProduct />
+  {#if user}
+    <CreateProduct userId={user.id} />
   {/if}
 </div>
 
 <style>
-  /* .table {
+  .table {
     margin: 0 1em;
     padding-bottom: 1em;
-  } */
+  }
 </style>

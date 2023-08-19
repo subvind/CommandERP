@@ -48,7 +48,6 @@
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
           href: `/${organization.orgname}/${organization.orgname}/materials/categories/${row.cells[1].data}`,
-          target: "_self",
           className: 'btn btn-small red right',
         }, 'VIEW');
       }
