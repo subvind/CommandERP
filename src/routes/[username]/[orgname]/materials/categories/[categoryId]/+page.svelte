@@ -3,6 +3,7 @@
 
   import Settings from '$lib/materials/categories/Settings.svelte'
   import Products from '$lib/materials/categories/Products.svelte'
+  import ParentCategory from '$lib/materials/categories/ParentCategory.svelte'
 
   export let data: any;
   let category: any = null;
@@ -47,7 +48,7 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         {#if category && category.parentCategory}
-          <li><a class="" href="collapsible.html">{category.parentCategory.name}</a></li>
+          <li><a class="" href={`/${data.username}/${data.orgname}/materials/categories/${category.parentCategory.slug}`} target="_self">{category.parentCategory.name}</a></li>
         {/if}
       </ul>
     </div>
@@ -87,7 +88,9 @@
         <Products data={data} category={category} />
       </div>
       <div id="subcategories" class="col s12">sub categories</div>
-      <div id="parentcategory" class="col s12">parent category</div>
+      <div id="parentcategory" class="col s12">
+        <ParentCategory data={data} category={category} />
+      </div>
     </div>
   </div>
 {/if}
