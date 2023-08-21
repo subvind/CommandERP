@@ -3,6 +3,7 @@
 
   import Settings from '$lib/materials/categories/Settings.svelte'
   import Products from '$lib/materials/categories/Products.svelte'
+  import SubCategories from "$lib/materials/categories/SubCategories.svelte";
   import ParentCategory from '$lib/materials/categories/ParentCategory.svelte'
 
   export let data: any;
@@ -87,7 +88,9 @@
       <div id="products" class="col s12">
         <Products data={data} category={category} />
       </div>
-      <div id="subcategories" class="col s12">sub categories</div>
+      <div id="subcategories" class="col s12">
+        <SubCategories data={data} category={category} />
+      </div>
       <div id="parentcategory" class="col s12">
         <ParentCategory data={data} category={category} />
       </div>

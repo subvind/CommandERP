@@ -34,7 +34,7 @@
       },
     })
 
-    grid.render(document.getElementById('wrapper'));
+    grid.render(document.getElementById(url));
 
     setTimeout(() => {
       loading = false
@@ -42,7 +42,7 @@
   });
 </script>
 
-<div id="wrapper"></div>
+<div id={`${url}`}></div>
 {#if loading}
   <div class="progress red lighten-2">
     <div class="indeterminate teal lighten-2"></div>
