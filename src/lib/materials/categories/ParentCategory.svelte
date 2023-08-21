@@ -6,9 +6,11 @@
   export let data: any;
   export let category: any;
   
-  let items: any = [];
+  let items: any = [
+    { value: '', label: '' }
+  ];
   let filterText: any;
-  let value: any = category.parentCategory.name;
+  let value: any = category.parentCategory?.name || '';
   let loading = true;
 
   /**
@@ -17,6 +19,13 @@
   async function handleChange(e: any) {
     console.log(e.detail);
 
+    let parentCategory
+    if (e.detail.value === '') {
+      parentCategory = null
+    } else {
+      parentCategory = e.detail.value
+    }
+
     try {
       const response = await fetch(`https://backend.subvind.com/categories/${category.id}`, {
         method: 'PATCH',
@@ -24,7 +33,7 @@
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          parentCategory: e.detail.value
+          parentCategory: parentCategory
         }),
       });
 
