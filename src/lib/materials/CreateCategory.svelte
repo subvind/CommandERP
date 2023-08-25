@@ -62,7 +62,7 @@
 
       if (response.ok) {
         let pategory = await response.json();
-        window.location.href = `/${user.username}/${user.defaultOrganization.orgname}/materials/categories/${pategory.id}`
+        window.location.href = `/${user.username}/${user.defaultOrganization.orgname}/materials/categories/${pategory.slug}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);

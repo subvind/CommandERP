@@ -47,7 +47,7 @@
       hidden: false,
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `/${organization.orgname}/${organization.orgname}/materials/categories/${row.cells[1].data}`,
+          href: `/${organization.orgname}/${organization.orgname}/materials/categories/${row.cells[2].data}`,
           className: 'btn btn-small red right',
         }, 'VIEW');
       }
