@@ -61,8 +61,8 @@
       });
 
       if (response.ok) {
-        let pategory = await response.json();
-        window.location.href = `/${user.username}/${user.defaultOrganization.orgname}/materials/categories/${pategory.slug}`
+        let category = await response.json();
+        window.location.href = `/${user.username}/${user.defaultOrganization.orgname}/materials/categories/${category.slug}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);
