@@ -36,8 +36,9 @@
   })
 
   let stockKeepingUnit = ''
+  let name = ''
   let photoUrl = ''
-  let flickrAlbum = ''
+  let bucket = ''
   let ebayListing = ''
 
 	async function submit(event: any) {
@@ -53,8 +54,9 @@
         },
         body: JSON.stringify({
           stockKeepingUnit,
+          name,
           photoUrl,
-          flickrAlbum,
+          bucket,
           ebayListing,
           organization: user.defaultOrganization.id
         }),
@@ -91,14 +93,20 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
+          <input id="name" type="text" class="validate" bind:value={name}>
+          <label for="name">Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
           <input id="photoUrl" type="text" class="validate" bind:value={photoUrl}>
-          <label for="photoUrl">Photo URL</label>
+          <label for="photoUrl">Cover Photo</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="flickrAlbum" type="text" class="validate" bind:value={flickrAlbum}>
-          <label for="flickrAlbum">Flickr Album</label>
+          <input id="bucket" type="text" class="validate" bind:value={bucket}>
+          <label for="bucket">Bucket</label>
         </div>
         <div class="input-field col s6">
           <input id="ebayListing" type="text" class="validate" bind:value={ebayListing}>

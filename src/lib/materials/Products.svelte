@@ -26,13 +26,18 @@
       width: '200px',
     },
     {
-      id: 'photoUrl',
-      name: 'Photo URL',
+      id: 'name',
+      name: 'Name',
+      width: '200px',
+    },
+    {
+      id: 'coverPhoto',
+      name: 'Cover Photo',
       width: '150px',
     },
     {
-      id: 'flickrAlbum',
-      name: 'Flickr Album',
+      id: 'bucket',
+      name: 'bucket',
       width: '200px',
     },
     {
@@ -62,8 +67,9 @@
     return [
       value.id,
       value.stockKeepingUnit,
-      value.photoUrl,
-      value.flickrAlbum,
+      value.name,
+      value.coverPhoto,
+      value.bucket,
       value.ebayListing,
       value.createdAt
     ]
