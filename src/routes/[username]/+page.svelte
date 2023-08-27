@@ -17,15 +17,18 @@
 
     if (response.ok) {
       user = await response.json();
-
-      setTimeout(() => {
-        let elms = document.querySelectorAll('.tabs')
-        var instance = M.Tabs.init(elms, {});
-      }, 0)
     } else {
       const errorData = await response.json();
       alert(errorData.error);
     }
+
+    setTimeout(() => {
+      let elms = document.querySelectorAll('.tabs')
+      var instance = M.Tabs.init(elms, {});
+    }, 0)
+
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, {});
   })
 </script>
 
@@ -35,7 +38,13 @@
       {#if user}
         <a href="#" class="brand-logo black-text">{user.firstName} {user.lastName}</a>
       {/if}
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="social-mobile" class="right dropdown-trigger black-text hide-on-large-only"><i class="material-icons">more_horiz</i></a>
+      <ul id="social-mobile" class="dropdown-content">
+        <li><a class="black-text" href="collapsible.html">Twitter</a></li>
+        <li><a class="black-text" href="collapsible.html">YouTube</a></li>
+        <li><a class="black-text" href="collapsible.html">LinkedIn</a></li>
+      </ul>
+
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a class="black-text" href="collapsible.html">Twitter</a></li>
         <li><a class="black-text" href="collapsible.html">YouTube</a></li>
@@ -61,12 +70,6 @@
     </div>
   </div>
 </nav>
-
-<ul id="navigation" class="sidenav">
-  <li><a href="sass.html">Sass</a></li>
-  <li><a href="badges.html">Components</a></li>
-  <li><a href="collapsible.html">JavaScript</a></li>
-</ul>
 
 {#if user}
   <div class="container">

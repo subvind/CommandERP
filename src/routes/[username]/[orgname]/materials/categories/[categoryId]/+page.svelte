@@ -7,10 +7,31 @@
   import ParentCategory from '$lib/materials/categories/ParentCategory.svelte'
 
   export let data: any;
+  let organization: any;
   let category: any = null;
 
   onMount(async () => {
-    const response = await fetch(`https://backend.subvind.com/categories/slug/${data.categoryId}`, {
+    /**
+     * fetch org
+     */
+    const responseOrg = await fetch(`https://backend.subvind.com/organizations/orgname/${data.orgname}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+
+    if (responseOrg.ok) {
+      organization = await responseOrg.json();
+    } else {
+      const errorData = await responseOrg.json();
+      alert(errorData.error);
+    }
+
+    /**
+     * fetch category
+     */
+    const response = await fetch(`https://backend.subvind.com/categories/slug/${data.categoryId}/${organization.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -19,15 +40,15 @@
 
     if (response.ok) {
       category = await response.json();
-
-      setTimeout(() => {
-        let elms = document.querySelectorAll('.tabs')
-        var instance = M.Tabs.init(elms, {});
-      }, 0)
     } else {
       const errorData = await response.json();
       alert(errorData.error);
     }
+
+    setTimeout(() => {
+      let elms = document.querySelectorAll('.tabs')
+      var instance = M.Tabs.init(elms, {});
+    }, 0)
   })
 </script>
 
@@ -35,7 +56,6 @@
   <div class="container">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo white-text">Categories</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </div>
 </nav>
@@ -46,8 +66,7 @@
       {#if category}
         <a href="#" class="brand-logo">{category.name}</a>
       {/if}
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <ul id="nav-mobile" class="right">
         {#if category && category.parentCategory}
           <li><a class="" href={`/${data.username}/${data.orgname}/materials/categories/${category.parentCategory.slug}`} target="_self">{category.parentCategory.name}</a></li>
         {/if}
@@ -72,12 +91,6 @@
     </div>
   </div>
 </nav>
-
-<ul id="navigation" class="sidenav">
-  <li><a href="sass.html">Sass</a></li>
-  <li><a href="badges.html">Components</a></li>
-  <li><a href="collapsible.html">JavaScript</a></li>
-</ul>
 
 {#if category}
   <div class="container">

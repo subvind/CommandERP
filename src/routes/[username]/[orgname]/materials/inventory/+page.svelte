@@ -25,15 +25,15 @@
 
     if (responseOrg.ok) {
       organization = await responseOrg.json();
-
-      setTimeout(() => {
-        let elms = document.querySelectorAll('.tabs')
-        var instance = M.Tabs.init(elms, {});
-      }, 0)
     } else {
       const errorData = await responseOrg.json();
       alert(errorData.error);
     }
+
+    setTimeout(() => {
+      let elms = document.querySelectorAll('.tabs')
+      var instance = M.Tabs.init(elms, {});
+    }, 0)
   })
 </script>
 

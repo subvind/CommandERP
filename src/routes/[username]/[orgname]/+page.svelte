@@ -73,6 +73,9 @@
       const errorData = await responseOrg.json();
       alert(errorData.error);
     }
+
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, {});
   })
 </script>
 
@@ -82,7 +85,14 @@
       {#if organization}
         <a href="#" class="brand-logo black-text">{organization.displayName}</a>
       {/if}
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="3rd-party-mobile" class="right dropdown-trigger black-text hide-on-large-only"><i class="material-icons">more_horiz</i></a>
+      <ul id="3rd-party-mobile" class="dropdown-content">
+        <li><a class="black-text" href="collapsible.html">eBay</a></li>
+        <li><a class="black-text" href="collapsible.html">Etsy</a></li>
+        <li><a class="black-text" href="collapsible.html">Stripe</a></li>
+        <li><a class="black-text" href="collapsible.html">Twilio</a></li>
+      </ul>
+
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a class="black-text" href="collapsible.html">eBay</a></li>
         <li><a class="black-text" href="collapsible.html">Etsy</a></li>
@@ -110,12 +120,6 @@
     </div>
   </div>
 </nav>
-
-<ul id="navigation" class="sidenav">
-  <li><a href="sass.html">Sass</a></li>
-  <li><a href="badges.html">Components</a></li>
-  <li><a href="collapsible.html">JavaScript</a></li>
-</ul>
 
 {#if organization}
   <div class="container">
