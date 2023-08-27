@@ -139,6 +139,18 @@
   </div>
 {/if}
 
+<div class="container">
+  <ul class="tabs tabs-transparent black lighten-2">
+    <li class="tab"><a href="#buckets">buckets</a></li>
+    <li class="tab"><a href="#files">files</a></li>
+  </ul>
+  
+  <div class="card main">
+    <div id="buckets" class="col s12">buckets</div>
+    <div id="files" class="col s12">files</div>
+  </div>
+</div>
+
 <style>
   .main {
     margin-top: 0;
