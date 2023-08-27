@@ -4,65 +4,65 @@
   import Select from 'svelte-select';
 
   export let data: any;
-  export let category: any;
+  export let product: any;
   
   let items: any = [
     { value: '', label: '' }
   ];
   let filterText: any;
-  let value: any = category.parentCategory?.name || '';
+  let value: any = product.category?.name || '';
   let loading = true;
 
   /**
-   * update category with latest parent id
+   * update product with latest parent id
    */
   async function handleChange(e: any) {
     console.log(e.detail);
 
-    let parentCategory
+    let category
     if (e.detail.value === '') {
-      parentCategory = null
+      category = null
     } else {
-      parentCategory = e.detail.value
+      category = e.detail.value
     }
 
     try {
-      const response = await fetch(`https://backend.subvind.com/categories/${category.id}`, {
+      const response = await fetch(`https://backend.subvind.com/products/${product.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          parentCategory: parentCategory
+          category: category
         }),
       });
 
       if (response.ok) {
         let merge = {
-          ...category,
+          ...product,
           ...await response.json(),
         }
-        category = merge
-        alert('The parent category was saved.')
+        product = merge
+        alert('The parent product was saved.')
       } else {
         const errorData = await response.json();
         alert(errorData.error);
       }
     } catch (error) {
-      console.error('Error updating category:', error);
+      console.error('Error updating product:', error);
       alert('An error occurred during submission.');
     }
   }
 
   /**
-   * get the latest categories by search
+   * get the latest products by search
    */
   async function handleInput () {
     let search = ''
     if (filterText) {
       search = `&search=${filterText}`
     }
-    const response = await fetch(`https://backend.subvind.com/categories/orgRelated/${category.organization.id}?limit=100&page=1${search}`, {
+    const response = await fetch(`https://backend.subvind.com/products/orgRelated/${product.organization.id}?limit=100&page=1${search}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -70,13 +70,13 @@
     });
 
     if (response.ok) {
-      let categories = await response.json();
+      let products = await response.json();
 
-      console.log('categories', categories)
-      categories.data.forEach((category: any) => {
+      console.log('products', products)
+      products.data.forEach((product: any) => {
         items.push({
-          value: category.id,
-          label: category.name
+          value: product.id,
+          label: product.name
         })
       })
       console.log('items', items)

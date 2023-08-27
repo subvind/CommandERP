@@ -1,15 +1,15 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  export let categoryId: any = null;
+  export let productId: any = null;
   let instances: any = undefined;
-  let category: any = undefined;
+  let product: any = undefined;
 
   onMount(async () => {
     var elems = document.querySelectorAll('.sdffdddfsftgrtgsfd');
     instances = M.Modal.init(elems, {});
 
-    const response = await fetch(`https://backend.subvind.com/categories/${categoryId}`, {
+    const response = await fetch(`https://backend.subvind.com/products/${productId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -17,10 +17,10 @@
     });
 
     if (response.ok) {
-      category = await response.json();
-      name = category.name
-      slug = category.slug
-      description = category.description
+      product = await response.json();
+      name = product.name
+      stockKeepingUnit = product.stockKeepingUnit
+      description = product.description
 
       setTimeout(() => {
         M.updateTextFields();
@@ -33,38 +33,38 @@
   })
 
   let name = ''
-  let slug = ''
+  let stockKeepingUnit = ''
   let description = ''
 
 	async function submit(event: any) {
     event.preventDefault()
 
     if (name === '') return alert('Name must be defined.')
-    if (slug === '') return alert('Slug must be defined.')
+    if (stockKeepingUnit === '') return alert('SKU must be defined.')
     if (description === '') return alert('Description must be defined.')
     
     try {
-      const response = await fetch(`https://backend.subvind.com/categories/${categoryId}`, {
+      const response = await fetch(`https://backend.subvind.com/products/${productId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           name,
-          slug,
+          stockKeepingUnit,
           description,
         }),
       });
 
       if (response.ok) {
-        category = await response.json();
+        product = await response.json();
         window.location.reload();
       } else {
         const errorData = await response.json();
         alert(errorData.error);
       }
     } catch (error) {
-      console.error('Error updating category:', error);
+      console.error('Error updating product:', error);
       alert('An error occurred during submission.');
     }
   }
@@ -85,8 +85,8 @@
           <label for="name">Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="slug" type="text" class="validate" bind:value={slug}>
-          <label for="slug">Slug</label>
+          <input id="stockKeepingUnit" type="text" class="validate" bind:value={stockKeepingUnit}>
+          <label for="stockKeepingUnit">SKU</label>
         </div>
       </div>
       <div class="row">

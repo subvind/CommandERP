@@ -2,9 +2,7 @@
   import { onMount } from "svelte";
 
   import Settings from '$lib/materials/products/Settings.svelte'
-  import Products from '$lib/materials/products/Products.svelte'
-  import SubCategories from "$lib/materials/products/SubCategories.svelte";
-  import ParentCategory from '$lib/materials/products/ParentCategory.svelte'
+  import Category from '$lib/materials/products/Category.svelte'
 
   export let data: any;
   let organization: any;
@@ -76,9 +74,9 @@
             </a>
           </li>
         {/if}
-        <li class="tab"><a href="#products">products</a></li>
-        <li class="tab"><a href="#subcategories">sub categories</a></li>
-        <li class="tab"><a href="#parentproduct">parent product</a></li>
+        <li class="tab"><a href="#parentproduct">category</a></li>
+        <li class="tab"><a href="#bucket">bucket</a></li>
+        <li class="tab"><a href="#inventory">inventory</a></li>
         {#if product}
           <div class="right" style="margin: 0.5em 0;"><Settings productId={product.id} /></div>
         {/if}
@@ -93,14 +91,14 @@
       <div id="profile" class="col s12">
         {JSON.stringify(product, null, 2)}
       </div>
-      <div id="products" class="col s12">
-        <Products data={data} product={product} />
-      </div>
-      <div id="subcategories" class="col s12">
-        <SubCategories data={data} product={product} />
-      </div>
       <div id="parentproduct" class="col s12">
-        <ParentCategory data={data} product={product} />
+        <Category data={data} product={product} />
+      </div>
+      <div id="bucket" class="col s12">
+        bucket
+      </div>
+      <div id="inventory" class="col s12">
+        inventory
       </div>
     </div>
   </div>
