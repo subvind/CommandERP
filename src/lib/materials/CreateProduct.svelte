@@ -64,7 +64,7 @@
 
       if (response.ok) {
         let product = await response.json();
-        window.location.href = `/${user.username}/${user.defaultOrganization.orgname}/materials/products/${product.id}`
+        window.location.href = `/${user.username}/${user.defaultOrganization.orgname}/materials/products/${product.stockKeepingUnit}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);
