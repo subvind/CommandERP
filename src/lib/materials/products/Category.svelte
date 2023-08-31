@@ -62,7 +62,7 @@
     if (filterText) {
       search = `&search=${filterText}`
     }
-    const response = await fetch(`https://backend.subvind.com/products/orgRelated/${product.organization.id}?limit=100&page=1${search}`, {
+    const response = await fetch(`https://backend.subvind.com/categories/orgRelated/${product.organization.id}?limit=100&page=1${search}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -70,13 +70,13 @@
     });
 
     if (response.ok) {
-      let products = await response.json();
+      let categories = await response.json();
 
-      console.log('products', products)
-      products.data.forEach((product: any) => {
+      console.log('categories', categories)
+      categories.data.forEach((category: any) => {
         items.push({
-          value: product.id,
-          label: product.name
+          value: category.id,
+          label: category.name
         })
       })
       console.log('items', items)

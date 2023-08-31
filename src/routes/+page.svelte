@@ -13,6 +13,8 @@
     var instances = M.Dropdown.init(elems, {
       alignment: 'right'
     });
+
+    M.updateTextFields();
   })
 </script>
 
@@ -86,7 +88,16 @@
       <br />
     </div>
     <div class="col s12 m8" style="max-height: 700px;">
-      <iframe class="zoomedIframe" src="https://autoide.subvind.com" frameborder="0" style="width: 205%; height: 2800px;"></iframe>
+      <div class="card" style="padding: 1em; overflow: hidden;">
+          <div class="input-field">
+            <i class="material-icons prefix">public</i>
+            <input id="example" class="validate" disabled type="text" value="https://www.brokenrecord.store">
+            <label for="example">For Example:</label>
+          </div>
+        <div class="" style="height: 600px; overflow: hidden;">
+          <iframe class="zoomedIframe" src="https://www.brokenrecord.store" frameborder="0" style="width: 200%; height: 2400px; padding: 0; margin: 0;"></iframe>
+        </div>
+      </div>
     </div>
   </div>
 </div>

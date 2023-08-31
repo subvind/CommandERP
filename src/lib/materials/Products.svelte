@@ -31,6 +31,11 @@
       width: '200px',
     },
     {
+      id: 'category',
+      name: 'Category',
+      width: '200px',
+    },
+    {
       id: 'coverPhoto',
       name: 'Cover Photo',
       width: '150px',
@@ -64,10 +69,12 @@
     },
   ]
   function mapResultsFunc(value: any) {
+    console.log('value', value)
     return [
       value.id,
       value.stockKeepingUnit,
       value.name,
+      value.category.name,
       value.coverPhoto,
       value.bucket,
       value.ebayListing,
