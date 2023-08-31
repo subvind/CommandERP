@@ -87,7 +87,7 @@
       <br />
       <br />
     </div>
-    <div class="col s12 m8" style="max-height: 700px;">
+    <div class="col s12 m8">
       <div class="card" style="padding: 1em; overflow: hidden;">
           <div class="input-field">
             <i class="material-icons prefix">public</i>
