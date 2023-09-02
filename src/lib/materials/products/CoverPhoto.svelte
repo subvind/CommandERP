@@ -10,7 +10,7 @@
     { value: '', label: '' }
   ];
   let filterText: any;
-  let value: any = product.category?.name || '';
+  let value: any = product.coverPhoto?.id || '';
   let loading = true;
 
   /**
@@ -19,11 +19,11 @@
   async function handleChange(e: any) {
     console.log(e.detail);
 
-    let category
+    let file
     if (e.detail.value === '') {
-      category = null
+      file = null
     } else {
-      category = e.detail.value
+      file = e.detail.value
     }
 
     try {
@@ -33,7 +33,7 @@
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          category: category
+          coverPhoto: file
         }),
       });
 
@@ -43,7 +43,7 @@
           ...await response.json(),
         }
         product = merge
-        alert('The category for this product was saved.')
+        alert('The cover photo for this product was saved.')
       } else {
         const errorData = await response.json();
         alert(errorData.error);
@@ -62,7 +62,7 @@
     if (filterText) {
       search = `&search=${filterText}`
     }
-    const response = await fetch(`https://backend.subvind.com/categories/orgRelated/${product.organization.id}?limit=100&page=1${search}`, {
+    const response = await fetch(`https://backend.subvind.com/files/bucketRelated/${product.bucket.id}?limit=100&page=1${search}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -70,14 +70,14 @@
     });
 
     if (response.ok) {
-      let categories = await response.json();
+      let files = await response.json();
 
-      console.log('categories', categories)
+      console.log('files', files)
       items = []; // clear list before repopulating it
-      categories.data.forEach((category: any) => {
+      files.data.forEach((file: any) => {
         items.push({
-          value: category.id,
-          label: category.name
+          value: file.id,
+          label: file.filename
         })
       })
       console.log('items', items)
@@ -96,7 +96,7 @@
 
 <div class="detail">
   <br />
-  <div>Select a category: {filterText}</div>
+  <div>Select a cover photo: {filterText}</div>
   {#if loading === false}
     <Select bind:value {items} bind:filterText on:input={handleInput} on:change={handleChange} />
   {/if}

@@ -3,6 +3,8 @@
 
   import Settings from '$lib/materials/products/Settings.svelte'
   import Category from '$lib/materials/products/Category.svelte'
+  import Bucket from '$lib/materials/products/Bucket.svelte'
+  import CoverPhoto from "$lib/materials/products/CoverPhoto.svelte";
 
   export let data: any;
   let organization: any;
@@ -75,7 +77,7 @@
           </li>
         {/if}
         <li class="tab"><a href="#parentproduct">category</a></li>
-        <li class="tab"><a href="#bucket">bucket</a></li>
+        <li class="tab"><a href="#photos">photos</a></li>
         <li class="tab"><a href="#inventory">inventory</a></li>
         {#if product}
           <div class="right" style="margin: 0.5em 0;"><Settings productId={product.id} /></div>
@@ -94,8 +96,9 @@
       <div id="parentproduct" class="col s12">
         <Category data={data} product={product} />
       </div>
-      <div id="bucket" class="col s12">
-        bucket
+      <div id="photos" class="col s12">
+        <Bucket data={data} product={product} />
+        <CoverPhoto data={data} product={product} />
       </div>
       <div id="inventory" class="col s12">
         inventory

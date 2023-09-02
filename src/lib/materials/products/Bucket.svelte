@@ -10,7 +10,7 @@
     { value: '', label: '' }
   ];
   let filterText: any;
-  let value: any = product.category?.name || '';
+  let value: any = product.bucket?.name || '';
   let loading = true;
 
   /**
@@ -19,11 +19,11 @@
   async function handleChange(e: any) {
     console.log(e.detail);
 
-    let category
+    let bucket
     if (e.detail.value === '') {
-      category = null
+      bucket = null
     } else {
-      category = e.detail.value
+      bucket = e.detail.value
     }
 
     try {
@@ -33,7 +33,7 @@
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          category: category
+          bucket: bucket
         }),
       });
 
@@ -43,7 +43,7 @@
           ...await response.json(),
         }
         product = merge
-        alert('The category for this product was saved.')
+        alert('The bucket for this product was saved.')
       } else {
         const errorData = await response.json();
         alert(errorData.error);
@@ -62,7 +62,7 @@
     if (filterText) {
       search = `&search=${filterText}`
     }
-    const response = await fetch(`https://backend.subvind.com/categories/orgRelated/${product.organization.id}?limit=100&page=1${search}`, {
+    const response = await fetch(`https://backend.subvind.com/buckets/orgRelated/${product.organization.id}?limit=100&page=1${search}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -70,14 +70,14 @@
     });
 
     if (response.ok) {
-      let categories = await response.json();
+      let buckets = await response.json();
 
-      console.log('categories', categories)
+      console.log('buckets', buckets)
       items = []; // clear list before repopulating it
-      categories.data.forEach((category: any) => {
+      buckets.data.forEach((bucket: any) => {
         items.push({
-          value: category.id,
-          label: category.name
+          value: bucket.id,
+          label: bucket.name
         })
       })
       console.log('items', items)
@@ -96,7 +96,7 @@
 
 <div class="detail">
   <br />
-  <div>Select a category: {filterText}</div>
+  <div>Select a bucket: {filterText}</div>
   {#if loading === false}
     <Select bind:value {items} bind:filterText on:input={handleInput} on:change={handleChange} />
   {/if}

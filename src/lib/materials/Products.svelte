@@ -38,11 +38,11 @@
     {
       id: 'coverPhoto',
       name: 'Cover Photo',
-      width: '150px',
+      width: '300px',
     },
     {
       id: 'bucket',
-      name: 'bucket',
+      name: 'Bucket',
       width: '200px',
     },
     {
@@ -70,13 +70,22 @@
   ]
   function mapResultsFunc(value: any) {
     console.log('value', value)
+    let coverPhoto = ''
+    if (value.coverPhoto) {
+      coverPhoto = value.coverPhoto.filename;
+    }
+    let bucketName = ''
+    if (value.bucket) {
+      bucketName = value.bucket.name;
+    }
+
     return [
       value.id,
       value.stockKeepingUnit,
       value.name,
       value.category.name,
-      value.coverPhoto,
-      value.bucket,
+      coverPhoto,
+      bucketName,
       value.ebayListing,
       value.createdAt
     ]
