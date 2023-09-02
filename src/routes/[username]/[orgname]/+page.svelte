@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
   import Settings from '$lib/organizations/Settings.svelte'
-  import Organizations from '$lib/users/Organizations.svelte'
+  import Buckets from '$lib/organizations/Buckets.svelte'
 
   export let data: any;
   let user: any = null;
@@ -149,7 +149,11 @@
   
   <div class="card main">
     <div id="showcases" class="col s12">showcases</div>
-    <div id="buckets" class="col s12">buckets</div>
+    <div id="buckets" class="col s12">
+      {#if organization}
+        <Buckets organization={organization} />
+      {/if}
+    </div>
     <div id="files" class="col s12">files</div>
   </div>
 </div>
