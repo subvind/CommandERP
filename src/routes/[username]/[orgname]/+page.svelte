@@ -128,9 +128,10 @@
         {JSON.stringify(organization, null, 2)}
       </div>
       <div id="suppliers" class="col s12">
-        {#if user}
+        suppliers
+        <!-- {#if user}
           <Organizations user={user} />
-        {/if}
+        {/if} -->
       </div>
       <div id="employees" class="col s12">employees</div>
       <div id="customers" class="col s12">customers</div>
