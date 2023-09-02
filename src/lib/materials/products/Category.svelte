@@ -73,6 +73,7 @@
       let categories = await response.json();
 
       console.log('categories', categories)
+      items = []; // clear list before repopulating it
       categories.data.forEach((category: any) => {
         items.push({
           value: category.id,

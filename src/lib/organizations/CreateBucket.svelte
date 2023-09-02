@@ -87,7 +87,7 @@
       </div>
       <p>
         S3 bucket naming rules:<br />
-        1. Must be between 3 and 63 characters in length.<br />
+        1. Must be between 3 and 63 characters in length minus your orgname.<br />
         2. Can only contain lowercase letters, numbers, hyphens, and periods.<br />
         3. Must start and end with a lowercase letter or number.<br />
       </p>

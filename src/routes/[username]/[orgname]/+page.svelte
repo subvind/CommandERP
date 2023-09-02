@@ -3,6 +3,7 @@
 
   import Settings from '$lib/organizations/Settings.svelte'
   import Buckets from '$lib/organizations/Buckets.svelte'
+  import Files from '$lib/organizations/Files.svelte'
 
   export let data: any;
   let user: any = null;
@@ -154,7 +155,11 @@
         <Buckets organization={organization} />
       {/if}
     </div>
-    <div id="files" class="col s12">files</div>
+    <div id="files" class="col s12">
+      {#if organization}
+        <Files organization={organization} />
+      {/if}
+    </div>
   </div>
 </div>
 
