@@ -12,7 +12,7 @@
         subvind was formed in 2023 as a factory for generating open source products.
       </p>
       <p>
-        inam.ERP, powered by subvind, is a fast growing IT solution for E-Commerce.
+        nomy.ERP, powered by subvind, is a fast growing IT solution for E-Commerce.
       </p>
       <p>
         It contains CRM, HR, Purchases, Orders, Payments, Invoices, Quotes, Inventory, Supply Chain, Expenses, Reports, Accounting.
@@ -36,7 +36,7 @@
 <div class="container">
   <a href="/terms-and-conditions" class="nav hide-on-med-and-down">Terms & Conditions</a>
   <a href="/privacy-policy" class="nav hide-on-med-and-down">Privacy Policy</a>
-  <h3 class="logo">inam.ERP</h3>
+  <h3 class="logo">nomy.ERP</h3>
 </div>
 <hr>
 <div class="container">
