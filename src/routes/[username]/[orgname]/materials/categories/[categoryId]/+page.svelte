@@ -5,6 +5,7 @@
   import Products from '$lib/materials/categories/Products.svelte'
   import SubCategories from "$lib/materials/categories/SubCategories.svelte";
   import ParentCategory from '$lib/materials/categories/ParentCategory.svelte'
+  import MainPhoto from "$lib/materials/categories/MainPhoto.svelte";
 
   export let data: any;
   let organization: any;
@@ -109,6 +110,21 @@
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <ul class="tabs tabs-transparent black lighten-2">
+      <li class="tab"><a href="#mainphoto">main photo</a></li>
+    </ul>
+    
+    <div class="card main">
+      <div id="mainphoto" class="col s12">
+        {#if category}
+          <MainPhoto data={data} category={category} />
+        {/if}
+      </div>
+    </div>
+  </div>
+
 {/if}
 
 <style>
