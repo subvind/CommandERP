@@ -18,6 +18,11 @@
   })
 </script>
 
+<svelte:head>
+    <title>Enterprise Resource Planning - nomy.ERP</title> 
+    <meta name="description" content="A dangerous place to get some flow-based devgramming done." />
+</svelte:head>
+
 <div class="banner">
   <br />
   <br />
@@ -83,7 +88,7 @@
         <li class="collection-item">Integrate with Ebay, Shopify, Magento, Etsy and add other products.</li>
         <li class="collection-item">Get fast customizations and support.</li>
       </ul>
-      <a class="btn btn-large black" href="https://subvind.com">TRY FOR FREE</a>
+      <a class="btn btn-large black" href="https://istrav.com/get-started">TRY FOR FREE</a>
       <br />
       <br />
     </div>

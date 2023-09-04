@@ -55,7 +55,7 @@
       {/if}
     {/if}
     
-    <a href="/" class="brand-logo center"><span class="yellow">inam</span>.<span class="green">E</span><span class="red">R</span><span class="blue">P</span></a>
+    <a href="/" class="brand-logo center"><span class="yellow">nomy</span>.<span class="green">E</span><span class="red">R</span><span class="blue">P</span></a>
 
     {#if user}
       <ul id="nav-mobile" class="right hide-on-med-and-down">
