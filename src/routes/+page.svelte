@@ -88,7 +88,7 @@
         <li class="collection-item">Integrate with Ebay, Shopify, Magento, Etsy and add other products.</li>
         <li class="collection-item">Get fast customizations and support.</li>
       </ul>
-      <a class="btn btn-large black" href="https://istrav.com/get-started">TRY FOR FREE</a>
+      <a class="btn btn-large black" href="https://istrav.com/erpnomy">TRY FOR FREE</a>
       <br />
       <br />
     </div>
