@@ -9,7 +9,7 @@
     <div class="col s12 m4">
       <h6>About us</h6>
       <p>
-        subvind was formed in 2023 as a factory for generating open source products.
+        subvind was formed in 2023 as a factory for generating fair source products.
       </p>
       <p>
         nomy.ERP, powered by subvind, is a fast growing IT solution for E-Commerce.
