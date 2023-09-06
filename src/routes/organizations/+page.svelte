@@ -29,10 +29,10 @@
       name: 'Store',
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `https://${row.cells[2].data}`,
+          href: `https://${row.cells[2].data}.erpnomy.com`,
           target: "_blank",
           className: '',
-        }, row.cells[2].data);
+        }, `${row.cells[2].data}.erpnomy.com`);
       }
     },
     {
@@ -45,7 +45,7 @@
       hidden: false,
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `${row.cells[4].data}/${row.cells[1].data}`,
+          href: `${row.cells[4].data}/${row.cells[2].data}`,
           className: 'btn btn-small yellow black-text lighten-2 right',
         }, 'VIEW');
       }
@@ -56,7 +56,7 @@
     return [
       value.id,
       value.displayName,
-      `${value.orgname}.erpnomy.com`,
+      value.orgname,
       value.createdAt,
       value.owner.username
     ]
