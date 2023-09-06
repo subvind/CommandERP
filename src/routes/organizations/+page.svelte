@@ -20,12 +20,20 @@
       }
     },
     {
-      id: 'orgname',
-      name: 'Orgname'
+      id: 'displayName',
+      width: '200px',
+      name: 'Name'
     },
     {
-      id: 'displayName',
-      name: 'Display Name'
+      id: 'store',
+      name: 'Store',
+      formatter: (cell: any, row: any) => {
+        return gridjs.h('a', {
+          href: `https://${row.cells[2].data}`,
+          target: "_blank",
+          className: '',
+        }, row.cells[2].data);
+      }
     },
     {
       id: 'createdAt',
@@ -47,8 +55,8 @@
     console.log('value', value)
     return [
       value.id,
-      value.orgname,
       value.displayName,
+      `${value.orgname}.erpnomy.com`,
       value.createdAt,
       value.owner.username
     ]
