@@ -37,6 +37,7 @@
 
   let stockKeepingUnit = ''
   let name = ''
+  let description = ''
   let ebayItem = ''
   let etsyItem = ''
 
@@ -54,6 +55,7 @@
         body: JSON.stringify({
           stockKeepingUnit,
           name,
+          description,
           ebayItem,
           etsyItem,
           organization: user.defaultOrganization.id
@@ -84,25 +86,29 @@
       <h4>Create Product</h4>
       <br />
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s12 m6">
+          <input id="name" type="text" class="validate" bind:value={name}>
+          <label for="name">Name</label>
+        </div>
+        <div class="input-field col s12 m6">
           <input id="stockKeepingUnit" type="text" class="validate" bind:value={stockKeepingUnit}>
           <label for="stockKeepingUnit">SKU</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="name" type="text" class="validate" bind:value={name}>
-          <label for="name">Name</label>
+          <input id="description" type="text" class="validate" bind:value={description}>
+          <label for="description">Description</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="etsyItem" type="text" class="validate" bind:value={etsyItem}>
-          <label for="etsyItem">Etsy Item</label>
-        </div>
-        <div class="input-field col s6">
           <input id="ebayItem" type="text" class="validate" bind:value={ebayItem}>
           <label for="ebayItem">Ebay Item</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="etsyItem" type="text" class="validate" bind:value={etsyItem}>
+          <label for="etsyItem">Etsy Item</label>
         </div>
       </div>
     </div>

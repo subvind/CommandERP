@@ -68,8 +68,8 @@
         <a href="#" class="brand-logo">{category.name}</a>
       {/if}
       <ul id="nav-mobile" class="right">
-        {#if category && category.parentCategory}
-          <li><a class="" href={`/${data.username}/${data.orgname}/materials/categories/${category.parentCategory.slug}`} target="_self">{category.parentCategory.name}</a></li>
+        {#if category}
+          <li><a class="" href={`https://${category.organization.orgname}.erpnomy.com/categories/${category.slug}`} target="_blank">{category.organization.orgname}.erpnomy.com/categories/{category.slug}</a></li>
         {/if}
       </ul>
     </div>

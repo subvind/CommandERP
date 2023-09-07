@@ -21,6 +21,8 @@
       name = product.name
       stockKeepingUnit = product.stockKeepingUnit
       description = product.description
+      ebayItem = product.ebayItem
+      etsyItem = product.etsyItem
 
       setTimeout(() => {
         M.updateTextFields();
@@ -35,6 +37,8 @@
   let name = ''
   let stockKeepingUnit = ''
   let description = ''
+  let ebayItem = ''
+  let etsyItem = ''
 
 	async function submit(event: any) {
     event.preventDefault()
@@ -53,6 +57,8 @@
           name,
           stockKeepingUnit,
           description,
+          ebayItem,
+          etsyItem
         }),
       });
 
@@ -93,6 +99,16 @@
         <div class="input-field col s12">
           <input id="description" type="text" class="validate" bind:value={description}>
           <label for="description">Description</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="ebayItem" type="text" class="validate" bind:value={ebayItem}>
+          <label for="ebayItem">Ebay Item</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="etsyItem" type="text" class="validate" bind:value={etsyItem}>
+          <label for="etsyItem">Etsy Item</label>
         </div>
       </div>
     </div>

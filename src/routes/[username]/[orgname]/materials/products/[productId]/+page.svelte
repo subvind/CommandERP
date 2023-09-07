@@ -66,6 +66,11 @@
       {#if product}
         <a href="#" class="brand-logo">{product.name}</a>
       {/if}
+      <ul id="nav-mobile" class="right">
+        {#if product}
+          <li><a class="" href={`https://${product.organization.orgname}.erpnomy.com/products/${product.stockKeepingUnit}`} target="_blank">{product.organization.orgname}.erpnomy.com/products/{product.stockKeepingUnit}</a></li>
+        {/if}
+      </ul>
     </div>
     <div class="nav-content">
       <ul class="tabs tabs-transparent black lighten-2">
