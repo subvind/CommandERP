@@ -21,6 +21,24 @@
       }
     },
     {
+      id: 'photo',
+      name: 'Main Photo',
+      width: '150px',
+      formatter: (cell: any, row: any) => {
+        return gridjs.h('img', {
+          src: `https://s3.us-east-2.amazonaws.com/${organization.orgname}.${row.cells[1].data}/${row.cells[2].data}`,
+          alt: "",
+          style: 'max-height: 100px; max-width: 100px;',
+        }, 'VIEW');
+      }
+    },
+    {
+      id: 'filename',
+      name: 'Filename',
+      width: '300px',
+      hidden: true
+    },
+    {
       id: 'stockKeepingUnit',
       name: 'SKU',
       width: '200px',
@@ -31,14 +49,25 @@
       width: '200px',
     },
     {
+      id: 'description',
+      name: 'Description',
+      width: '300px',
+    },
+    {
+      id: 'slug',
+      name: 'URL',
+      width: '475px',
+      formatter: (cell: any, row: any) => {
+        return gridjs.h('a', {
+          href: `https://${organization.orgname}.erpnomy.com/products/${row.cells[3].data}`,
+          target: '_blank'
+        }, `${organization.orgname}.erpnomy.com/products/${row.cells[3].data}`);
+      }
+    },
+    {
       id: 'category',
       name: 'Category',
       width: '200px',
-    },
-    {
-      id: 'coverPhoto',
-      name: 'Cover Photo',
-      width: '300px',
     },
     {
       id: 'bucket',
@@ -46,8 +75,13 @@
       width: '200px',
     },
     {
-      id: 'ebayListing',
-      name: 'Ebay Listing',
+      id: 'ebayItem',
+      name: 'Ebay Item',
+      width: '200px',
+    },
+    {
+      id: 'etsyItem',
+      name: 'Etsy Item',
       width: '200px',
     },
     {
@@ -62,7 +96,7 @@
       hidden: false,
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `/${organization.orgname}/${organization.orgname}/materials/products/${row.cells[1].data}`,
+          href: `/${organization.orgname}/${organization.orgname}/materials/products/${row.cells[3].data}`,
           className: 'btn btn-small red right',
         }, 'VIEW');
       }
@@ -70,23 +104,19 @@
   ]
   function mapResultsFunc(value: any) {
     console.log('value', value)
-    let coverPhoto = ''
-    if (value.coverPhoto) {
-      coverPhoto = value.coverPhoto.filename;
-    }
-    let bucketName = ''
-    if (value.bucket) {
-      bucketName = value.bucket.name;
-    }
 
     return [
       value.id,
+      value.coverPhoto?.bucket.name,
+      value.coverPhoto?.filename,
       value.stockKeepingUnit,
       value.name,
-      value.category.name,
-      coverPhoto,
-      bucketName,
-      value.ebayListing,
+      value.description,
+      value.category?.name,
+      value.stockKeepingUnit,
+      value.bucket?.name,
+      value.ebayItem,
+      value.etsyItem,
       value.createdAt
     ]
   }

@@ -101,6 +101,10 @@
   {#if loading === false}
     <Select bind:value {items} bind:filterText on:input={handleInput} on:change={handleChange} />
   {/if}
+  {#if showcase.bannerPhoto}
+    <br />
+    <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${showcase.bannerPhoto.bucket.name}/${showcase.bannerPhoto.filename}`} alt="">
+  {/if}
 </div>
 
 <style>

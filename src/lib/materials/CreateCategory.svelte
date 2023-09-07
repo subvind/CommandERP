@@ -12,7 +12,7 @@
     // Decode the JWT
     decodedToken = jwt_decode(accessToken);
 
-    var elems = document.querySelectorAll('.jnerdfjkbgsdlkjgn');
+    var elems = document.querySelectorAll('.sdjhkfbsdhjfbsdfd');
     instances = M.Modal.init(elems, {});
 
     console.log('user')
@@ -79,7 +79,7 @@
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>
-  <div class="modal jnerdfjkbgsdlkjgn">
+  <div class="modal sdjhkfbsdhjfbsdfd">
     <div class="modal-content">
       <h4>Create Category</h4>
       <br />

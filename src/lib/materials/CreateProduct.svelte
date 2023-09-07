@@ -12,7 +12,7 @@
     // Decode the JWT
     decodedToken = jwt_decode(accessToken);
 
-    var elems = document.querySelectorAll('.jnerdfjkbgsdlkjgn');
+    var elems = document.querySelectorAll('.sdjhvbsefjhbezsbfjh');
     instances = M.Modal.init(elems, {});
 
     console.log('user')
@@ -37,9 +37,8 @@
 
   let stockKeepingUnit = ''
   let name = ''
-  let photoUrl = ''
-  let bucket = ''
-  let ebayListing = ''
+  let ebayItem = ''
+  let etsyItem = ''
 
 	async function submit(event: any) {
     event.preventDefault()
@@ -55,9 +54,8 @@
         body: JSON.stringify({
           stockKeepingUnit,
           name,
-          photoUrl,
-          bucket,
-          ebayListing,
+          ebayItem,
+          etsyItem,
           organization: user.defaultOrganization.id
         }),
       });
@@ -81,7 +79,7 @@
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>
-  <div class="modal jnerdfjkbgsdlkjgn">
+  <div class="modal sdjhvbsefjhbezsbfjh">
     <div class="modal-content">
       <h4>Create Product</h4>
       <br />
@@ -98,19 +96,13 @@
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <input id="photoUrl" type="text" class="validate" bind:value={photoUrl}>
-          <label for="photoUrl">Cover Photo</label>
-        </div>
-      </div>
-      <div class="row">
         <div class="input-field col s6">
-          <input id="bucket" type="text" class="validate" bind:value={bucket}>
-          <label for="bucket">Bucket</label>
+          <input id="etsyItem" type="text" class="validate" bind:value={etsyItem}>
+          <label for="etsyItem">Etsy Item</label>
         </div>
         <div class="input-field col s6">
-          <input id="ebayListing" type="text" class="validate" bind:value={ebayListing}>
-          <label for="ebayListing">Ebay Listing</label>
+          <input id="ebayItem" type="text" class="validate" bind:value={ebayItem}>
+          <label for="ebayItem">Ebay Item</label>
         </div>
       </div>
     </div>
