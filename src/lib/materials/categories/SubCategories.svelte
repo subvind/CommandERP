@@ -45,6 +45,7 @@
     },
     { 
       name: '',
+      width: '100px',
       sort: false,
       hidden: false,
       formatter: (cell: any, row: any) => {
