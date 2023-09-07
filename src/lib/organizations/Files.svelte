@@ -23,6 +23,18 @@
       }
     },
     {
+      id: 'photo',
+      name: 'photo',
+      width: '200px',
+      formatter: (cell: any, row: any) => {
+        return gridjs.h('img', {
+          src: `https://s3.us-east-2.amazonaws.com/${organization.orgname}.${row.cells[3].data}/${row.cells[2].data}`,
+          alt: "",
+          style: 'max-height: 100px;',
+        }, 'VIEW');
+      }
+    },
+    {
       id: 'filename',
       name: 'filename',
       width: '300px',
@@ -39,11 +51,12 @@
     },
     { 
       name: '',
+      width: '100px',
       sort: false,
       hidden: false,
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `/${organization.owner.username}/${organization.orgname}/files/${row.cells[1].data}`,
+          href: `/${organization.owner.username}/${organization.orgname}/files/${row.cells[2].data}`,
           target: "_self",
           className: 'btn btn-small yellow black-text lighten-2 right',
         }, 'VIEW');
@@ -53,6 +66,7 @@
   function mapResultsFunc(value: any) {
     return [
       value.id,
+      value.filename,
       value.filename,
       value.bucket.name,
       value.createdAt

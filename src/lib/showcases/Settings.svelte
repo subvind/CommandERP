@@ -22,6 +22,7 @@
       title = showcase.title
       startAt = showcase.startAt
       finishAt = showcase.finishAt
+      url = showcase.url
     } else {
       const errorData = await response.json();
       alert(errorData.error);
@@ -50,6 +51,7 @@
   let title = ''
   let startAt = ''
   let finishAt = ''
+  let url = ''
 
 	async function submit(event: any) {
     event.preventDefault()
@@ -68,6 +70,7 @@
           title,
           startAt,
           finishAt,
+          url
         }),
       });
 
@@ -106,6 +109,10 @@
         <div class="input-field col m6">
           <input id="finishAt" type="text" class="datepicker2" bind:value={finishAt}>
           <label for="finishAt">Finish At</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="url" type="text" class="validate" bind:value={url}>
+          <label for="url">URL</label>
         </div>
       </div>
     </div>
