@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
 
   import Settings from '$lib/showcases/Settings.svelte'
+  import BannerPhoto from "$lib/showcases/BannerPhoto.svelte";
 
   export let data: any;
   let user: any = null;
@@ -129,10 +130,9 @@
         {JSON.stringify(showcase, null, 2)}
       </div>
       <div id="bannerphoto" class="col s12">
-        banner photo
-        <!-- {#if user}
-          <Organizations user={user} />
-        {/if} -->
+        {#if user}
+          <BannerPhoto data={data} showcase={showcase} organization={organization} />
+        {/if}
       </div>
     </div>
   </div>
