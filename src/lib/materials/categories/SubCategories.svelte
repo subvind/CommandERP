@@ -24,19 +24,43 @@
       }
     },
     {
-      id: 'name',
-      name: 'Name',
+      id: 'photo',
+      name: 'Main Photo',
       width: '150px',
+      formatter: (cell: any, row: any) => {
+        return gridjs.h('img', {
+          src: `https://s3.us-east-2.amazonaws.com/${category.organization.orgname}.${row.cells[1].data}/${row.cells[2].data}`,
+          alt: "",
+          style: 'max-height: 100px; max-width: 100px;',
+        }, 'VIEW');
+      }
     },
     {
-      id: 'slug',
-      name: 'Slug',
-      width: '150px',
+      id: 'filename',
+      name: 'Filename',
+      width: '300px',
+      hidden: true
+    },
+    {
+      id: 'name',
+      name: 'Name',
+      width: '200px',
     },
     {
       id: 'description',
       name: 'Description',
       width: '300px',
+    },
+    {
+      id: 'slug',
+      name: 'URL',
+      width: '475px',
+      formatter: (cell: any, row: any) => {
+        return gridjs.h('a', {
+          href: `https://${category.organization.orgname}.erpnomy.com/categories/${row.cells[5].data}`,
+          target: '_blank'
+        }, `${category.organization.orgname}.erpnomy.com/categories/${row.cells[5].data}`);
+      }
     },
     {
       id: 'createdAt',
@@ -60,10 +84,12 @@
   function mapResultsFunc(value: any) {
     return [
       value.id,
+      value.mainPhoto?.bucket.name,
+      value.mainPhoto?.filename,
       value.name,
-      value.slug,
       value.description,
-      value.createdAt
+      value.slug,
+      value.createdAt,
     ]
   }
   onMount(() => {
