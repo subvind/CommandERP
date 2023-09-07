@@ -49,7 +49,7 @@
       hidden: false,
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `/${organization.owner.username}/${organization.orgname}/showcases/${row.cells[1].data}`,
+          href: `/${organization.owner.username}/${organization.orgname}/showcases/${row.cells[0].data}`,
           target: "_self",
           className: 'btn btn-small yellow black-text lighten-2 right',
         }, 'VIEW');
