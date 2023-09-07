@@ -32,7 +32,8 @@
     },
     {
       id: 'createdAt',
-      name: 'Created At'
+      name: 'Created At',
+      width: '200px',
     },
     { 
       name: '',

@@ -21,15 +21,18 @@
     },
     {
       id: 'username',
-      name: 'Username'
+      name: 'Username',
+      width: '200px',
     },
     {
       id: 'fullName',
-      name: 'Full Name'
+      name: 'Full Name',
+      width: '200px',
     },
     {
       id: 'joinDate',
-      name: 'Join Date'
+      name: 'Join Date',
+      width: '200px',
     },
     { 
       name: '',

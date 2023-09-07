@@ -90,17 +90,21 @@
       {/if}
       <a href="#" data-target="3rd-party-mobile" class="right dropdown-trigger black-text hide-on-large-only"><i class="material-icons">more_horiz</i></a>
       <ul id="3rd-party-mobile" class="dropdown-content">
-        <li><a class="black-text" href="collapsible.html">eBay</a></li>
-        <li><a class="black-text" href="collapsible.html">Etsy</a></li>
-        <li><a class="black-text" href="collapsible.html">Stripe</a></li>
-        <li><a class="black-text" href="collapsible.html">Twilio</a></li>
+        {#if organization && organization.ebayUser}
+          <li><a class="black-text" href={`https://www.ebay.com/usr/${organization.ebayUser}`} target="_blank">eBay</a></li>
+        {/if}
+        {#if organization && organization.etsyShop}
+          <li><a class="black-text" href={`https://www.etsy.com/shop/${organization.etsyShop}`} target="_blank">Etsy</a></li>
+        {/if}
       </ul>
 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a class="black-text" href="collapsible.html">eBay</a></li>
-        <li><a class="black-text" href="collapsible.html">Etsy</a></li>
-        <li><a class="black-text" href="collapsible.html">Stripe</a></li>
-        <li><a class="black-text" href="collapsible.html">Twilio</a></li>
+        {#if organization && organization.ebayUser}
+          <li><a class="black-text" href={`https://www.ebay.com/usr/${organization.ebayUser}`} target="_blank">eBay</a></li>
+        {/if}
+        {#if organization && organization.etsyShop}
+          <li><a class="black-text" href={`https://www.etsy.com/shop/${organization.etsyShop}`} target="_blank">Etsy</a></li>
+        {/if}
       </ul>
     </div>
     <div class="nav-content">
