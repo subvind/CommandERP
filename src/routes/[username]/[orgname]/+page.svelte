@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
 
   import Settings from '$lib/organizations/Settings.svelte'
+  import Showcases from '$lib/organizations/Showcases.svelte'
   import Buckets from '$lib/organizations/Buckets.svelte'
   import Files from '$lib/organizations/Files.svelte'
   import OrgPhoto from "$lib/organizations/OrgPhoto.svelte";
@@ -156,7 +157,11 @@
         <OrgPhoto data={data} organization={organization} />
       {/if}
     </div>
-    <div id="showcases" class="col s12">showcases</div>
+    <div id="showcases" class="col s12">
+      {#if organization}
+        <Showcases organization={organization} />
+      {/if}
+    </div>
     <div id="buckets" class="col s12">
       {#if organization}
         <Buckets organization={organization} />
