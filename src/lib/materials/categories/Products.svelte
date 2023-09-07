@@ -24,14 +24,68 @@
       }
     },
     {
+      id: 'photo',
+      name: 'Main Photo',
+      width: '150px',
+      formatter: (cell: any, row: any) => {
+        return gridjs.h('img', {
+          src: `https://s3.us-east-2.amazonaws.com/${category.organization.orgname}.${row.cells[1].data}/${row.cells[2].data}`,
+          alt: "",
+          style: 'max-height: 100px; max-width: 100px;',
+        }, 'VIEW');
+      }
+    },
+    {
+      id: 'filename',
+      name: 'Filename',
+      width: '300px',
+      hidden: true
+    },
+    {
       id: 'stockKeepingUnit',
       name: 'SKU',
       width: '200px',
     },
     {
-      id: 'photoUrl',
-      name: 'Photo URL',
-      width: '150px',
+      id: 'name',
+      name: 'Name',
+      width: '200px',
+    },
+    {
+      id: 'description',
+      name: 'Description',
+      width: '300px',
+    },
+    {
+      id: 'slug',
+      name: 'URL',
+      width: '475px',
+      formatter: (cell: any, row: any) => {
+        return gridjs.h('a', {
+          href: `https://${category.organization.orgname}.erpnomy.com/products/${row.cells[3].data}`,
+          target: '_blank'
+        }, `${category.organization.orgname}.erpnomy.com/products/${row.cells[3].data}`);
+      }
+    },
+    {
+      id: 'category',
+      name: 'Category',
+      width: '200px',
+    },
+    {
+      id: 'bucket',
+      name: 'Bucket',
+      width: '200px',
+    },
+    {
+      id: 'ebayItem',
+      name: 'Ebay Item',
+      width: '200px',
+    },
+    {
+      id: 'etsyItem',
+      name: 'Etsy Item',
+      width: '200px',
     },
     {
       id: 'createdAt',
@@ -55,8 +109,16 @@
   function mapResultsFunc(value: any) {
     return [
       value.id,
+      value.coverPhoto?.bucket.name,
+      value.coverPhoto?.filename,
       value.stockKeepingUnit,
-      value.photoUrl,
+      value.name,
+      value.description,
+      value.category?.name,
+      value.stockKeepingUnit,
+      value.bucket?.name,
+      value.ebayItem,
+      value.etsyItem,
       value.createdAt
     ]
   }
