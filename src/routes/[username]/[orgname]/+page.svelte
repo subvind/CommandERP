@@ -120,10 +120,6 @@
         <li class="tab"><a href="#suppliers">suppliers</a></li>
         <li class="tab"><a href="#employees">employees</a></li>
         <li class="tab"><a href="#customers">customers</a></li>
-
-        {#if organization}
-          <div class="right" style="margin: 0.5em 0;"><Settings user={user} organizationId={organization.id} /></div>
-        {/if}
       </ul>
     </div>
   </div>
@@ -178,6 +174,10 @@
       {/if}
     </div>
   </div>
+
+  {#if organization}
+    <Settings user={user} organizationId={organization.id} />
+  {/if}
 </div>
 
 <style>

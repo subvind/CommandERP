@@ -72,7 +72,7 @@
 </script>
 
 <!-- Modal Trigger -->
-<a class="btn white black-text" href="#!" on:click={() => { instances[0].open() }}>SETTINGS</a>
+<a class="btn yellow lighten-2 black-text" href="#!" on:click={() => { instances[0].open() }}>EDIT ORGANIZATION</a>
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>
@@ -84,15 +84,34 @@
         <div class="input-field col s6">
           <input id="orgname" type="text" class="validate" bind:value={orgname}>
           <label for="orgname">Orgname</label>
+          <span class="helper-text">Use all lowercase here. No spaces. Keep it less than 15 letters.</span>
         </div>
         <div class="input-field col s6">
           <input id="displayName" type="text" class="validate" bind:value={displayName}>
           <label for="displayName">Display Name</label>
+          <span class="helper-text">Anything is allowed here.</span>
         </div>
+        {#if orgname}
+          <div class="col s12">
+            <span>Catalog:</span><br />
+            <a href={`https://${orgname}.erpnomy.com`} target="_blank">https://{orgname}.erpnomy.com</a>
+            <br />
+            <br />
+          </div>
+        {/if}
         <div class="input-field col s12">
           <input id="hostname" type="text" class="validate" bind:value={hostname}>
           <label for="hostname">Hostname</label>
+          <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
         </div>
+        {#if hostname}
+          <div class="col s12">
+            <span>Point to Catalog:</span><br />
+            <a href={`https://${hostname}`} target="_blank">https://{hostname}</a>
+            <br />
+            <br />
+          </div>
+        {/if}
       </div>
     </div>
     <div class="modal-footer">

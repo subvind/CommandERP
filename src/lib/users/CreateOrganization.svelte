@@ -77,11 +77,21 @@
         <div class="input-field col s6">
           <input id="orgname" type="text" class="validate" bind:value={orgname}>
           <label for="orgname">Orgname</label>
+          <span class="helper-text">Use all lowercase here. No spaces. Keep it less than 15 letters.</span>
         </div>
         <div class="input-field col s6">
           <input id="displayName" type="text" class="validate" bind:value={displayName}>
           <label for="displayName">Display Name</label>
+          <span class="helper-text">Anything is allowed here.</span>
         </div>
+        {#if orgname}
+          <div class="col s12">
+            <span>Catalog:</span><br />
+            <a href={`https://${orgname}.erpnomy.com`} target="_blank">https://{orgname}.erpnomy.com</a>
+            <br />
+            <br />
+          </div>
+        {/if}
       </div>
     </div>
     <div class="modal-footer">
