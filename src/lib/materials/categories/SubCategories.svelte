@@ -99,7 +99,7 @@
 
 <div class="table">
   <Table url={url} columns={columns} limit={limit} mapResultsFunc={mapResultsFunc} sort={sort} />
-  <CreateCategory />
+  <CreateCategory organization={category.organization} />
 </div>
 
 <style>

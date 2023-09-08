@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import jwt_decode from 'jwt-decode';
 
+  export let organization: any;
   let instances: any = undefined;
   let user: any = null;
   let decodedToken: any;
@@ -87,16 +88,29 @@
         <div class="input-field col s6">
           <input id="name" type="text" class="validate" bind:value={name}>
           <label for="name">Name</label>
+          <span class="helper-text">Use all lowercase here. Shown in Catalog as all uppercase.</span>
         </div>
         <div class="input-field col s6">
           <input id="slug" type="text" class="validate" bind:value={slug}>
           <label for="slug">Slug</label>
+          <span class="helper-text">Same as name except: No spaces. No special characters. May contain dashes and periods.</span>
         </div>
       </div>
+      {#if slug}
+        <div class="row">
+          <div class="col s12">
+            <span>Catalog:</span><br />
+            <a href={`https://${organization.orgname}.erpnomy.com/categories/${slug}`} target="_blank">https://{organization.orgname}.erpnomy.com/categories/{slug}</a>
+            <br />
+            <br />
+          </div>
+        </div>
+      {/if}
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="description" class="materialize-textarea" bind:value={description}></textarea>
+          <input id="description" type="text" class="validate" bind:value={description}>
           <label for="description">Description</label>
+          <span class="helper-text">Make it at least one sentence.</span>
         </div>
       </div>
     </div>

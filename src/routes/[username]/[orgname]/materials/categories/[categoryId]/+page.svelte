@@ -85,9 +85,6 @@
         <li class="tab"><a href="#products">products</a></li>
         <li class="tab"><a href="#subcategories">sub categories</a></li>
         <li class="tab"><a href="#parentcategory">parent category</a></li>
-        {#if category}
-          <div class="right" style="margin: 0.5em 0;"><Settings categoryId={category.id} /></div>
-        {/if}
       </ul>
     </div>
   </div>
@@ -109,9 +106,7 @@
         <ParentCategory data={data} category={category} />
       </div>
     </div>
-  </div>
-
-  <div class="container">
+    
     <ul class="tabs tabs-transparent black lighten-2">
       <li class="tab"><a href="#mainphoto">main photo</a></li>
     </ul>
@@ -123,8 +118,11 @@
         {/if}
       </div>
     </div>
-  </div>
 
+    {#if category}
+      <Settings categoryId={category.id} />
+    {/if}
+  </div>
 {/if}
 
 <style>

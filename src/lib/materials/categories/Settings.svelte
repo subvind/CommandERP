@@ -71,7 +71,7 @@
 </script>
 
 <!-- Modal Trigger -->
-<a class="btn white black-text" href="#!" on:click={() => { instances[0].open() }}>SETTINGS</a>
+<a class="btn white red darken-2" href="#!" on:click={() => { instances[0].open() }}>EDIT CATEGORY</a>
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>
@@ -83,22 +83,35 @@
         <div class="input-field col s6">
           <input id="name" type="text" class="validate" bind:value={name}>
           <label for="name">Name</label>
+          <span class="helper-text">Use all lowercase here. Shown in Catalog as all uppercase.</span>
         </div>
         <div class="input-field col s6">
           <input id="slug" type="text" class="validate" bind:value={slug}>
           <label for="slug">Slug</label>
+          <span class="helper-text">Same as name except: No spaces. No special characters. May contain dashes and periods.</span>
         </div>
       </div>
+      {#if slug}
+        <div class="row">
+          <div class="col s12">
+            <span>Catalog:</span><br />
+            <a href={`https://${category.organization.orgname}.erpnomy.com/categories/${slug}`} target="_blank">https://{category.organization.orgname}.erpnomy.com/categories/{slug}</a>
+            <br />
+            <br />
+          </div>
+        </div>
+      {/if}
       <div class="row">
         <div class="input-field col s12">
           <input id="description" type="text" class="validate" bind:value={description}>
           <label for="description">Description</label>
+          <span class="helper-text">Make it at least one sentence.</span>
         </div>
       </div>
     </div>
     <div class="modal-footer">
       <a class="waves-effect waves-black btn-flat" href="#!" on:click={() => { instances[0].close() }}>Cancel</a>
-      <button type='submit' class="waves-effect btn red black-text darken-2">Submit</button>
+      <button type='submit' class="waves-effect btn red darken-2">Submit</button>
     </div>
   </div>
 </form>

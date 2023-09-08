@@ -94,7 +94,7 @@
 <div class="table">
   <Table url={url} columns={columns} limit={limit} mapResultsFunc={mapResultsFunc} sort={sort} />
   {#if organization}
-    <CreateCategory />
+    <CreateCategory organization={organization} />
   {/if}
 </div>
 
