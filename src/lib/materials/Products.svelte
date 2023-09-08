@@ -125,7 +125,7 @@
 <div class="table">
   <Table url={url} columns={columns} limit={limit} mapResultsFunc={mapResultsFunc} sort={sort} />
   {#if organization}
-    <CreateProduct />
+    <CreateProduct organization={organization} />
   {/if}
 </div>
 

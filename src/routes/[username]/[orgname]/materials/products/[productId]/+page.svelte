@@ -84,9 +84,6 @@
         <li class="tab"><a href="#parentproduct">category</a></li>
         <li class="tab"><a href="#photos">photos</a></li>
         <li class="tab"><a href="#inventory">inventory</a></li>
-        {#if product}
-          <div class="right" style="margin: 0.5em 0;"><Settings productId={product.id} /></div>
-        {/if}
       </ul>
     </div>
   </div>
@@ -109,6 +106,7 @@
         inventory
       </div>
     </div>
+    <Settings productId={product.id} />
   </div>
 {/if}
 

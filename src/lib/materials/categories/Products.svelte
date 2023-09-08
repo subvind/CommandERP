@@ -126,7 +126,7 @@
 
 <div class="table">
   <Table url={url} columns={columns} limit={limit} mapResultsFunc={mapResultsFunc} sort={sort} />
-  <CreateProduct  />
+  <CreateProduct organization={category.organization} />
 </div>
 
 <style>
