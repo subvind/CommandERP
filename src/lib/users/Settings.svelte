@@ -22,6 +22,8 @@
       firstName = user.firstName
       lastName = user.lastName
       email = user.email
+      twitter = user.twitter
+      youtube = user.youtube
 
       setTimeout(() => {
         M.updateTextFields();
@@ -37,6 +39,8 @@
   let firstName = ''
   let lastName = ''
 	let email = ''
+  let twitter = ''
+  let youtube = ''
 
 	async function submit(event: any) {
     event.preventDefault()
@@ -57,6 +61,8 @@
           firstName,
           lastName,
           email,
+          twitter,
+          youtube
         }),
       });
 
@@ -75,7 +81,7 @@
 </script>
 
 <!-- Modal Trigger -->
-<a class="btn white black-text" href="#!" on:click={() => { instances[0].open() }}>SETTINGS</a>
+<a class="btn yellow lighten-2 black-text" href="#!" on:click={() => { instances[0].open() }}>EDIT USER</a>
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>
@@ -88,6 +94,14 @@
           <input id="username" type="text" class="validate" bind:value={username}>
           <label for="username">Username</label>
         </div>
+        {#if username}
+          <div class="col s12">
+            <span>Profile:</span><br />
+            <a href={`https://erpnomy.com/${username}`} target="_blank">https://erpnomy.com/{username}</a>
+            <br />
+            <br />
+          </div>
+        {/if}
         <div class="input-field col s6">
           <input id="firstName" type="text" class="validate" bind:value={firstName}>
           <label for="firstName">First Name</label>
@@ -96,10 +110,32 @@
           <input id="lastName" type="text" class="validate" bind:value={lastName}>
           <label for="lastName">Last Name</label>
         </div>
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate" bind:value={email}>
-          <label for="email">Email</label>
+        <div class="input-field col s6">
+          <input id="twitter" type="text" class="validate" bind:value={twitter}>
+          <label for="twitter">Twitter</label>
+          <span class="helper-text">The Twitter url slug of the user.</span>
         </div>
+        <div class="input-field col s6">
+          <input id="youtube" type="text" class="validate" bind:value={youtube}>
+          <label for="youtube">YouTube</label>
+          <span class="helper-text">The YouTube url slug of the user.</span>
+        </div>
+        {#if twitter}
+          <div class="col s12">
+            <span>Twitter:</span><br />
+            <a href={`https://twitter.com/${twitter}`} target="_blank">https://twitter.com/{twitter}</a>
+            <br />
+            <br />
+          </div>
+        {/if}
+        {#if youtube}
+          <div class="col s12">
+            <span>YouTube:</span><br />
+            <a href={`https://youtube.com/${youtube}`} target="_blank">https://youtube.com/{youtube}</a>
+            <br />
+            <br />
+          </div>
+        {/if}
       </div>
     </div>
     <div class="modal-footer">

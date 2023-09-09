@@ -22,7 +22,7 @@
     },
     {
       id: 'photo',
-      name: 'Main Photo',
+      name: 'Cover Photo',
       width: '150px',
       formatter: (cell: any, row: any) => {
         return gridjs.h('img', {

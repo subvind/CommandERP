@@ -40,15 +40,20 @@
       {/if}
       <a href="#" data-target="social-mobile" class="right dropdown-trigger black-text hide-on-large-only"><i class="material-icons">more_horiz</i></a>
       <ul id="social-mobile" class="dropdown-content">
-        <li><a class="black-text" href="collapsible.html">Twitter</a></li>
-        <li><a class="black-text" href="collapsible.html">YouTube</a></li>
-        <li><a class="black-text" href="collapsible.html">LinkedIn</a></li>
+        {#if user && user.twitter}
+          <li><a class="black-text" href={`https://twitter.com/${user.twitter}`} target="blank">Twitter</a></li>
+        {/if}
+        {#if user && user.youtube}
+          <li><a class="black-text" href={`https://youtube.com/${user.youtube}`} target="blank">YouTube</a></li>
+        {/if}
       </ul>
-
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a class="black-text" href="collapsible.html">Twitter</a></li>
-        <li><a class="black-text" href="collapsible.html">YouTube</a></li>
-        <li><a class="black-text" href="collapsible.html">LinkedIn</a></li>
+        {#if user && user.twitter}
+          <li><a class="black-text" href={`https://twitter.com/${user.twitter}`} target="blank">Twitter</a></li>
+        {/if}
+        {#if user && user.youtube}
+          <li><a class="black-text" href={`https://youtube.com/${user.youtube}`} target="blank">YouTube</a></li>
+        {/if}
       </ul>
     </div>
     <div class="nav-content">
@@ -63,9 +68,6 @@
         <li class="tab"><a href="#organizations">organizations</a></li>
         <li class="tab"><a href="#followers">followers</a></li>
         <li class="tab"><a href="#following">following</a></li>
-        {#if user}
-          <div class="right" style="margin: 0.5em 0;"><Settings userId={user.id} /></div>
-        {/if}
       </ul>
     </div>
   </div>
@@ -81,9 +83,12 @@
         <Organizations user={user} />
       </div>
       <div id="followers" class="col s12">followers</div>
-      <div id="following" class="col s12">following</div>
-      
+      <div id="following" class="col s12">following</div>  
     </div>
+
+    {#if user}
+      <Settings userId={user.id} />
+    {/if}
   </div>
 {/if}
 
