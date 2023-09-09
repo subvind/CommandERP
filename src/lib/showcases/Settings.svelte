@@ -89,7 +89,7 @@
 </script>
 
 <!-- Modal Trigger -->
-<a class="btn white black-text" href="#!" on:click={() => { instances[0].open() }}>SETTINGS</a>
+<a class="btn yellow lighten-2 black-text" href="#!" on:click={() => { instances[0].open() }}>EDIT SHOWCASE</a>
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>

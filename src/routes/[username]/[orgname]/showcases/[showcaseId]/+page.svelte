@@ -114,10 +114,6 @@
           </li>
         {/if}
         <li class="tab"><a href="#bannerphoto">banner photo</a></li>
-
-        {#if showcase}
-          <div class="right" style="margin: 0.5em 0;"><Settings user={user} showcaseId={showcase.id} /></div>
-        {/if}
       </ul>
     </div>
   </div>
@@ -135,6 +131,9 @@
         {/if}
       </div>
     </div>
+    {#if showcase}
+      <Settings user={user} showcaseId={showcase.id} />
+    {/if}
   </div>
 {/if}
 

@@ -46,6 +46,7 @@
   let title = ''
   let startAt = ''
   let finishAt = ''
+  let url = ''
 
 	async function submit(event: any) {
     event.preventDefault()
@@ -64,6 +65,7 @@
           title,
           startAt,
           finishAt,
+          url,
           organization: {
             id: organizationId
           }
@@ -105,6 +107,10 @@
         <div class="input-field col m6">
           <input id="finishAt" type="text" class="datepicker2" bind:value={finishAt}>
           <label for="finishAt">Finish At</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="url" type="text" class="validate" bind:value={url}>
+          <label for="url">URL</label>
         </div>
       </div>
     </div>
