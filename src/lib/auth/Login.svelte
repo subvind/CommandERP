@@ -17,7 +17,7 @@
     if (password === '') return alert('Password must be defined.')
 
     try {
-      const response = await fetch('https://backend.subvind.com/auth/login', {
+      const response = await fetch('https://api.subvind.com/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

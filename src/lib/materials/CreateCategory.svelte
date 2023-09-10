@@ -17,7 +17,7 @@
     instances = M.Modal.init(elems, {});
 
     console.log('user')
-    const response = await fetch(`https://backend.subvind.com/users/username/${decodedToken.username}`, {
+    const response = await fetch(`https://api.subvind.com/users/username/${decodedToken.username}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -48,7 +48,7 @@
     if (description === '') return alert('Description must be defined.')
     
     try {
-      const response = await fetch(`https://backend.subvind.com/categories`, {
+      const response = await fetch(`https://api.subvind.com/categories`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

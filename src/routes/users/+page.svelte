@@ -5,7 +5,7 @@
   import * as gridjs from "gridjs";
 
   let sort: boolean = true;
-  let url: string = "https://backend.subvind.com/users";
+  let url: string = "https://api.subvind.com/users";
   let limit: number = 25;
   let columns = [
     {

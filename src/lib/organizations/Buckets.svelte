@@ -8,7 +8,7 @@
 
   export let organization: any;
   let sort: boolean = true;
-  let url: string = `https://backend.subvind.com/buckets/orgRelated/${organization.id}`;
+  let url: string = `https://api.subvind.com/buckets/orgRelated/${organization.id}`;
   let limit: number = 25;
   let columns = [
     {

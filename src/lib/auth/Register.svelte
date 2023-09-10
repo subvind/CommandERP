@@ -21,7 +21,7 @@
     if (passwordRepeat !== password) return alert('Passwords must match.')
     
     try {
-      const response = await fetch('https://backend.subvind.com/users', {
+      const response = await fetch('https://api.subvind.com/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,7 +36,7 @@
       });
 
       if (response.ok) {
-        const response = await fetch('https://backend.subvind.com/auth/login', {
+        const response = await fetch('https://api.subvind.com/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -18,7 +18,7 @@
      * user is owner or employee of org
      */
     try {
-      const response = await fetch(`https://backend.subvind.com/users/defaultOrganization/${data.username}/${data.orgname}`, {
+      const response = await fetch(`https://api.subvind.com/users/defaultOrganization/${data.username}/${data.orgname}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -41,7 +41,7 @@
     /**
      * fetch user
      */
-    const responseUser = await fetch(`https://backend.subvind.com/users/username/${data.username}`, {
+    const responseUser = await fetch(`https://api.subvind.com/users/username/${data.username}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +58,7 @@
     /**
      * fetch org
      */
-    const responseOrg = await fetch(`https://backend.subvind.com/organizations/orgname/${data.orgname}`, {
+    const responseOrg = await fetch(`https://api.subvind.com/organizations/orgname/${data.orgname}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

@@ -15,7 +15,7 @@
     /**
      * fetch org
      */
-    const responseOrg = await fetch(`https://backend.subvind.com/organizations/orgname/${data.orgname}`, {
+    const responseOrg = await fetch(`https://api.subvind.com/organizations/orgname/${data.orgname}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +32,7 @@
     /**
      * fetch category
      */
-    const response = await fetch(`https://backend.subvind.com/categories/slug/${data.categoryId}/${organization.id}`, {
+    const response = await fetch(`https://api.subvind.com/categories/slug/${data.categoryId}/${organization.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

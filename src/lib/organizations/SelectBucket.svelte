@@ -28,7 +28,7 @@
     if (filterText) {
       search = `&search=${filterText}`
     }
-    const response = await fetch(`https://backend.subvind.com/buckets/orgRelated/${organization.id}?limit=100&page=1${search}`, {
+    const response = await fetch(`https://api.subvind.com/buckets/orgRelated/${organization.id}?limit=100&page=1${search}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

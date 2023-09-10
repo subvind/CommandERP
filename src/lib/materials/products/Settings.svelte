@@ -9,7 +9,7 @@
     var elems = document.querySelectorAll('.sdffdddfsftgrtgsfd');
     instances = M.Modal.init(elems, {});
 
-    const response = await fetch(`https://backend.subvind.com/products/${productId}`, {
+    const response = await fetch(`https://api.subvind.com/products/${productId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +52,7 @@
     if (stockKeepingUnit === '') return alert('SKU must be defined.')
     
     try {
-      const response = await fetch(`https://backend.subvind.com/products/${productId}`, {
+      const response = await fetch(`https://api.subvind.com/products/${productId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

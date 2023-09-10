@@ -11,7 +11,7 @@
     var elems = document.querySelectorAll('.adfgthhyehwffw');
     instances = M.Modal.init(elems, {});
 
-    const response = await fetch(`https://backend.subvind.com/organizations/${organizationId}`, {
+    const response = await fetch(`https://api.subvind.com/organizations/${organizationId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +42,7 @@
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      const response = await fetch(`https://backend.subvind.com/files/upload/${bucket.value}/${organizationId}`, {
+      const response = await fetch(`https://api.subvind.com/files/upload/${bucket.value}/${organizationId}`, {
         method: 'POST',
         body: formData, // Use FormData to send the selected file
       });

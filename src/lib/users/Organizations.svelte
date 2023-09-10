@@ -8,7 +8,7 @@
 
   export let user: any;
   let sort: boolean = true;
-  let url: string = `https://backend.subvind.com/organizations/userRelated/${user.id}`;
+  let url: string = `https://api.subvind.com/organizations/userRelated/${user.id}`;
   let limit: number = 25;
   let columns = [
     {

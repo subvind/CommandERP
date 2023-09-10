@@ -9,7 +9,7 @@
     var elems = document.querySelectorAll('.sdffdddfsftgrtgsfd');
     instances = M.Modal.init(elems, {});
 
-    const response = await fetch(`https://backend.subvind.com/categories/${categoryId}`, {
+    const response = await fetch(`https://api.subvind.com/categories/${categoryId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@
     if (description === '') return alert('Description must be defined.')
     
     try {
-      const response = await fetch(`https://backend.subvind.com/categories/${categoryId}`, {
+      const response = await fetch(`https://api.subvind.com/categories/${categoryId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

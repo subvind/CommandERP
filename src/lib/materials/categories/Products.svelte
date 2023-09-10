@@ -9,7 +9,7 @@
   export let data: any;
   export let category: any;
   let sort: boolean = true;
-  let url: string = `https://backend.subvind.com/products/categoryRelated/${category.id}`;
+  let url: string = `https://api.subvind.com/products/categoryRelated/${category.id}`;
   let limit: number = 25;
   let columns = [
     {

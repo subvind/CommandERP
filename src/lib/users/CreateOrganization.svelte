@@ -9,7 +9,7 @@
     var elems = document.querySelectorAll('.jdfbuywxzqopmwef');
     instances = M.Modal.init(elems, {});
 
-    const response = await fetch(`https://backend.subvind.com/users/${userId}`, {
+    const response = await fetch(`https://api.subvind.com/users/${userId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@
     if (displayName === '') return alert('First name must be defined.')
     
     try {
-      const response = await fetch(`https://backend.subvind.com/organizations`, {
+      const response = await fetch(`https://api.subvind.com/organizations`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

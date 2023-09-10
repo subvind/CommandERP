@@ -9,7 +9,7 @@
     var elems = document.querySelectorAll('.sdcebryytpozdscqwm');
     instances = M.Modal.init(elems, {});
 
-    const response = await fetch(`https://backend.subvind.com/users/${userId}`, {
+    const response = await fetch(`https://api.subvind.com/users/${userId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +51,7 @@
     if (email === '') return alert('Email must be defined.')
     
     try {
-      const response = await fetch(`https://backend.subvind.com/users/${userId}`, {
+      const response = await fetch(`https://api.subvind.com/users/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

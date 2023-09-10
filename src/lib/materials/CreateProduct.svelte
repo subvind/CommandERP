@@ -17,7 +17,7 @@
     instances = M.Modal.init(elems, {});
 
     console.log('user')
-    const response = await fetch(`https://backend.subvind.com/users/username/${decodedToken.username}`, {
+    const response = await fetch(`https://api.subvind.com/users/username/${decodedToken.username}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +52,7 @@
     if (stockKeepingUnit === '') return alert('Stock Keeping Unit (SKU) must be defined.')
     
     try {
-      const response = await fetch(`https://backend.subvind.com/products`, {
+      const response = await fetch(`https://api.subvind.com/products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

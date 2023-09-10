@@ -9,7 +9,7 @@
     var elems = document.querySelectorAll('.jdfbuywxzqopmwef');
     instances = M.Modal.init(elems, {});
 
-    const response = await fetch(`https://backend.subvind.com/organizations/${organizationId}`, {
+    const response = await fetch(`https://api.subvind.com/organizations/${organizationId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -43,7 +43,7 @@
     if (!isValidS3BucketName(name)) return alert('Invalid bucket name. Please follow S3 naming standards.');
 
     try {
-      const response = await fetch(`https://backend.subvind.com/buckets`, {
+      const response = await fetch(`https://api.subvind.com/buckets`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

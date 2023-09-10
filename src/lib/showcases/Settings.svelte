@@ -10,7 +10,7 @@
     var elems = document.querySelectorAll('.sflsdbhjsdcbhjcdsbh');
     instances = M.Modal.init(elems, {});
 
-    const response = await fetch(`https://backend.subvind.com/showcases/${showcaseId}`, {
+    const response = await fetch(`https://api.subvind.com/showcases/${showcaseId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +61,7 @@
     if (finishAt === '') return alert('Finnish At be defined.')
     
     try {
-      const response = await fetch(`https://backend.subvind.com/showcases/${showcaseId}`, {
+      const response = await fetch(`https://api.subvind.com/showcases/${showcaseId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

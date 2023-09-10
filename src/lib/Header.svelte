@@ -9,7 +9,7 @@
   let loading = true;
 
   async function load() {
-    const response = await fetch(`https://backend.subvind.com/users/username/${decodedToken.username}`, {
+    const response = await fetch(`https://api.subvind.com/users/username/${decodedToken.username}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

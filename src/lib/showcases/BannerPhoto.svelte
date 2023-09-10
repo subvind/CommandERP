@@ -28,7 +28,7 @@
     }
 
     try {
-      const response = await fetch(`https://backend.subvind.com/showcases/${showcase.id}`, {
+      const response = await fetch(`https://api.subvind.com/showcases/${showcase.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +63,7 @@
     if (filterText) {
       search = `&search=${filterText}`
     }
-    const response = await fetch(`https://backend.subvind.com/files/orgRelated/${organization.id}?limit=100&page=1${search}`, {
+    const response = await fetch(`https://api.subvind.com/files/orgRelated/${organization.id}?limit=100&page=1${search}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

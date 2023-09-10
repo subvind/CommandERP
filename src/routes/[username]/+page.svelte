@@ -8,7 +8,7 @@
   let user: any = null;
 
   onMount(async () => {
-    const response = await fetch(`https://backend.subvind.com/users/username/${data.username}`, {
+    const response = await fetch(`https://api.subvind.com/users/username/${data.username}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
