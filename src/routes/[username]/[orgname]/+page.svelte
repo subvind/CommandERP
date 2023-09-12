@@ -6,6 +6,7 @@
   import Buckets from '$lib/organizations/Buckets.svelte'
   import Files from '$lib/organizations/Files.svelte'
   import OrgPhoto from "$lib/organizations/OrgPhoto.svelte";
+  import Code from "$lib/Code.svelte";
 
   export let data: any;
   let user: any = null;
@@ -129,7 +130,10 @@
   <div class="container">
     <div class="card main">
       <div id="profile" class="col s12">
-        {JSON.stringify(organization, null, 2)}
+        <div class="card-content">
+          <p>raw data:</p>
+          <Code text={JSON.stringify(organization, null, 2)} lang="json" />
+        </div>
       </div>
       <div id="suppliers" class="col s12">
         suppliers

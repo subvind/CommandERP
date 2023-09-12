@@ -3,6 +3,7 @@
 
   import Settings from '$lib/users/Settings.svelte'
   import Organizations from '$lib/users/Organizations.svelte'
+  import Code from "$lib/Code.svelte";
 
   export let data: any;
   let user: any = null;
@@ -66,8 +67,8 @@
           </li>
         {/if}
         <li class="tab"><a href="#organizations">organizations</a></li>
-        <li class="tab"><a href="#followers">followers</a></li>
-        <li class="tab"><a href="#following">following</a></li>
+        <!-- <li class="tab"><a href="#followers">followers</a></li> -->
+        <!-- <li class="tab"><a href="#following">following</a></li> -->
       </ul>
     </div>
   </div>
@@ -77,13 +78,16 @@
   <div class="container">
     <div class="card main">
       <div id="profile" class="col s12">
-        {JSON.stringify(user, null, 2)}
+        <div class="card-content">
+          <p>raw data:</p>
+          <Code text={JSON.stringify(user, null, 2)} lang="json" />
+        </div>
       </div>
       <div id="organizations" class="col s12">
         <Organizations user={user} />
       </div>
-      <div id="followers" class="col s12">followers</div>
-      <div id="following" class="col s12">following</div>  
+      <!-- <div id="followers" class="col s12">followers</div> -->
+      <!-- <div id="following" class="col s12">following</div>   -->
     </div>
 
     {#if user}

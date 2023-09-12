@@ -3,6 +3,7 @@
 
   import Settings from '$lib/showcases/Settings.svelte'
   import BannerPhoto from "$lib/showcases/BannerPhoto.svelte";
+  import Code from "$lib/Code.svelte";
 
   export let data: any;
   let user: any = null;
@@ -123,7 +124,10 @@
   <div class="container">
     <div class="card main">
       <div id="profile" class="col s12">
-        {JSON.stringify(showcase, null, 2)}
+        <div class="card-content">
+          <p>raw data:</p>
+          <Code text={JSON.stringify(showcase, null, 2)} lang="json" />
+        </div>
       </div>
       <div id="bannerphoto" class="col s12">
         {#if user}

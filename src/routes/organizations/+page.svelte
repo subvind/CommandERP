@@ -93,7 +93,6 @@
 </nav>
 <br />
 <br />
-<!-- {JSON.stringify(users)} -->
 
 <div class="container">
   <Table url={url} columns={columns} limit={limit} mapResultsFunc={mapResultsFunc} sort={sort} />

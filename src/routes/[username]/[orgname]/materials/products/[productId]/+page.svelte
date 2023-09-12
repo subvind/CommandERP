@@ -5,6 +5,7 @@
   import Category from '$lib/materials/products/Category.svelte'
   import Bucket from '$lib/materials/products/Bucket.svelte'
   import CoverPhoto from "$lib/materials/products/CoverPhoto.svelte";
+  import Code from "$lib/Code.svelte";
 
   export let data: any;
   let organization: any;
@@ -93,7 +94,10 @@
   <div class="container">
     <div class="card main">
       <div id="profile" class="col s12">
-        {JSON.stringify(product, null, 2)}
+        <div class="card-content">
+          <p>raw data:</p>
+          <Code text={JSON.stringify(product, null, 2)} lang="json" />
+        </div>
       </div>
       <div id="parentproduct" class="col s12">
         <Category data={data} product={product} />
