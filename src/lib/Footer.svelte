@@ -19,16 +19,9 @@
       </p>
     </div>
     <div class="col s12 m8 hide-on-med-and-down">
-      <a href="https://github.com/subvind/CommandERP" class="nav">frontend</a>
-      <a href="https://github.com/subvind/FlowERP" class="nav">backend</a>
-      <a href="https://github.com/subvind/entropy" class="nav">stream</a>
-      <a href="https://github.com/subvind/ucimecu" class="nav">top</a>
-      <br />
-      <a href="https://github.com/subvind/flowtube" class="nav">tv</a>
-      <a href="https://github.com/subvind/inam" class="nav">cli</a>
-      <a href="https://github.com/subvind/autoide" class="nav">base</a>
-      <a href="https://github.com/subvind/inamlang" class="nav">sync</a>
-      <a href="https://github.com/subvind/DisplayERP" class="nav">main</a>
+      <a href="https://tubenomy.com" class="nav" target="_blank">tubenomy</a>
+      <a href="https://desknomy.com" class="nav" target="_blank">desknomy</a>
+      <a href="https://erpnomy.com" class="nav" target="_blank">erpnomy</a>
     </div>
   </div>
 </div>
