@@ -30,7 +30,7 @@
         return gridjs.h('img', {
           src: `https://s3.us-east-2.amazonaws.com/${organization.orgname}.${row.cells[3].data}/${row.cells[2].data}`,
           alt: "",
-          style: 'max-height: 100px;',
+          style: 'max-height: 100px; max-width: 100px;',
         }, 'VIEW');
       }
     },
