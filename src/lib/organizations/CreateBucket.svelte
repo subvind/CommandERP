@@ -83,14 +83,9 @@
         <div class="input-field col s12">
           <input id="name" type="text" class="validate" bind:value={name}>
           <label for="name">name</label>
+          <span class="helper-text">Must be less than 30 characters in length. Can only contain lowercase letters, numbers, hyphens, and periods. Must start and end with a lowercase letter or number.</span>
         </div>
       </div>
-      <p>
-        S3 bucket naming rules:<br />
-        1. Must be between 3 and 63 characters in length minus your orgname.<br />
-        2. Can only contain lowercase letters, numbers, hyphens, and periods.<br />
-        3. Must start and end with a lowercase letter or number.<br />
-      </p>
     </div>
     <div class="modal-footer">
       <a class="waves-effect waves-black btn-flat" href="#!" on:click={() => { instances[0].close() }}>Cancel</a>

@@ -84,8 +84,7 @@
         <div class="input-field col s6">
           <input id="orgname" type="text" class="validate" bind:value={orgname}>
           <label for="orgname">Orgname</label>
-          <span class="helper-text">Use all lowercase here. No spaces. Keep it less than 15 letters.</span>
-        </div>
+          <span class="helper-text">Use all lowercase here. No spaces. Keep it less than 30 letters. Must start and end with a lowercase letter or number.</div>
         <div class="input-field col s6">
           <input id="displayName" type="text" class="validate" bind:value={displayName}>
           <label for="displayName">Display Name</label>
