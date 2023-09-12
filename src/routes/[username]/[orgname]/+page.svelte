@@ -11,7 +11,6 @@
   export let data: any;
   let user: any = null;
   let organization: any = null;
-
   
   onMount(async () => {
     /**

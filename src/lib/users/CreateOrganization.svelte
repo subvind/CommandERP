@@ -55,7 +55,7 @@
 
       if (response.ok) {
         let org = await response.json();
-        window.location.href = `${user.username}/${org.orgname}`
+        window.location.href = `/${user.username}/${org.orgname}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);

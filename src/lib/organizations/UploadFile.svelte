@@ -52,7 +52,7 @@
 
       if (response.ok) {
         let file = await response.json();
-        window.location.href = `${organization.owner.username}/${organization.orgname}/files/${file.filename}`
+        window.location.href = `/${organization.owner.username}/${organization.orgname}/files/${file.filename}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);

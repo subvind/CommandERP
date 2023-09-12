@@ -61,7 +61,7 @@
 
       if (response.ok) {
         let bucket = await response.json();
-        window.location.href = `${organization.owner.username}/${organization.orgname}/buckets/${bucket.name}`
+        window.location.href = `/${organization.owner.username}/${organization.orgname}/buckets/${bucket.name}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);

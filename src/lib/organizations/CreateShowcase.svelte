@@ -77,7 +77,7 @@
 
       if (response.ok) {
         let showcase = await response.json();
-        window.location.href = `${organization.owner.username}/${organization.orgname}/showcases/${showcase.id}`
+        window.location.href = `/${organization.owner.username}/${organization.orgname}/showcases/${showcase.id}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);
