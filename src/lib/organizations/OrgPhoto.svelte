@@ -111,4 +111,8 @@
     margin: 0 1em;
     padding-bottom: 1em;
   }
+
+  img {
+    max-width: 100%;
+  }
 </style>
