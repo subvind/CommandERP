@@ -6,6 +6,7 @@
   let instances: any = undefined;
   let user: any = null;
   let decodedToken: any;
+  let loading: boolean = false;
 
   onMount(async () => {
     let accessToken: any = localStorage.getItem('access_token');
@@ -47,6 +48,8 @@
     if (slug === '') return alert('Slug must be defined.')
     if (description === '') return alert('Description must be defined.')
     
+    loading = true 
+
     try {
       const response = await fetch(`https://api.subvind.com/categories`, {
         method: 'POST',
@@ -72,6 +75,9 @@
       console.error('Error creating category:', error);
       alert('An error occurred during submission.');
     }
+
+    loading = false 
+
   }
 </script>
 
@@ -116,7 +122,11 @@
     </div>
     <div class="modal-footer">
       <a class="waves-effect waves-black btn-flat" href="#!" on:click={() => { instances[0].close() }}>Cancel</a>
-      <button type='submit' class="waves-effect btn red">Submit</button>
+      {#if loading}
+        <button class="waves-effect btn disabled">Loading</button>
+      {:else}
+        <button type='submit' class="waves-effect btn red">Submit</button>
+      {/if}
     </div>
   </div>
 </form>

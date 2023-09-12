@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import jwt_decode from 'jwt-decode';
 
+  let loading: boolean = false;
   let username = ''
   let firstName = ''
   let lastName = ''
@@ -20,6 +21,8 @@
     if (passwordRepeat === '') return alert('Confirm Password must be defined.')
     if (passwordRepeat !== password) return alert('Passwords must match.')
     
+    loading = true
+
     try {
       const response = await fetch('https://api.subvind.com/users', {
         method: 'POST',
@@ -74,6 +77,8 @@
       console.error('Error registering user:', error);
       alert('An error occurred during submission.');
     }
+
+    loading = false
   }
 </script>
 
@@ -114,7 +119,11 @@
           <label for="passwordRepeat">Password Confirm</label>
         </div>
         <br />
-        <button style="margin-left: 1em;" type='submit' class="waves-effect yellow black-text lighten-2 btn">Submit</button>
+        {#if loading}
+          <button style="margin-left: 1em;" class="waves-effect btn disabled">Loading</button>
+        {:else}
+          <button style="margin-left: 1em;" type='submit' class="waves-effect yellow black-text lighten-2 btn">Submit</button>
+        {/if}
       </div>
     </div>
   </form>

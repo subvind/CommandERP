@@ -6,6 +6,7 @@
   let instances: any = undefined;
   let organization: any = null;
   let selectedFile: any = null;
+  let loading: boolean = false;
 
   onMount(async () => {
     var elems = document.querySelectorAll('.adfgthhyehwffw');
@@ -38,6 +39,8 @@
     if (bucket === '') return alert('bucket must be selected.');
     if (!selectedFile) return alert('Please select a file.');
 
+    loading = true 
+
     try {
       const formData = new FormData();
       formData.append('file', selectedFile);
@@ -58,6 +61,8 @@
       console.error('Error uploading file:', error);
       alert('An error occurred during submission.');
     }
+
+    loading = false
   }
 
   function handleFileSelect(event: any) {
@@ -100,7 +105,11 @@
     </div>
     <div class="modal-footer">
       <a class="waves-effect waves-black btn-flat" href="#!" on:click={() => { instances[0].close() }}>Cancel</a>
-      <button type='submit' class="waves-effect btn yellow black-text lighten-2">Submit</button>
+      {#if loading}
+        <button class="waves-effect btn disabled">Loading</button>
+      {:else}
+        <button type='submit' class="waves-effect btn yellow black-text lighten-2">Submit</button>
+      {/if}
     </div>
   </div>
 </form>

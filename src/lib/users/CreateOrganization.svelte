@@ -4,6 +4,7 @@
   export let userId: any = null;
   let instances: any = undefined;
   let user: any = null;
+  let loading: boolean = false;
 
   onMount(async () => {
     var elems = document.querySelectorAll('.jdfbuywxzqopmwef');
@@ -37,6 +38,8 @@
     if (orgname === '') return alert('orgname must be defined.')
     if (displayName === '') return alert('First name must be defined.')
     
+    loading = true 
+
     try {
       const response = await fetch(`https://api.subvind.com/organizations`, {
         method: 'POST',
@@ -61,6 +64,8 @@
       console.error('Error creating organization:', error);
       alert('An error occurred during submission.');
     }
+
+    loading = false
   }
 </script>
 
@@ -96,7 +101,11 @@
     </div>
     <div class="modal-footer">
       <a class="waves-effect waves-black btn-flat" href="#!" on:click={() => { instances[0].close() }}>Cancel</a>
-      <button type='submit' class="waves-effect btn yellow black-text lighten-2">Submit</button>
+      {#if loading}
+        <button class="waves-effect btn disabled">Loading</button>
+      {:else}
+        <button type='submit' class="waves-effect btn yellow black-text lighten-2">Submit</button>
+      {/if}
     </div>
   </div>
 </form>

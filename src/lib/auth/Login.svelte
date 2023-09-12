@@ -3,10 +3,7 @@
   import { onMount } from 'svelte';
   import jwt_decode from 'jwt-decode';
 
-  // import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-
-  // export let auth: any
-
+  let loading: boolean = false;
 	let email = ''
   let password = ''
 
@@ -15,6 +12,8 @@
 
     if (email === '') return alert('Email must be defined.')
     if (password === '') return alert('Password must be defined.')
+
+    loading = true 
 
     try {
       const response = await fetch('https://api.subvind.com/auth/login', {
@@ -51,6 +50,8 @@
       console.error('Error logging in user:', error);
       alert('An error occurred during login.');
     }
+
+    loading = false
   }
 
   onMount(() => {
@@ -79,7 +80,11 @@
           <label for="password">Password</label>
         </div>
         <br />
-        <button style="margin-left: 1em;" type='submit' class="waves-effect yellow black-text lighten-2 btn">Submit</button>
+        {#if loading}
+          <button style="margin-left: 1em;" class="waves-effect btn disabled">Loading</button>
+        {:else}
+          <button style="margin-left: 1em;" type='submit' class="waves-effect yellow black-text lighten-2 btn">Submit</button>
+        {/if}
       </div>
     </div>
   </form>

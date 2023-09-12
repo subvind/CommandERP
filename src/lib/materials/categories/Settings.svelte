@@ -4,6 +4,7 @@
   export let categoryId: any = null;
   let instances: any = undefined;
   let category: any = undefined;
+  let loading: boolean = false;
 
   onMount(async () => {
     var elems = document.querySelectorAll('.sdffdddfsftgrtgsfd');
@@ -43,6 +44,8 @@
     if (slug === '') return alert('Slug must be defined.')
     if (description === '') return alert('Description must be defined.')
     
+    loading = true 
+
     try {
       const response = await fetch(`https://api.subvind.com/categories/${categoryId}`, {
         method: 'PATCH',
@@ -67,6 +70,8 @@
       console.error('Error updating category:', error);
       alert('An error occurred during submission.');
     }
+
+    loading = false
   }
 </script>
 
@@ -111,7 +116,11 @@
     </div>
     <div class="modal-footer">
       <a class="waves-effect waves-black btn-flat" href="#!" on:click={() => { instances[0].close() }}>Cancel</a>
-      <button type='submit' class="waves-effect btn red darken-2">Submit</button>
+      {#if loading}
+        <button class="waves-effect btn disabled">Loading</button>
+      {:else}
+        <button type='submit' class="waves-effect btn red darken-2">Submit</button>
+      {/if}
     </div>
   </div>
 </form>

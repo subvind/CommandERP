@@ -4,6 +4,7 @@
   export let productId: any = null;
   let instances: any = undefined;
   let product: any = undefined;
+  let loading: boolean = false;
 
   onMount(async () => {
     var elems = document.querySelectorAll('.sdffdddfsftgrtgsfd');
@@ -51,6 +52,8 @@
     if (name === '') return alert('Name must be defined.')
     if (stockKeepingUnit === '') return alert('SKU must be defined.')
     
+    loading = true 
+
     try {
       const response = await fetch(`https://api.subvind.com/products/${productId}`, {
         method: 'PATCH',
@@ -80,6 +83,8 @@
       console.error('Error updating product:', error);
       alert('An error occurred during submission.');
     }
+
+    loading = false
   }
 
   function formatCurrency(input: any) {
@@ -195,7 +200,11 @@
     </div>
     <div class="modal-footer">
       <a class="waves-effect waves-black btn-flat" href="#!" on:click={() => { instances[0].close() }}>Cancel</a>
-      <button type='submit' class="waves-effect btn red darken-2">Submit</button>
+      {#if loading}
+        <button class="waves-effect btn disabled">Loading</button>
+      {:else}
+        <button type='submit' class="waves-effect btn red darken-2">Submit</button>
+      {/if}
     </div>
   </div>
 </form>

@@ -4,6 +4,7 @@
   export let userId: any = null;
   let instances: any = undefined;
   let user: any = undefined;
+  let loading: boolean = false;
 
   onMount(async () => {
     var elems = document.querySelectorAll('.sdcebryytpozdscqwm');
@@ -32,7 +33,6 @@
       const errorData = await response.json();
       alert(errorData.error);
     }
-
   })
 
   let username = ''
@@ -50,6 +50,8 @@
     if (lastName === '') return alert('Last name must be defined.')
     if (email === '') return alert('Email must be defined.')
     
+    loading = true
+
     try {
       const response = await fetch(`https://api.subvind.com/users/${userId}`, {
         method: 'PATCH',
@@ -68,7 +70,7 @@
 
       if (response.ok) {
         user = await response.json();
-        window.location.href = `/${user.username}`
+        window.location.reload()
       } else {
         const errorData = await response.json();
         alert(errorData.error);
@@ -77,6 +79,8 @@
       console.error('Error updating user:', error);
       alert('An error occurred during submission.');
     }
+
+    loading = false
   }
 </script>
 
@@ -140,7 +144,11 @@
     </div>
     <div class="modal-footer">
       <a class="waves-effect waves-black btn-flat" href="#!" on:click={() => { instances[0].close() }}>Cancel</a>
-      <button type='submit' class="waves-effect btn yellow black-text lighten-2">Submit</button>
+      {#if loading}
+        <button class="waves-effect btn disabled">Loading</button>
+      {:else}
+        <button type='submit' class="waves-effect btn yellow black-text lighten-2">Submit</button>
+      {/if}
     </div>
   </div>
 </form>
