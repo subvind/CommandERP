@@ -24,7 +24,7 @@
     },
     {
       id: 'name',
-      name: 'name'
+      name: 'Name'
     },
     {
       id: 'createdAt',

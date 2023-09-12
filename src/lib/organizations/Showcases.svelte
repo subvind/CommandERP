@@ -24,7 +24,7 @@
     },
     {
       id: 'title',
-      name: 'title',
+      name: 'Title',
       width: '200px',
     },
     {

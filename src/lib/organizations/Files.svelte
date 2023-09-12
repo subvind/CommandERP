@@ -24,7 +24,7 @@
     },
     {
       id: 'photo',
-      name: 'photo',
+      name: 'Photo',
       width: '200px',
       formatter: (cell: any, row: any) => {
         return gridjs.h('img', {
@@ -36,12 +36,12 @@
     },
     {
       id: 'filename',
-      name: 'filename',
+      name: 'Filename',
       width: '300px',
     },
     {
-      id: 'bucket',
-      name: 'bucket',
+      id: 'ucket',
+      name: 'Bucket',
       width: '200px',
     },
     {

@@ -23,12 +23,20 @@
       }
     },
     {
-      id: 'orgname',
-      name: 'Orgname'
+      id: 'displayName',
+      width: '200px',
+      name: 'Name'
     },
     {
-      id: 'displayName',
-      name: 'Display Name'
+      id: 'store',
+      name: 'Store',
+      formatter: (cell: any, row: any) => {
+        return gridjs.h('a', {
+          href: `https://${row.cells[2].data}.erpnomy.com`,
+          target: "_blank",
+          className: '',
+        }, `${row.cells[2].data}.erpnomy.com`);
+      }
     },
     {
       id: 'createdAt',
@@ -52,8 +60,8 @@
   function mapResultsFunc(value: any) {
     return [
       value.id,
-      value.orgname,
       value.displayName,
+      value.orgname,
       value.createdAt
     ]
   }
