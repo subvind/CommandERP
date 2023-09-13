@@ -27,6 +27,7 @@
       detail = product.detail
       price = product.price
       shippingCost = product.shippingCost
+      isArchive = product.isArchive
 
       setTimeout(() => {
         M.updateTextFields();
@@ -45,6 +46,7 @@
   let detail = ''
   let price = ''
   let shippingCost = ''
+  let isArchive = false
 
 	async function submit(event: any) {
     event.preventDefault()
@@ -69,6 +71,7 @@
           detail,
           price,
           shippingCost,
+          isArchive
         }),
       });
 
@@ -196,6 +199,24 @@
             <a href={`https://etsy.com/listing/${etsyItem}`} target="_blank">https://etsy.com/listing/{etsyItem}</a>
           </div>
         {/if}
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <!-- Switch -->
+          <div class="switch">
+            <label for="isArchive">Archive</label>
+            <br />
+            <label>
+              Off
+              <input type="checkbox" bind:checked={isArchive}>
+              <span class="lever"></span>
+              On
+            </label>
+            <br />
+            <span class="helper-text">Removes product from main view for record keeping.</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal-footer">
