@@ -6,6 +6,7 @@
   import Bucket from '$lib/materials/products/Bucket.svelte'
   import CoverPhoto from "$lib/materials/products/CoverPhoto.svelte";
   import Code from "$lib/Code.svelte";
+  import CreateProduct from "$lib/materials/CreateProduct.svelte";
 
   export let data: any;
   let organization: any;
@@ -110,7 +111,12 @@
         inventory
       </div>
     </div>
-    <Settings productId={product.id} />
+    <div class="controls">
+      <Settings productId={product.id} />
+    </div>
+    <div class="controls">
+      <CreateProduct organization={product.organization} />
+    </div>
   </div>
 {/if}
 
@@ -118,5 +124,9 @@
   .main {
     margin-top: 0;
     background: #aaa;
+  }
+
+  .controls {
+    margin: 0 0.5em 0.5em 0;
   }
 </style>

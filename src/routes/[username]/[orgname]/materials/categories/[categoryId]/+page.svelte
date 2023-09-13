@@ -7,6 +7,7 @@
   import ParentCategory from '$lib/materials/categories/ParentCategory.svelte'
   import MainPhoto from "$lib/materials/categories/MainPhoto.svelte";
   import Code from "$lib/Code.svelte";
+  import CreateCategory from "$lib/materials/CreateCategory.svelte";
 
   export let data: any;
   let organization: any;
@@ -123,8 +124,13 @@
       </div>
     </div>
 
-    {#if category}
-      <Settings categoryId={category.id} />
+    {#if category && organization}
+      <div class="controls">
+        <Settings categoryId={category.id} />
+      </div>
+      <div class="controls">
+        <CreateCategory organization={organization} />
+      </div>
     {/if}
   </div>
 {/if}
@@ -133,5 +139,9 @@
   .main {
     margin-top: 0;
     background: #aaa;
+  }
+
+  .controls {
+    margin: 0 0.5em 0.5em 0;
   }
 </style>

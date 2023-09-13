@@ -4,6 +4,7 @@
   import Settings from '$lib/showcases/Settings.svelte'
   import BannerPhoto from "$lib/showcases/BannerPhoto.svelte";
   import Code from "$lib/Code.svelte";
+  import CreateShowcase from "$lib/organizations/CreateShowcase.svelte";
 
   export let data: any;
   let user: any = null;
@@ -102,7 +103,14 @@
   <div class="container">
     <div class="nav-wrapper">
       {#if organization && showcase}
-        <a href="#" class="brand-logo black-text">{organization.displayName} > {showcase.title}</a>
+        <ul id="nav-mobile" class="left">
+          <li>
+            <a href={`/${organization.owner.username}/${organization.orgname}`} class="black-text">{organization.displayName}</a>
+          </li>
+          <li>
+            <a href="#" class="black-text">{showcase.title}</a>
+          </li>
+        </ul>
       {/if}
     </div>
     <div class="nav-content">
@@ -135,8 +143,13 @@
         {/if}
       </div>
     </div>
-    {#if showcase}
+    <div class="controls">
       <Settings user={user} showcaseId={showcase.id} />
+    </div>
+    {#if organization}
+      <div class="controls">
+        <CreateShowcase organizationId={organization.id} />
+      </div>
     {/if}
   </div>
 {/if}
@@ -145,5 +158,9 @@
   .main {
     margin-top: 0;
     background: #aaa;
+  }
+
+  .controls {
+    margin: 0 0.5em 0.5em 0;
   }
 </style>

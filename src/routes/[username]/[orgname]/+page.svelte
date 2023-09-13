@@ -7,6 +7,7 @@
   import Files from '$lib/organizations/Files.svelte'
   import OrgPhoto from "$lib/organizations/OrgPhoto.svelte";
   import Code from "$lib/Code.svelte";
+  import CreateOrganization from "$lib/users/CreateOrganization.svelte";
 
   export let data: any;
   let user: any = null;
@@ -178,8 +179,13 @@
     </div>
   </div>
 
-  {#if organization}
-    <Settings user={user} organizationId={organization.id} />
+  {#if organization && user}
+    <div class="controls">
+      <Settings user={user} organizationId={organization.id} />
+    </div>
+    <div class="controls">
+      <CreateOrganization userId={user.id} />
+    </div>
   {/if}
 </div>
 
@@ -187,5 +193,9 @@
   .main {
     margin-top: 0;
     background: #aaa;
+  }
+
+  .controls {
+    margin: 0 0.5em 0.5em 0;
   }
 </style>

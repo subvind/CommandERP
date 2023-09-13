@@ -91,7 +91,12 @@
     </div>
 
     {#if user}
-      <Settings userId={user.id} />
+      <div class="controls">
+        <Settings userId={user.id} />
+      </div>
+      <div class="controls">
+        <!-- do nothing -->
+      </div>
     {/if}
   </div>
 {/if}
@@ -100,5 +105,9 @@
   .main {
     margin-top: 0;
     background: #aaa;
+  }
+
+  .controls {
+    margin: 0 0.5em 0.5em 0;
   }
 </style>
