@@ -130,7 +130,7 @@
         <div class="input-field col s12 m6">
           <input id="name" type="text" class="validate" bind:value={name}>
           <label for="name">Name</label>
-          <span class="helper-text">Shown as the title. Use all lowercase letters. Around half a sentence.</span>
+          <span class="helper-text">Shown as the title in all uppercase. Prefer first letter uppercase rather than caps lock. Around half a sentence.</span>
         </div>
         <div class="input-field col s12 m6">
           <input id="stockKeepingUnit" type="text" class="validate" bind:value={stockKeepingUnit}>
