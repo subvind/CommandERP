@@ -64,15 +64,17 @@
 
 <nav class="nav-extended red darken-2">
   <div class="container">
-    <div class="nav-wrapper">
-      {#if product}
-        <a href="#" class="brand-logo">{product.name}</a>
-      {/if}
-      <ul id="nav-mobile" class="right">
+    <div class="row" style="margin-bottom: 0;">
+      <div class="col s12 m6">
         {#if product}
-          <li><a class="" href={`https://${product.organization.orgname}.erpnomy.com/products/${product.stockKeepingUnit}`} target="_blank">{product.organization.orgname}.erpnomy.com/products/{product.stockKeepingUnit}</a></li>
+          <div style="line-height: 30px !important; display: inline-flex;"><a href={`#`}>{product.name}</a></div>
         {/if}
-      </ul>
+      </div>
+      <div class="col s12 m6">
+        {#if product}
+          <div style="text-align: right;"><a href={`https://${product.organization.orgname}.erpnomy.com/products/${product.stockKeepingUnit}`} target="_blank">{product.organization.orgname}.erpnomy.com/products/{product.stockKeepingUnit}</a></div>
+        {/if}
+      </div>
     </div>
     <div class="nav-content">
       <ul class="tabs tabs-transparent black lighten-2">

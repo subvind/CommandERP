@@ -65,15 +65,17 @@
 
 <nav class="nav-extended red darken-2">
   <div class="container">
-    <div class="nav-wrapper">
-      {#if category}
-        <a href="#" class="brand-logo">{category.name}</a>
-      {/if}
-      <ul id="nav-mobile" class="right">
+    <div class="row" style="margin-bottom: 0;">
+      <div class="col s12 m6">
         {#if category}
-          <li><a class="" href={`https://${category.organization.orgname}.erpnomy.com/categories/${category.slug}`} target="_blank">{category.organization.orgname}.erpnomy.com/categories/{category.slug}</a></li>
+          <div style="line-height: 30px !important; display: inline-flex;"><a href={`#`}>{category.name}</a></div>
         {/if}
-      </ul>
+      </div>
+      <div class="col s12 m6">
+        {#if category}
+          <div style="text-align: right;"><a href={`https://${category.organization.orgname}.erpnomy.com/categories/${category.slug}`} target="_blank">{category.organization.orgname}.erpnomy.com/categories/{category.slug}</a></div>
+        {/if}
+      </div>
     </div>
     <div class="nav-content">
       <ul class="tabs tabs-transparent black lighten-2">
