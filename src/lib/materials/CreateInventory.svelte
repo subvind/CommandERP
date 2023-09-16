@@ -57,6 +57,7 @@
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'authorization': `Bearer ${localStorage.getItem("access_token")}`
         },
         body: JSON.stringify({
           building,

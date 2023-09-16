@@ -47,6 +47,9 @@
 
       const response = await fetch(`https://api.subvind.com/files/upload/${bucket.value}/${organizationId}`, {
         method: 'POST',
+        headers: {
+          'authorization': `Bearer ${localStorage.getItem("access_token")}`
+        },
         body: formData, // Use FormData to send the selected file
       });
 

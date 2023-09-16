@@ -2,6 +2,8 @@
 	import { onMount } from "svelte";
   import jwt_decode from 'jwt-decode';
 
+  import VerifyEmail from "$lib/VerifyEmail.svelte";
+
   let decodedToken: any = null;
   let user: any;
 	let loading: boolean = false;
@@ -16,6 +18,7 @@
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'authorization': `Bearer ${localStorage.getItem("access_token")}`
         },
         body: JSON.stringify({}),
       });
@@ -68,16 +71,32 @@
 	<meta name="description" content="About this app" />
 </svelte:head>
 
+<br />
+<br />
 <div class="container">
-	<h4>Email Verification</h4>
+  <div class="card">
+    <div class="card-content">
+      <h4>Email Verification</h4>
+    
+      <p>All users must be verified before continuing.</p>
 
-  <p>All users must be verified before continuing.</p>
-
-	{#if loading}
-		<button style="" class="waves-effect btn disabled">Loading</button>
-	{:else}
-		<button style="" class="waves-effect yellow black-text lighten-2 btn" on:click={verifyEmail}>send email verification token</button>
-	{/if}
-
-
+      {#if user}
+        <br />
+        {#if loading}
+          <button style="" class="waves-effect btn disabled">Loading</button>
+        {:else}
+          <button style="" class="waves-effect yellow black-text lighten-2 btn" on:click={verifyEmail}>send email verification token</button>
+        {/if}
+        <br />
+        <br />
+        <VerifyEmail userId={user.id} />
+      {/if}
+    </div>
+  </div>
 </div>
+
+<style>
+  h4 {
+    margin: 0;
+  }
+</style>
