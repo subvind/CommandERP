@@ -129,7 +129,7 @@
       <br />
       <div class="row">
         <div class="input-field col s12 m6">
-          <input id="name" type="text" class="validate" bind:value={name}>
+          <textarea id="name" class="materialize-textarea" bind:value={name}></textarea>
           <label for="name">Name</label>
           <span class="helper-text">Shown as the title in all uppercase. Prefer first letter uppercase rather than caps lock. Around half a sentence.</span>
         </div>
@@ -151,7 +151,7 @@
       {/if}
       <div class="row">
         <div class="input-field col s12">
-          <input id="description" type="text" class="validate" bind:value={description}>
+          <textarea id="description" class="materialize-textarea" bind:value={description}></textarea>
           <label for="description">Description</label>
           <span class="helper-text">Shown next to the title. Around one sentence.</span>
         </div>
