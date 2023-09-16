@@ -8,6 +8,18 @@
   let user: any;
   let loading = true;
 
+
+  function verifyUser (user: any) {
+    if (user.authStatus === 'Pending') {
+    // Check if you're already on the verification page to avoid infinite redirects
+    if (window.location.pathname !== '/email-verification') {
+      // Redirect to the verification page
+      window.location.href = '/email-verification';
+    }
+    // If already on the verification page, do nothing
+    }
+  }
+
   async function load() {
     const response = await fetch(`https://api.subvind.com/users/username/${decodedToken.username}`, {
       method: 'GET',
@@ -18,6 +30,7 @@
 
     if (response.ok) {
       user = await response.json();
+      verifyUser(user)
     } else {
       const errorData = await response.json();
       alert(errorData.error);
@@ -40,12 +53,16 @@
 <nav class="black">
   <div class="nav-wrapper">
     {#if user}
-      {#if user.defaultOrganization}
-        <Sidebar username={decodedToken.username} orgname={user.defaultOrganization.orgname} />
+      {#if user.authStatus === 'Pending'}
+        <!-- show nothing -->
       {:else}
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li><a href={`/${decodedToken.username}#organizations`}>select organization</a></li>
-        </ul>
+        {#if user.defaultOrganization}
+          <Sidebar username={decodedToken.username} orgname={user.defaultOrganization.orgname} />
+        {:else}
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href={`/${decodedToken.username}#organizations`}>select organization</a></li>
+          </ul>
+        {/if}
       {/if}
     {:else}
       {#if loading === false}
@@ -58,14 +75,18 @@
     <a href="/" class="brand-logo center"><span class="yellow">nomy</span>.<span class="green">E</span><span class="red">R</span><span class="blue">P</span></a>
 
     {#if user}
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/users"><span class="yellow">users</span></a></li>
-        <li><a href={`/${decodedToken.username}`}>{decodedToken.fullName}</a></li>
-        <li><a href="/organizations"><span class="yellow">organizations</span></a></li>
-        {#if user.defaultOrganization}
-          <li><a href={`/${decodedToken.username}/${user.defaultOrganization.orgname}`}>{user.defaultOrganization.displayName}</a></li>
-        {/if}
-      </ul>
+      {#if user.authStatus === 'Pending'}
+        <!-- show nothing -->
+      {:else}
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/users"><span class="yellow">users</span></a></li>
+          <li><a href={`/${decodedToken.username}`}>{decodedToken.fullName}</a></li>
+          <li><a href="/organizations"><span class="yellow">organizations</span></a></li>
+          {#if user.defaultOrganization}
+            <li><a href={`/${decodedToken.username}/${user.defaultOrganization.orgname}`}>{user.defaultOrganization.displayName}</a></li>
+          {/if}
+        </ul>
+      {/if}
     {:else}
       {#if loading === false}
         <ul id="nav-mobile" class="right hide-on-med-and-down">
