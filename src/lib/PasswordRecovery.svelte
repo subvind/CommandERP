@@ -1,52 +1,37 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  export let userId: any = null;
   let instances: any = undefined;
-  let user: any = undefined;
   let loading: boolean = false;
+  let user: any = null;
 
   onMount(async () => {
-    var elems = document.querySelectorAll('.fhtrhtsefafewgergsbxbsdbynrgb');
+    var elems = document.querySelectorAll('.fsergegtrtgvesvfdvzvrese');
     instances = M.Modal.init(elems, {});
-
-    const response = await fetch(`https://api.subvind.com/users/${userId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-
-    if (response.ok) {
-      user = await response.json();
-
-      setTimeout(() => {
-        M.updateTextFields();
-      }, 0)
-    } else {
-      const errorData = await response.json();
-      alert(errorData.error);
-    }
   })
 
-  let emailVerificationToken = ''
+  let recoverPasswordToken = ''
+  let newPassword = ''
+  let confirmPassword = ''
 
 	async function submit(event: any) {
     event.preventDefault()
 
-    if (emailVerificationToken === '') return alert('Email Verification Token must be defined.')
+    if (recoverPasswordToken === '') return alert('Recover Password Token must be defined.')
+    if (newPassword === '') return alert('New Password must be defined.')
+    if (confirmPassword === '') return alert('Confirm Password must be defined.')
     
     loading = true
 
     try {
-      const response = await fetch(`https://api.subvind.com/users/${userId}`, {
+      const response = await fetch(`https://api.subvind.com/users/resetPassword`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          'authorization': `Bearer ${localStorage.getItem("access_token")}`
         },
         body: JSON.stringify({
-          emailVerificationToken,
+          recoverPasswordToken,
+          password: newPassword
         }),
       });
 
@@ -76,14 +61,24 @@
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>
-  <div class="modal fhtrhtsefafewgergsbxbsdbynrgb">
+  <div class="modal fsergegtrtgvesvfdvzvrese">
     <div class="modal-content">
       <h4>Confirm Token From Email</h4>
       <br />
       <div class="row">
         <div class="input-field col s12">
-          <input id="emailVerificationToken" type="text" class="validate" bind:value={emailVerificationToken}>
-          <label for="emailVerificationToken">Email Verification Token</label>
+          <input id="recoverPasswordToken" type="text" class="validate" bind:value={recoverPasswordToken}>
+          <label for="recoverPasswordToken">Recover Password Token</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="newPassword" type="password" class="validate" bind:value={newPassword}>
+          <label for="newPassword">New Password</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="confirmPassword" type="password" class="validate" bind:value={confirmPassword}>
+          <label for="confirmPassword">Confirm Password</label>
         </div>
       </div>
     </div>

@@ -131,6 +131,9 @@
     <a href="/auth/login" class="waves-effect black white-text btn" style="float: right;">Login</a>
     <br />
     <br />
+    <a href="/password-recovery" class="waves-effect white black-text btn" style="float: right;">Password Recovery</a>
+    <br />
+    <br />
     <br />
     <br />
   </div>
