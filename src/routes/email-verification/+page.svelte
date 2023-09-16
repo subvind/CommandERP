@@ -74,8 +74,10 @@
   <p>All users must be verified before continuing.</p>
 
 	{#if loading}
-		<button style="margin-left: 1em;" class="waves-effect btn disabled">Loading</button>
+		<button style="" class="waves-effect btn disabled">Loading</button>
 	{:else}
-		<button style="margin-left: 1em;" class="waves-effect yellow black-text lighten-2 btn" on:click={verifyEmail}>send email verification token</button>
+		<button style="" class="waves-effect yellow black-text lighten-2 btn" on:click={verifyEmail}>send email verification token</button>
 	{/if}
+
+
 </div>

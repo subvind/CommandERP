@@ -82,7 +82,7 @@
   <h2 style="text-align: center;">Best Fair-Source ERP for Small and Medium Business</h2>
   <div class="row">
     <div class="col s12 m4">
-      <h5 style="margin: 0 0 0.5em;">SaaS pricing start from 99$/month</h5>
+      <h5 style="margin: 0 0 0.5em;">SaaS pricing start from 19$/month</h5>
       <ul class="collection">
         <li class="collection-item">Replace many apps like CRM, HR, Purchases, Orders, Payments, Invoices, Quotes, Inventory, Supply Chain, Expenses, Reports, Accounting all into one easy solution.</li>
         <li class="collection-item">Integrate with Ebay, Shopify, Magento, Etsy and add other products.</li>
