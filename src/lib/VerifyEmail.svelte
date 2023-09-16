@@ -52,7 +52,12 @@
 
       if (response.ok) {
         user = await response.json();
-        window.location.href = `/${user.username}`
+
+        if (user.authStatus === 'Verified') {
+          window.location.href = `/${user.username}`
+        } else {
+          alert('Sorry, we were unable to verify the provided token.')
+        }
       } else {
         const errorData = await response.json();
         alert(errorData.error);
