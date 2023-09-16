@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  export let email: any = '';
   let instances: any = undefined;
   let loading: boolean = false;
   let user: any = null;
@@ -8,6 +9,8 @@
   onMount(async () => {
     var elems = document.querySelectorAll('.fsergegtrtgvesvfdvzvrese');
     instances = M.Modal.init(elems, {});
+
+    M.updateTextFields();
   })
 
   let recoverPasswordToken = ''
@@ -17,6 +20,7 @@
 	async function submit(event: any) {
     event.preventDefault()
 
+    if (email === '') return alert('Email must be defined.')
     if (recoverPasswordToken === '') return alert('Recover Password Token must be defined.')
     if (newPassword === '') return alert('New Password must be defined.')
     if (confirmPassword === '') return alert('Confirm Password must be defined.')
@@ -24,7 +28,7 @@
     loading = true
 
     try {
-      const response = await fetch(`https://api.subvind.com/users/resetPassword`, {
+      const response = await fetch(`https://api.subvind.com/users/resetPassword/${email}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +43,8 @@
         user = await response.json();
 
         if (user.authStatus === 'Verified') {
-          window.location.href = `/${user.username}`
+          alert('Success! You may now login with your new password.')
+          window.location.href = `/auth/login`
         } else {
           alert('Sorry, we were unable to verify the provided token.')
         }

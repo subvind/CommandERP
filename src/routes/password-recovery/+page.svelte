@@ -10,6 +10,8 @@
 	async function passwordRecovery(event: any) {
     event.preventDefault()
     
+    if (email === '') return alert('Email must be defined.')
+
     loading = true
 
     try {
@@ -54,8 +56,14 @@
       <h4>Password Recovery</h4>
     
       <p>Use the following form to reset your password.</p>
-
+      
       <br />
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" placeholder="test@test.com" class="validate" bind:value={email}>
+          <label for="email">Email</label>
+        </div>
+      </div>
       {#if loading}
         <button style="" class="waves-effect btn disabled">Loading</button>
       {:else}
@@ -63,7 +71,7 @@
       {/if}
       <br />
       <br />
-      <PasswordRecovery />
+      <PasswordRecovery email={email} />
     </div>
   </div>
 </div>
