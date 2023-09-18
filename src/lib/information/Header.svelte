@@ -1,5 +1,6 @@
 <script lang="ts">
-  import Sidebar from "./Sidebar.svelte"
+  export let username: any
+  export let orgname: any
 </script>
 
 <nav class="black">
@@ -11,7 +12,23 @@
 </nav>
 <nav class="blue darken-2">
   <div class="nav-wrapper">
-    <Sidebar />
+    <ul class="left hide-on-med-and-down">
+      <li><a href={`/${username}/${orgname}/information/request-for-quotations`}>Request for Quotations</a></li>
+      <li><a href={`/${username}/${orgname}/information/purchase-requisitions`}>Purchase Requisitions</a></li>
+      <li><a href={`/${username}/${orgname}/information/purchase-orders`}>Purchase Orders</a></li>
+    </ul>
+    
+    <ul class="center hide-on-med-and-down" style="margin: 0 auto;">
+      <li><a href={`/${username}/${orgname}/information/planning`}>Planning</a></li>
+      <li><a href={`/${username}/${orgname}/information/production`}>Production</a></li>
+    </ul>
+    <!-- <a href="#" class="brand-logo center"></a> -->
+    
+    <ul class="right hide-on-med-and-down">
+      <li><a href={`/${username}/${orgname}/information/quotes`}>Quotes</a></li>
+      <li><a href={`/${username}/${orgname}/information/sales-orders`}>Sales Orders</a></li>
+      <li><a href={`/${username}/${orgname}/information/sales-forecast`}>Sales Forecast</a></li>
+    </ul>
   </div>
 </nav>
 
@@ -19,5 +36,12 @@
   .brand-logo.left,
   .brand-logo.right {
     margin: 0 0.5em;
+  }
+
+  .center {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
   }
 </style>
