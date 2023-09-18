@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   
-  import Categories from '$lib/materials/Categories.svelte';
+  import Products from '$lib/materials/Products.svelte';
 
   export let data
   let organization: any;
@@ -25,22 +25,22 @@
 
     if (responseOrg.ok) {
       organization = await responseOrg.json();
+
+      setTimeout(() => {
+        let elms = document.querySelectorAll('.tabs')
+        var instance = M.Tabs.init(elms, {});
+      }, 0)
     } else {
       const errorData = await responseOrg.json();
       alert(errorData.error);
     }
-    
-    setTimeout(() => {
-      let elms = document.querySelectorAll('.tabs')
-      var instance = M.Tabs.init(elms, {});
-    }, 0)
   })
 </script>
 
 <nav class="nav-extended grey darken-4">
   <div class="container">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo white-text">Categories</a>
+      <a href="#" class="brand-logo white-text">General Ledger</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
     </div>
@@ -60,7 +60,12 @@
 
 <div class="container">
   {#if organization}
-    <Categories organization={organization} />
+    <!-- <Products organization={organization} /> -->
+    <br />
+    <br />
+    <br />
+    <h5>Coming soon...</h5>
+    <p>This section of the application is still under construction.</p>
   {/if}
 </div>
 

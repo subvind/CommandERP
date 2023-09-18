@@ -56,7 +56,7 @@
   })
 </script>
 
-<nav class="nav-extended red darken-2">
+<nav class="nav-extended grey darken-4">
   <div class="container">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo white-text">Categories</a>
@@ -64,7 +64,7 @@
   </div>
 </nav>
 
-<nav class="nav-extended red darken-2">
+<nav class="nav-extended grey darken-3">
   <div class="container">
     <div class="row" style="margin-bottom: 0;">
       <div class="col s12 m6">

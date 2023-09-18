@@ -14,7 +14,7 @@
   <div class="nav-wrapper">
     <ul class="left hide-on-med-and-down">
       <li>
-        <a href={`/${username}/${orgname}/materials/receipts`}>Material Receipt</a>
+        <a href={`/${username}/${orgname}/materials/receipts`}>Material Receipts</a>
       </li>
     </ul>
     
@@ -28,7 +28,7 @@
     
     <ul class="right hide-on-med-and-down">
       <li>
-        <a href={`/${username}/${orgname}/materials/shipments`}>Shipment</a>
+        <a href={`/${username}/${orgname}/materials/shipments`}>Shipments</a>
       </li>
     </ul>
   </div>

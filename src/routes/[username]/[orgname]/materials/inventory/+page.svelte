@@ -37,7 +37,7 @@
   })
 </script>
 
-<nav class="nav-extended red darken-2">
+<nav class="nav-extended grey darken-4">
   <div class="container">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo white-text">Inventory</a>
