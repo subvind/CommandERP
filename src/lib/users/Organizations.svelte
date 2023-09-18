@@ -44,6 +44,7 @@
       width: '200px',
     },
     { 
+      id: 'view',
       name: '',
       width: '100px',
       sort: false,
