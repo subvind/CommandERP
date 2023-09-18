@@ -7,6 +7,7 @@
   import CoverPhoto from "$lib/materials/products/CoverPhoto.svelte";
   import Code from "$lib/Code.svelte";
   import CreateProduct from "$lib/materials/CreateProduct.svelte";
+  import Delete from "$lib/materials/products/Delete.svelte";
 
   export let data: any;
   let organization: any;
@@ -72,7 +73,7 @@
       </div>
       <div class="col s12 m6">
         {#if product}
-          <div style="text-align: right;"><a href={`https://${product.organization.orgname}.erpnomy.com/products/${product.stockKeepingUnit}`} target="_blank">{product.organization.orgname}.erpnomy.com/products/{product.stockKeepingUnit}</a></div>
+          <div style="text-align: right;"><a href={`https://${organization.orgname}.erpnomy.com/products/${product.stockKeepingUnit}`} target="_blank">{organization.orgname}.erpnomy.com/products/{product.stockKeepingUnit}</a></div>
         {/if}
       </div>
     </div>
@@ -93,7 +94,7 @@
   </div>
 </nav>
 
-{#if product}
+{#if product && organization}
   <div class="container">
     <div class="card main">
       <div id="profile" class="col s12">
@@ -117,7 +118,10 @@
       <Settings productId={product.id} />
     </div>
     <div class="controls">
-      <CreateProduct organization={product.organization} />
+      <CreateProduct organization={organization} />
+    </div>
+    <div class="controls">
+      <Delete product={product} organization={organization} />
     </div>
   </div>
 {/if}

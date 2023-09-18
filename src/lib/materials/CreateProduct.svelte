@@ -68,8 +68,8 @@
           ebayItem,
           etsyItem,
           detail,
-          price,
-          shippingCost,
+          price: price || 0,
+          shippingCost: shippingCost || 0,
           organization: user.defaultOrganization.id
         }),
       });

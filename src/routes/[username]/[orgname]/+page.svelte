@@ -8,6 +8,7 @@
   import OrgPhoto from "$lib/organizations/OrgPhoto.svelte";
   import Code from "$lib/Code.svelte";
   import CreateOrganization from "$lib/users/CreateOrganization.svelte";
+  import Delete from "$lib/organizations/Delete.svelte";
 
   export let data: any;
   let user: any = null;
@@ -185,6 +186,9 @@
     </div>
     <div class="controls">
       <CreateOrganization userId={user.id} />
+    </div>
+    <div class="controls">
+      <Delete organization={organization} />
     </div>
   {/if}
 </div>
