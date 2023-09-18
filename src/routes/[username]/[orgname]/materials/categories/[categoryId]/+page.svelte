@@ -8,6 +8,7 @@
   import MainPhoto from "$lib/materials/categories/MainPhoto.svelte";
   import Code from "$lib/Code.svelte";
   import CreateCategory from "$lib/materials/CreateCategory.svelte";
+  import Delete from "$lib/materials/categories/Delete.svelte";
 
   export let data: any;
   let organization: any;
@@ -132,6 +133,9 @@
       </div>
       <div class="controls">
         <CreateCategory organization={organization} />
+      </div>
+      <div class="controls">
+        <Delete category={category} organization={organization} />
       </div>
     {/if}
   </div>
