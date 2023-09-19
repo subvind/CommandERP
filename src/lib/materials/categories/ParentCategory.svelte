@@ -97,9 +97,13 @@
 
 <div class="detail">
   <br />
-  <div>Select a cateogry: {filterText}</div>
   {#if loading === false}
+    <div>Select a cateogry: {filterText}</div>
     <Select bind:value {items} bind:filterText on:input={handleInput} on:change={handleChange} />
+  {:else}
+    <div class="progress red lighten-2">
+      <div class="indeterminate teal lighten-2"></div>
+    </div>
   {/if}
 </div>
 

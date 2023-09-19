@@ -13,8 +13,15 @@
   export let data: any;
   let user: any = null;
   let organization: any = null;
+  let section: any = '';
   
   onMount(async () => {
+    // It retrieves the hash value from the URL and assigns it to the variable.
+    function getHashValue() {
+      return window.location.hash.substring(1); // Removes the "#" character
+    }
+    section = getHashValue() || 'profile';
+
     /**
      * set to default organization if
      * user is owner or employee of org
@@ -90,6 +97,8 @@
     <div class="nav-wrapper">
       {#if organization}
         <a href="#" class="brand-logo black-text">{organization.displayName}</a>
+      {:else}
+        <a href="#" class="brand-logo black-text">Loading...</a>
       {/if}
       <a href="#" data-target="3rd-party-mobile" class="right dropdown-trigger black-text hide-on-large-only"><i class="material-icons">more_horiz</i></a>
       <ul id="3rd-party-mobile" class="dropdown-content">
@@ -111,70 +120,72 @@
       </ul>
     </div>
     <div class="nav-content">
-      <ul class="tabs tabs-transparent black lighten-2">
-        {#if organization}
+      {#if organization}
+        <ul class="tabs tabs-transparent black lighten-2">
           <li class="tab">
-            <a class="active" href="#profile">
+            <a class="active" href="#profile" on:click={() => section = 'profile'}>
               {organization.orgname}
             </a>
           </li>
-        {/if}
-        <li class="tab"><a href="#suppliers">suppliers</a></li>
-        <li class="tab"><a href="#employees">employees</a></li>
-        <li class="tab"><a href="#customers">customers</a></li>
-      </ul>
+          <li class="tab"><a href="#suppliers" on:click={() => section = 'suppliers'}>suppliers</a></li>
+          <li class="tab"><a href="#employees" on:click={() => section = 'employees'}>employees</a></li>
+          <li class="tab"><a href="#customers" on:click={() => section = 'customers'}>customers</a></li>
+        </ul>
+      {/if}
     </div>
   </div>
 </nav>
 
-{#if organization}
-  <div class="container">
-    <div class="card main">
+<div class="container">
+  <div class="card main">
+    {#if organization && section === 'profile'}
       <div id="profile" class="col s12">
         <div class="card-content">
           <p>raw data:</p>
           <Code text={JSON.stringify(organization, null, 2)} lang="json" />
         </div>
       </div>
-      <div id="suppliers" class="col s12">
-        suppliers
-        <!-- {#if user}
-          <Organizations user={user} />
-        {/if} -->
-      </div>
+    {/if}
+    {#if organization && section === 'suppliers'}
+      <div id="suppliers" class="col s12">suppliers</div>
+    {/if}
+    {#if organization && section === 'employees'}
       <div id="employees" class="col s12">employees</div>
+    {/if}
+    {#if organization && section === 'customers'}
       <div id="customers" class="col s12">customers</div>
-      
-    </div>
+    {/if}
   </div>
-{/if}
+</div>
 
 <div class="container">
-  <ul class="tabs tabs-transparent black lighten-2">
-    <li class="tab"><a href="#orgphoto">orgPhoto</a></li>
-    <li class="tab"><a href="#showcases">showcases</a></li>
-    <li class="tab"><a href="#buckets">buckets</a></li>
-    <li class="tab"><a href="#files">files</a></li>
-  </ul>
+  {#if organization}
+    <ul class="tabs tabs-transparent black lighten-2">
+      <li class="tab"><a href="#orgphoto" on:click={() => section = 'orgPhoto'}>orgPhoto</a></li>
+      <li class="tab"><a href="#showcases" on:click={() => section = 'showcases'}>showcases</a></li>
+      <li class="tab"><a href="#buckets" on:click={() => section = 'buckets'}>buckets</a></li>
+      <li class="tab"><a href="#files" on:click={() => section = 'files'}>files</a></li>
+    </ul>
+  {/if}
   
   <div class="card main">
     <div id="orgphoto" class="col s12">
-      {#if organization}
+      {#if organization && section === 'orgPhoto'}
         <OrgPhoto data={data} organization={organization} />
       {/if}
     </div>
     <div id="showcases" class="col s12">
-      {#if organization}
+      {#if organization && section === 'showcases'}
         <Showcases organization={organization} />
       {/if}
     </div>
     <div id="buckets" class="col s12">
-      {#if organization}
+      {#if organization && section === 'buckets'}
         <Buckets organization={organization} />
       {/if}
     </div>
     <div id="files" class="col s12">
-      {#if organization}
+      {#if organization && section === 'files'}
         <Files organization={organization} />
       {/if}
     </div>
@@ -189,6 +200,16 @@
     </div>
     <div class="controls">
       <Delete organization={organization} />
+    </div>
+  {/if}
+
+  {#if !organization}
+    <br />
+    <br />
+    <br />
+    <!-- show loading indicator -->
+    <div class="progress red lighten-2">
+      <div class="indeterminate teal lighten-2"></div>
     </div>
   {/if}
 </div>

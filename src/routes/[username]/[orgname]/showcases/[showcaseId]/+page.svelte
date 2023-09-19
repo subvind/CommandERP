@@ -10,8 +10,15 @@
   let user: any = null;
   let organization: any = null;
   let showcase: any = null;
+  let section: any = '';
 
   onMount(async () => {
+    // It retrieves the hash value from the URL and assigns it to the variable.
+    function getHashValue() {
+      return window.location.hash.substring(1); // Removes the "#" character
+    }
+    section = getHashValue() || 'profile';
+
     /**
      * set to default organization if
      * user is owner or employee of org
@@ -111,48 +118,61 @@
             <a href="#" class="black-text">{showcase.title}</a>
           </li>
         </ul>
+      {:else}
+        <a href="#" class="brand-logo black-text">Loading...</a>
       {/if}
     </div>
     <div class="nav-content">
-      <ul class="tabs tabs-transparent black lighten-2">
-        {#if showcase}
+      {#if showcase}
+        <ul class="tabs tabs-transparent black lighten-2">
           <li class="tab">
-            <a class="active" href="#profile">
+            <a class="active" href="#profile" on:click={() => section = 'profile'}>
               {showcase.title}
             </a>
           </li>
-        {/if}
-        <li class="tab"><a href="#bannerphoto">banner photo</a></li>
-      </ul>
+          <li class="tab"><a href="#bannerphoto" on:click={() => section = 'bannerphoto'}>banner photo</a></li>
+        </ul>
+      {/if}
     </div>
   </div>
 </nav>
 
-{#if showcase}
-  <div class="container">
-    <div class="card main">
+<div class="container">
+  <div class="card main">
+    {#if showcase && section === 'profile'}
       <div id="profile" class="col s12">
         <div class="card-content">
           <p>raw data:</p>
           <Code text={JSON.stringify(showcase, null, 2)} lang="json" />
         </div>
       </div>
+    {/if}
+    {#if showcase && organization && section === 'bannerphoto'}
       <div id="bannerphoto" class="col s12">
-        {#if user}
-          <BannerPhoto data={data} showcase={showcase} organization={organization} />
-        {/if}
-      </div>
-    </div>
-    <div class="controls">
-      <Settings user={user} showcaseId={showcase.id} />
-    </div>
-    {#if organization}
-      <div class="controls">
-        <CreateShowcase organizationId={organization.id} />
+        <BannerPhoto data={data} showcase={showcase} organization={organization} />
       </div>
     {/if}
   </div>
-{/if}
+
+  {#if showcase && organization}
+    <div class="controls">
+      <Settings user={user} showcaseId={showcase.id} />
+    </div>
+    <div class="controls">
+      <CreateShowcase organizationId={organization.id} />
+    </div>
+  {/if}
+
+  {#if !showcase}
+    <br />
+    <br />
+    <br />
+    <!-- show loading indicator -->
+    <div class="progress red lighten-2">
+      <div class="indeterminate teal lighten-2"></div>
+    </div>
+  {/if}
+</div>
 
 <style>
   .main {

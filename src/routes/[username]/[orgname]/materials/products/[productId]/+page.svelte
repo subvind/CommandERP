@@ -12,8 +12,15 @@
   export let data: any;
   let organization: any;
   let product: any = null;
+  let section: any = '';
 
   onMount(async () => {
+    // It retrieves the hash value from the URL and assigns it to the variable.
+    function getHashValue() {
+      return window.location.hash.substring(1); // Removes the "#" character
+    }
+    section = getHashValue() || 'profile';
+
     /**
      * fetch org
      */
@@ -69,6 +76,8 @@
       <div class="col s12 m6">
         {#if product}
           <div style="line-height: 30px !important; display: inline-flex;"><a href={`#`}>{product.name}</a></div>
+        {:else}
+          <div style="line-height: 30px !important; display: inline-flex;"><a href={`#`}>Loading...</a></div>
         {/if}
       </div>
       <div class="col s12 m6">
@@ -78,42 +87,50 @@
       </div>
     </div>
     <div class="nav-content">
-      <ul class="tabs tabs-transparent black lighten-2">
-        {#if product}
+      {#if product}
+        <ul class="tabs tabs-transparent black lighten-2">
           <li class="tab">
-            <a class="active" href="#profile">
+            <a class="active" href="#profile" on:click={() => section = 'profile'}>
               {product.stockKeepingUnit}
             </a>
           </li>
-        {/if}
-        <li class="tab"><a href="#parentproduct">category</a></li>
-        <li class="tab"><a href="#photos">photos</a></li>
-        <li class="tab"><a href="#inventory">inventory</a></li>
-      </ul>
+          <li class="tab"><a href="#parentproduct" on:click={() => section = 'category'}>category</a></li>
+          <li class="tab"><a href="#photos" on:click={() => section = 'photos'}>photos</a></li>
+          <li class="tab"><a href="#inventory" on:click={() => section = 'inventory'}>inventory</a></li>
+        </ul>
+      {/if}
     </div>
   </div>
 </nav>
 
-{#if product && organization}
-  <div class="container">
-    <div class="card main">
+<div class="container">
+  <div class="card main">
+    {#if product && section === 'profile'}
       <div id="profile" class="col s12">
         <div class="card-content">
           <p>raw data:</p>
           <Code text={JSON.stringify(product, null, 2)} lang="json" />
         </div>
       </div>
+    {/if}
+    {#if product && section === 'category'}
       <div id="parentproduct" class="col s12">
         <Category data={data} product={product} />
       </div>
+    {/if}
+    {#if product && section === 'photos'}
       <div id="photos" class="col s12">
         <Bucket data={data} product={product} />
         <CoverPhoto data={data} product={product} />
       </div>
+    {/if}
+    {#if product && section === 'inventory'}
       <div id="inventory" class="col s12">
         inventory
       </div>
-    </div>
+    {/if}
+  </div>
+  {#if product && organization}
     <div class="controls">
       <Settings productId={product.id} />
     </div>
@@ -123,8 +140,18 @@
     <div class="controls">
       <Delete product={product} organization={organization} />
     </div>
-  </div>
-{/if}
+  {/if}
+
+  {#if !product}
+    <br />
+    <br />
+    <br />
+    <!-- show loading indicator -->
+    <div class="progress red lighten-2">
+      <div class="indeterminate teal lighten-2"></div>
+    </div>
+  {/if}
+</div>
 
 <style>
   .main {

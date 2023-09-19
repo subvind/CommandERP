@@ -13,8 +13,15 @@
   export let data: any;
   let organization: any;
   let category: any = null;
+  let section: any = '';
 
   onMount(async () => {
+    // It retrieves the hash value from the URL and assigns it to the variable.
+    function getHashValue() {
+      return window.location.hash.substring(1); // Removes the "#" character
+    }
+    section = getHashValue() || 'profile';
+
     /**
      * fetch org
      */
@@ -70,6 +77,8 @@
       <div class="col s12 m6">
         {#if category}
           <div style="line-height: 30px !important; display: inline-flex;"><a href={`#`}>{category.name}</a></div>
+        {:else}
+          <div style="line-height: 30px !important; display: inline-flex;"><a href={`#`}>Loading...</a></div>
         {/if}
       </div>
       <div class="col s12 m6">
@@ -79,67 +88,85 @@
       </div>
     </div>
     <div class="nav-content">
-      <ul class="tabs tabs-transparent black lighten-2">
-        {#if category}
+      {#if category}
+        <ul class="tabs tabs-transparent black lighten-2">
           <li class="tab">
-            <a class="active" href="#profile">
+            <a class="active" href="#profile" on:click={() => section = 'profile'}>
               {category.slug}
             </a>
           </li>
-        {/if}
-        <li class="tab"><a href="#products">products</a></li>
-        <li class="tab"><a href="#subcategories">sub categories</a></li>
-        <li class="tab"><a href="#parentcategory">parent category</a></li>
-      </ul>
+          <li class="tab"><a href="#products" on:click={() => section = 'products'}>products</a></li>
+          <li class="tab"><a href="#subcategories" on:click={() => section = 'subcategories'}>sub categories</a></li>
+          <li class="tab"><a href="#parentcategory" on:click={() => section = 'parentcategory'}>parent category</a></li>
+        </ul>
+      {/if}
     </div>
   </div>
 </nav>
 
-{#if category}
-  <div class="container">
-    <div class="card main">
+<div class="container">
+  <div class="card main">
+    {#if category && section === 'profile'}
       <div id="profile" class="col s12">
         <div class="card-content">
           <p>raw data:</p>
           <Code text={JSON.stringify(category, null, 2)} lang="json" />
         </div>
       </div>
+    {/if}
+    {#if category && section === 'products'}
       <div id="products" class="col s12">
         <Products data={data} category={category} />
       </div>
+    {/if}
+    {#if category && section === 'subcategories'}
       <div id="subcategories" class="col s12">
         <SubCategories data={data} category={category} />
       </div>
+    {/if}
+    {#if category && section === 'parentcategory'}
       <div id="parentcategory" class="col s12">
         <ParentCategory data={data} category={category} />
       </div>
-    </div>
+    {/if}
+  </div>
     
+  {#if category}
     <ul class="tabs tabs-transparent black lighten-2">
-      <li class="tab"><a href="#mainphoto">main photo</a></li>
+      <li class="tab"><a href="#mainphoto" on:click={() => section = 'mainphoto'}>main photo</a></li>
     </ul>
+  {/if}
     
-    <div class="card main">
+  <div class="card main">
+    {#if category && section === 'mainphoto'}
       <div id="mainphoto" class="col s12">
-        {#if category}
-          <MainPhoto data={data} category={category} />
-        {/if}
-      </div>
-    </div>
-
-    {#if category && organization}
-      <div class="controls">
-        <Settings categoryId={category.id} />
-      </div>
-      <div class="controls">
-        <CreateCategory organization={organization} />
-      </div>
-      <div class="controls">
-        <Delete category={category} organization={organization} />
+        <MainPhoto data={data} category={category} />
       </div>
     {/if}
   </div>
-{/if}
+
+  {#if category && organization}
+    <div class="controls">
+      <Settings categoryId={category.id} />
+    </div>
+    <div class="controls">
+      <CreateCategory organization={organization} />
+    </div>
+    <div class="controls">
+      <Delete category={category} organization={organization} />
+    </div>
+  {/if}
+
+  {#if !category}
+    <br />
+    <br />
+    <br />
+    <!-- show loading indicator -->
+    <div class="progress red lighten-2">
+      <div class="indeterminate teal lighten-2"></div>
+    </div>
+  {/if}
+</div>
 
 <style>
   .main {
