@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
 
   import Select from 'svelte-select';
+  import CreateCategory from '../CreateCategory.svelte';
 
   export let data: any;
   export let category: any;
@@ -96,15 +97,23 @@
 
 
 <div class="detail">
-  <br />
-  {#if loading === false}
-    <div>Select a cateogry: {filterText}</div>
-    <Select bind:value {items} bind:filterText on:input={handleInput} on:change={handleChange} />
-  {:else}
-    <div class="progress red lighten-2">
-      <div class="indeterminate teal lighten-2"></div>
+  <div class="row">
+    <div class="col s12 m6">
+      <br />
+      {#if loading === false}
+        <div>Select a category: {filterText}</div>
+        <Select bind:value {items} bind:filterText on:input={handleInput} on:change={handleChange} />
+      {:else}
+        <div class="progress red lighten-2">
+          <div class="indeterminate teal lighten-2"></div>
+        </div>
+      {/if}
     </div>
-  {/if}
+    <div class="col s12 m6">
+      <p>Use a parent category that will best suite this category. On the frontend users will be able to find a sub category by selecting a root category.</p>
+      <CreateCategory organization={category.organization} />
+    </div>
+  </div>
 </div>
 
 <style>

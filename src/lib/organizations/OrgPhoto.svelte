@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
 
   import Select from 'svelte-select';
+  import UploadFile from './UploadFile.svelte';
 
   export let data: any;
   export let organization: any;
@@ -96,19 +97,27 @@
 
 
 <div class="detail">
-  <br />
-  {#if loading === false}
-    <div>Select an orgPhoto: {filterText}</div>
-    <Select bind:value {items} bind:filterText on:input={handleInput} on:change={handleChange} />
-  {:else}
-    <div class="progress red lighten-2">
-      <div class="indeterminate teal lighten-2"></div>
+  <div class="row">
+    <div class="col s12 m6">
+      <br />
+      {#if loading === false}
+        <div>Select an orgPhoto: {filterText}</div>
+        <Select bind:value {items} bind:filterText on:input={handleInput} on:change={handleChange} />
+      {:else}
+        <div class="progress red lighten-2">
+          <div class="indeterminate teal lighten-2"></div>
+        </div>
+      {/if}
+      {#if organization.orgPhoto}
+        <br />
+        <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${organization.orgPhoto.bucket.name}/${organization.orgPhoto.filename}`} alt="">
+      {/if}
     </div>
-  {/if}
-  {#if organization.orgPhoto}
-    <br />
-    <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${organization.orgPhoto.bucket.name}/${organization.orgPhoto.filename}`} alt="">
-  {/if}
+    <div class="col s12 m6">
+      <p>Use a photo that best describes the organization overall. This photo will be show in the header next to the organization's display name on the frontned.</p>
+      <UploadFile organizationId={organization.id} />
+    </div>
+  </div>
 </div>
 
 <style>

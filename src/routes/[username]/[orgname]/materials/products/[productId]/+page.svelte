@@ -8,6 +8,8 @@
   import Code from "$lib/Code.svelte";
   import CreateProduct from "$lib/materials/CreateProduct.svelte";
   import Delete from "$lib/materials/products/Delete.svelte";
+  import CreateBucket from "$lib/organizations/CreateBucket.svelte";
+  import UploadFile from "$lib/organizations/UploadFile.svelte";
 
   export let data: any;
   let organization: any;
@@ -120,8 +122,22 @@
     {/if}
     {#if product && section === 'photos'}
       <div id="photos" class="col s12">
-        <Bucket data={data} product={product} />
-        <CoverPhoto data={data} product={product} />
+        <div class="row">
+          <div class="col s12 m6 ">
+            <Bucket data={data} product={product} />
+          </div>
+          <div class="col s12 m6">
+            <p>Use a bucket name that is the same as this products SKU for clairity. All of the photos in this bucket will be shown on the frontend.</p>
+            <CreateBucket organizationId={product.organization.id} />
+          </div>
+          <div class="col s12 m6">
+            <CoverPhoto data={data} product={product} />
+          </div>
+          <div class="col s12 m6">
+            <p>Use a photo that you want to be displayed as the main cover photo. Only this photo get's shown in the product lists on the frontend.</p>
+            <UploadFile organizationId={product.organization.id} />
+          </div>
+        </div>
       </div>
     {/if}
     {#if product && section === 'inventory'}

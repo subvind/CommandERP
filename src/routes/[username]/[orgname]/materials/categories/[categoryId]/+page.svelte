@@ -9,6 +9,7 @@
   import Code from "$lib/Code.svelte";
   import CreateCategory from "$lib/materials/CreateCategory.svelte";
   import Delete from "$lib/materials/categories/Delete.svelte";
+  import UploadFile from "$lib/organizations/UploadFile.svelte";
 
   export let data: any;
   let organization: any;
@@ -140,7 +141,15 @@
   <div class="card main">
     {#if category && section === 'mainphoto'}
       <div id="mainphoto" class="col s12">
-        <MainPhoto data={data} category={category} />
+        <div class="row">
+          <div class="col s12 m6">
+            <MainPhoto data={data} category={category} />
+          </div>
+          <div class="col s12 m6">
+            <p>Use a photo that best describes the products overall that are in this category. This photo will be show next to the category name on the frontned.</p>
+            <UploadFile organizationId={category.organization.id} />
+          </div>
+        </div>
       </div>
     {/if}
   </div>

@@ -1,7 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-
+  
   import Select from 'svelte-select';
+  import UploadFile from '$lib/organizations/UploadFile.svelte';
 
   export let data: any;
   export let showcase: any;
@@ -97,19 +98,27 @@
 
 
 <div class="detail">
-  <br />
-  {#if loading === false}
-    <div>Select a banner photo: {filterText}</div>
-    <Select bind:value {items} bind:filterText on:input={handleInput} on:change={handleChange} />
-  {:else}
-    <div class="progress red lighten-2">
-      <div class="indeterminate teal lighten-2"></div>
+  <div class="row">
+    <div class="col s12 m6">
+      <br />
+      {#if loading === false}
+        <div>Select a banner photo: {filterText}</div>
+        <Select bind:value {items} bind:filterText on:input={handleInput} on:change={handleChange} />
+      {:else}
+        <div class="progress red lighten-2">
+          <div class="indeterminate teal lighten-2"></div>
+        </div>
+      {/if}
+      {#if showcase.bannerPhoto}
+        <br />
+        <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${showcase.bannerPhoto.bucket.name}/${showcase.bannerPhoto.filename}`} alt="">
+      {/if}
     </div>
-  {/if}
-  {#if showcase.bannerPhoto}
-    <br />
-    <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${showcase.bannerPhoto.bucket.name}/${showcase.bannerPhoto.filename}`} alt="">
-  {/if}
+    <div class="col s12 m6">
+      <p>Use a photo that best describes the showcase. This photo will be show in the slider on the homepage under the header on the frontned.</p>
+      <UploadFile organizationId={organization.id} />
+    </div>
+  </div>
 </div>
 
 <style>
