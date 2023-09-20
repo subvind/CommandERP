@@ -1,15 +1,15 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import Settings from '$lib/showcases/Settings.svelte'
-  import BannerPhoto from "$lib/showcases/BannerPhoto.svelte";
+  import Settings from '$lib/buckets/Settings.svelte'
   import Code from "$lib/Code.svelte";
-  import CreateShowcase from "$lib/organizations/CreateShowcase.svelte";
+  import CreateBucket from "$lib/organizations/CreateBucket.svelte";
+    import Files from "$lib/buckets/Files.svelte";
 
   export let data: any;
   let user: any = null;
   let organization: any = null;
-  let showcase: any = null;
+  let bucket: any = null;
   let section: any = '';
 
   onMount(async () => {
@@ -55,19 +55,19 @@
     }
 
     /**
-     * fetch showcase
+     * fetch bucket
      */
-    const responseShowcase = await fetch(`https://api.subvind.com/showcases/${data.showcaseId}`, {
+    const responseBucket = await fetch(`https://api.subvind.com/buckets/name/${data.bucketId}/${organization.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       }
     });
 
-    if (responseShowcase.ok) {
-      showcase = await responseShowcase.json();
+    if (responseBucket.ok) {
+      bucket = await responseBucket.json();
     } else {
-      const errorData = await responseShowcase.json();
+      const errorData = await responseBucket.json();
       alert(errorData.error);
     }
 
@@ -84,13 +84,13 @@
 <nav class="nav-extended yellow lighten-2">
   <div class="container">
     <div class="nav-wrapper">
-      {#if organization && showcase}
+      {#if organization && bucket}
         <ul id="nav-mobile" class="left">
           <li>
             <a href={`/${organization.owner.username}/${organization.orgname}`} class="black-text">{organization.displayName}</a>
           </li>
           <li>
-            <a href="#" class="black-text">{showcase.title}</a>
+            <a href="#" class="black-text">{bucket.name}</a>
           </li>
         </ul>
       {:else}
@@ -98,14 +98,14 @@
       {/if}
     </div>
     <div class="nav-content">
-      {#if showcase}
+      {#if bucket}
         <ul class="tabs tabs-transparent black lighten-2">
           <li class="tab">
             <a class="active" href="#profile" on:click={() => section = 'profile'}>
-              {showcase.title}
+              {bucket.name}
             </a>
           </li>
-          <li class="tab"><a href="#bannerphoto" on:click={() => section = 'bannerphoto'}>banner photo</a></li>
+          <li class="tab"><a href="#files" on:click={() => section = 'files'}>files</a></li>
         </ul>
       {/if}
     </div>
@@ -114,31 +114,31 @@
 
 <div class="container">
   <div class="card main">
-    {#if showcase && section === 'profile'}
+    {#if bucket && section === 'profile'}
       <div id="profile" class="col s12">
         <div class="card-content">
           <p>raw data:</p>
-          <Code text={JSON.stringify(showcase, null, 2)} lang="json" />
+          <Code text={JSON.stringify(bucket, null, 2)} lang="json" />
         </div>
       </div>
     {/if}
-    {#if showcase && organization && section === 'bannerphoto'}
-      <div id="bannerphoto" class="col s12">
-        <BannerPhoto data={data} showcase={showcase} organization={organization} />
+    {#if bucket && organization && section === 'files'}
+      <div id="files" class="col s12">
+        <Files bucket={bucket} organization={organization} />
       </div>
     {/if}
   </div>
 
-  {#if showcase && organization}
+  {#if bucket && organization}
     <div class="controls">
-      <Settings user={user} showcaseId={showcase.id} />
+      <Settings user={user} bucketId={bucket.id} />
     </div>
     <div class="controls">
-      <CreateShowcase organizationId={organization.id} />
+      <CreateBucket organizationId={organization.id} />
     </div>
   {/if}
 
-  {#if !showcase}
+  {#if !bucket}
     <br />
     <br />
     <br />
