@@ -5,6 +5,7 @@
   import Photo from "$lib/files/Photo.svelte";
   import Code from "$lib/Code.svelte";
   import UploadFile from "$lib/organizations/UploadFile.svelte";
+  import Delete from "$lib/files/Delete.svelte";
 
   export let data: any;
   let user: any = null;
@@ -124,7 +125,7 @@
     {/if}
     {#if file && organization && section === 'photo'}
       <div id="photo" class="col s12">
-        <Photo data={data} file={file} organization={organization} />
+        <Photo file={file} organization={organization} />
       </div>
     {/if}
   </div>
@@ -135,6 +136,9 @@
     </div>
     <div class="controls">
       <UploadFile organizationId={organization.id} />
+    </div>
+    <div class="controls">
+      <Delete file={file} organization={organization} />
     </div>
   {/if}
 

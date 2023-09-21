@@ -4,7 +4,8 @@
   import Settings from '$lib/buckets/Settings.svelte'
   import Code from "$lib/Code.svelte";
   import CreateBucket from "$lib/organizations/CreateBucket.svelte";
-    import Files from "$lib/buckets/Files.svelte";
+  import Files from "$lib/buckets/Files.svelte";
+  import Delete from "$lib/buckets/Delete.svelte";
 
   export let data: any;
   let user: any = null;
@@ -135,6 +136,9 @@
     </div>
     <div class="controls">
       <CreateBucket organizationId={organization.id} />
+    </div>
+    <div class="controls">
+      <Delete bucket={bucket} organization={organization} />
     </div>
   {/if}
 
