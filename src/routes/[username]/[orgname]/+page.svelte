@@ -9,6 +9,7 @@
   import Code from "$lib/Code.svelte";
   import CreateOrganization from "$lib/users/CreateOrganization.svelte";
   import Delete from "$lib/organizations/Delete.svelte";
+    import Accounts from "$lib/organizations/Accounts.svelte";
 
   export let data: any;
   let user: any = null;
@@ -147,13 +148,19 @@
       </div>
     {/if}
     {#if organization && section === 'suppliers'}
-      <div id="suppliers" class="col s12">suppliers</div>
+      <div id="suppliers" class="col s12">
+        <Accounts organization={organization} type="supplier" />
+      </div>
     {/if}
     {#if organization && section === 'employees'}
-      <div id="employees" class="col s12">employees</div>
+      <div id="employees" class="col s12">
+        <Accounts organization={organization} type="employee" />
+      </div>
     {/if}
     {#if organization && section === 'customers'}
-      <div id="customers" class="col s12">customers</div>
+      <div id="customers" class="col s12">
+        <Accounts organization={organization} type="customer" />
+      </div>
     {/if}
   </div>
 </div>
