@@ -8,13 +8,13 @@
 	let email = ''
   let password = ''
   let type = ''
-  let organizationId = ''
+  let organization: any = ''
 
   async function login(event: any) {
     event.preventDefault()
 
     if (type === '') return alert('Account type must be defined.')
-    if (organizationId === '') return alert('Organization must be defined.')
+    if (type !== 'root-user' && organization === '') return alert('Organization must be defined.')
     if (email === '') return alert('Email must be defined.')
     if (password === '') return alert('Password must be defined.')
 
@@ -53,14 +53,15 @@
           alert(errorData.error);
         }
       } else {
-        const response = await fetch('https://api.subvind.com/auth/accountLogin', {
+        const response = await fetch(`https://api.subvind.com/auth/accountLogin`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            email: `${organizationId}:${email}`,
-            password
+            email,
+            password,
+            organizationId: organization.value
           }),
         });
   
@@ -69,7 +70,7 @@
           console.log('access_token', res.access_token)
           localStorage.setItem('access_token', res.access_token);
           let decodedToken: any = jwt_decode(res.access_token);
-          window.location.href = `${decodedToken.ownername}/${decodedToken.orgname}/accounts/${decodedToken.accountname}`
+          window.location.href = `/${decodedToken.ownername}/${decodedToken.orgname}/accounts/${decodedToken.accountname}`
         } else {
           const errorData = await response.json();
           alert(errorData.error);
@@ -107,15 +108,15 @@
           <select bind:value={type}>
             <option value="" disabled selected>Choose your membership</option>
             <option value="root-user">root user</option>
+            <option value="organization-customer">organization customer</option>
             <option value="organization-employee">organization employee</option>
             <option value="organization-supplier">organization supplier</option>
-            <option value="organization-customer">organization customer</option>
           </select>
           <label>Account Type</label>
         </div>
         {#if type && type !== 'root-user'}
           <div class="input-field col s12" style="margin-top: 0;">
-            <SelectOrganization bind:value={organizationId} />
+            <SelectOrganization bind:value={organization} />
           </div>
         {/if}
         <div class="input-field col s12">
