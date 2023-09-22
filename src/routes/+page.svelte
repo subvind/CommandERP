@@ -42,7 +42,7 @@
         <p>in an organization.</p>
         <br />
         {#if accessToken}
-          <a href={`/${decoded.username}`} class="waves-effect yellow black-text lighten-2 btn username">{decoded.username}</a>
+          <a href={`/${decoded.type === 'user' ? decoded.username : `${decoded.ownername}/${decoded.orgname}/accounts/${decoded.accountname}`}`} class="waves-effect yellow black-text lighten-2 btn username">{decoded.username || decoded.accountname}</a>
           <a href="/auth/logout" class="waves-effect black white-text btn">Logout</a>
         {:else}
           <a href="/auth/login" class="waves-effect black white-text btn">Login</a>
