@@ -46,15 +46,15 @@
     { 
       id: 'view',
       name: '',
-      width: '100px',
+      width: '150px',
       sort: false,
       hidden: false,
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `/${user.username}/${row.cells[2].data}`,
+          href: `/${user.username}/${row.cells[2].data}/defaultOrganization`,
           target: "_self",
           className: 'btn btn-small yellow black-text lighten-2 right',
-        }, 'VIEW');
+        }, 'DEFAULT');
       }
     },
   ]

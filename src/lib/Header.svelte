@@ -79,7 +79,6 @@
     decodedToken = jwt_decode(accessToken);
 
     await load()
-    setTimeout(load, 1000) // load again for defaultOrganization change
   })
 </script>
 
@@ -90,7 +89,7 @@
         <!-- show nothing -->
       {:else}
         {#if user.defaultOrganization}
-          <Sidebar decodedToken={decodedToken} />
+          <Sidebar decodedToken={decodedToken} person={user} />
         {:else}
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a href={`/${decodedToken.username}#organizations`}>select organization</a></li>
@@ -100,7 +99,7 @@
     {/if}
 
     {#if account}
-      <Sidebar decodedToken={decodedToken} />
+      <Sidebar decodedToken={decodedToken} person={account} />
     {/if}
     
     {#if !decodedToken}

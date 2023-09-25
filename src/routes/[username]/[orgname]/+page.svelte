@@ -9,7 +9,7 @@
   import Code from "$lib/Code.svelte";
   import CreateOrganization from "$lib/users/CreateOrganization.svelte";
   import Delete from "$lib/organizations/Delete.svelte";
-    import Accounts from "$lib/organizations/Accounts.svelte";
+  import Accounts from "$lib/organizations/Accounts.svelte";
 
   export let data: any;
   let user: any = null;
@@ -22,31 +22,6 @@
       return window.location.hash.substring(1); // Removes the "#" character
     }
     section = getHashValue() || 'profile';
-
-    /**
-     * set to default organization if
-     * user is owner or employee of org
-     */
-    try {
-      const response = await fetch(`https://api.subvind.com/users/defaultOrganization/${data.username}/${data.orgname}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-
-      if (response.ok) {
-        let res = await response.json();
-
-        console.log('res', res)
-      } else {
-        const errorData = await response.json();
-        alert(errorData.message);
-      }
-    } catch (error) {
-      console.error('Error featching defaultOrganization:', error);
-      alert('An error occurred during defaultOrganization.');
-    }
     
     /**
      * fetch user
