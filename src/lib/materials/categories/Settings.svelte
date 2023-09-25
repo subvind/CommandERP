@@ -116,7 +116,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button class="waves-effect waves-black btn-flat" on:click={() => { instances[0].close() }}>Cancel</button>
+      <button class="waves-effect waves-black btn-flat" on:click={(e) => { e.preventDefault(); instances[0].close(); }}>Cancel</button>
       {#if loading}
         <button class="waves-effect btn disabled">Loading</button>
       {:else}
