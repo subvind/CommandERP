@@ -34,9 +34,24 @@
       width: '200px',
     },
     {
+      id: 'supplierStatus',
+      name: 'Sup. Status',
+      width: '200px',
+    },
+    {
+      id: 'employeeStatus',
+      name: 'Emp. Status',
+      width: '200px',
+    },
+    {
+      id: 'customerStatus',
+      name: 'Cus. Status',
+      width: '200px',
+    },
+    {
       id: 'joinDate',
       name: 'Join Date',
-      width: '200px',
+      width: '250px',
     },
     { 
       id: 'view',
@@ -58,6 +73,9 @@
       value.id,
       value.accountname,
       `${value.firstName} ${value.lastName}`,
+      value.supplier.supplierStatus,
+      value.employee.employeeStatus,
+      value.customer.customerStatus,
       value.createdAt
     ]
   }
