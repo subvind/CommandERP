@@ -88,7 +88,7 @@
 </script>
 
 <!-- Modal Trigger -->
-<a class="btn red white-text" href="#!" on:click={() => { instances[0].open() }}>CREATE INVENTORY</a>
+<button class="btn red white-text" on:click={() => { instances[0].open() }}>CREATE INVENTORY</button>
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>
@@ -134,7 +134,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a class="waves-effect waves-black btn-flat" href="#!" on:click={() => { instances[0].close() }}>Cancel</a>
+      <button class="waves-effect waves-black btn-flat" on:click={() => { instances[0].close() }}>Cancel</button>
       {#if loading}
         <button class="waves-effect btn disabled">Loading</button>
       {:else}

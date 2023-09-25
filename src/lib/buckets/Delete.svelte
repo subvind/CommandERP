@@ -48,7 +48,7 @@
 
 
 <!-- Modal Trigger -->
-<a class="btn yellow lighten-2 black-text" href="#!" on:click={() => { instances[0].open() }}>DELETE BUCKET</a>
+<button class="btn yellow lighten-2 black-text" on:click={() => { instances[0].open() }}>DELETE BUCKET</button>
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>

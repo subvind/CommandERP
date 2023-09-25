@@ -47,7 +47,7 @@
 
 
 <!-- Modal Trigger -->
-<a class="btn yellow lighten-2 black-text" href="#!" on:click={() => { instances[0].open() }}>DELETE ORGANIZATION</a>
+<button class="btn yellow lighten-2 black-text" on:click={() => { instances[0].open() }}>DELETE ORGANIZATION</button>
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>

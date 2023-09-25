@@ -93,7 +93,7 @@
 </script>
 
 <!-- Modal Trigger -->
-<a class="btn yellow lighten-2 black-text" href="#!" on:click={() => { instances[0].open() }}>CREATE SHOWCASE</a>
+<button class="btn yellow lighten-2 black-text" on:click={() => { instances[0].open() }}>CREATE SHOWCASE</button>
 
 <!-- Modal Structure -->
 <form on:submit={(e) => submit(e)}>
@@ -121,7 +121,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a class="waves-effect waves-black btn-flat" href="#!" on:click={() => { instances[0].close() }}>Cancel</a>
+      <button class="waves-effect waves-black btn-flat" on:click={() => { instances[0].close() }}>Cancel</button>
       {#if loading}
         <button class="waves-effect btn disabled">Loading</button>
       {:else}
