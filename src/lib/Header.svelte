@@ -127,7 +127,7 @@
 
     {#if account}
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href={`/${decodedToken.ownername}/${decodedToken.orgname}#employees`}><span class="yellow">employees</span></a></li>
+        <li><a href={`/${decodedToken.ownername}/${decodedToken.orgname}#employees`}><span class="yellow">accounts</span></a></li>
         <li><a href={`/${decodedToken.ownername}/${decodedToken.orgname}/accounts/${decodedToken.accountname}`}>{decodedToken.fullName}</a></li>
         <li><a href="/organizations"><span class="yellow">organizations</span></a></li>
         {#if account.organization}
