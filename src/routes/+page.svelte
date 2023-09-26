@@ -9,18 +9,18 @@
     accessToken = localStorage.getItem('access_token');
     decoded = jwt_decode(accessToken);
 
+    M.updateTextFields();
+
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems, {
       alignment: 'right'
     });
-
-    M.updateTextFields();
   })
 </script>
 
 <svelte:head>
-    <title>Enterprise Resource Planning - nomy.ERP</title> 
-    <meta name="description" content="A dangerous place to get some flow-based devgramming done." />
+  <title>Enterprise Resource Planning - nomy.ERP</title> 
+  <meta name="description" content="A dangerous place to get some flow-based devgramming done." />
 </svelte:head>
 
 <div class="banner">
@@ -63,13 +63,13 @@
       <a href="https://istrav.com/solutions" target="_blank" class="brand-logo black-text hide-on-med-and-down">istrav.com/solutions</a>
     </div>
     
-    <a href="#" data-target='dropdown1' class="btn-floating btn-large waves-effect waves-light black dropdown-trigger right" style="margin-top: -1.9em;"><i class="material-icons">share</i></a>
+    <!-- <a href="#" data-target='dropdown1' class="btn-floating btn-large waves-effect waves-light black dropdown-trigger right" style="margin-top: -1.9em;"><i class="material-icons">share</i></a> -->
     <!-- Dropdown Structure -->
-    <ul id='dropdown1' class='dropdown-content'>
+    <!-- <ul id='dropdown1' class='dropdown-content'>
       <li><a href="https://twitter.com/BurandtTravis" target="_blank">Twitter</a></li>
       <li><a href="https://youtube.com/Traveco504" target="_blank">YouTube</a></li>
       <li><a href="https://github.com/subvind" target="_blank">GitHub</a></li>
-    </ul>
+    </ul> -->
   </div>
 </nav>
 <br />
@@ -85,17 +85,18 @@
         <li class="collection-item">Integrate with Ebay, Shopify, Magento, Etsy and add other products.</li>
         <li class="collection-item">Get fast customizations and support.</li>
       </ul>
-      <a class="btn btn-large black" href="https://istrav.com/erpnomy">TRY FOR FREE</a>
+      <a class="btn btn-large black" href="https://istrav.com/solutions">TRY FOR FREE</a>
       <br />
       <br />
     </div>
     <div class="col s12 m8">
       <div class="card" style="padding: 1em; overflow: hidden;">
-          <div class="input-field">
-            <i class="material-icons prefix">public</i>
-            <input id="example" class="validate" disabled type="text" value="https://www.brokenrecord.store">
-            <label for="example">For Example:</label>
-          </div>
+        <div>For Example:</div>
+        <div class="input-field" style="margin-top: 0;">
+          <i class="material-icons prefix">public</i>
+          <input id="example" class="validate" disabled type="text" value="https://www.brokenrecord.store">
+          <!-- <label for="example">For Example:</label> -->
+        </div>
         <div class="" style="height: 600px; overflow: hidden;">
           <iframe class="zoomedIframe" src="https://www.brokenrecord.store" frameborder="0" style="width: 200%; height: 2400px; padding: 0; margin: 0;"></iframe>
         </div>
