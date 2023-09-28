@@ -1,16 +1,16 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import Settings from '$lib/buckets/Settings.svelte';
+  import Settings from '$lib/accounts/Settings.svelte';
   import Code from "$lib/Code.svelte";
-  import CreateBucket from "$lib/organizations/CreateBucket.svelte";
-  import Files from "$lib/buckets/Files.svelte";
-  import Delete from "$lib/buckets/Delete.svelte";
+  import CreateAccount from "$lib/organizations/CreateAccount.svelte";
+  import Files from "$lib/accounts/Files.svelte";
+  import Delete from "$lib/accounts/Delete.svelte";
 
   export let data: any;
   let user: any = null;
   let organization: any = null;
-  let bucket: any = null;
+  let account: any = null;
   let section: any = '';
 
   onMount(async () => {
@@ -56,9 +56,9 @@
     }
 
     /**
-     * fetch bucket
+     * fetch account
      */
-    const responseBucket = await fetch(`https://api.subvind.com/buckets/name/${data.bucketId}/${organization.id}`, {
+    const responseBucket = await fetch(`https://api.subvind.com/accounts/accountname/${data.accountId}/${organization.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -66,7 +66,7 @@
     });
 
     if (responseBucket.ok) {
-      bucket = await responseBucket.json();
+      account = await responseBucket.json();
     } else {
       const errorData = await responseBucket.json();
       alert(errorData.error);
@@ -85,13 +85,13 @@
 <nav class="nav-extended yellow lighten-2">
   <div class="container">
     <div class="nav-wrapper">
-      {#if organization && bucket}
+      {#if organization && account}
         <ul id="nav-mobile" class="left">
           <li>
             <a href={`/${organization.owner.username}/${organization.orgname}`} class="black-text">{organization.displayName}</a>
           </li>
           <li>
-            <a href="#" class="black-text">{bucket.name}</a>
+            <a href="#" class="black-text">{account.accountname}</a>
           </li>
         </ul>
       {:else}
@@ -99,14 +99,16 @@
       {/if}
     </div>
     <div class="nav-content">
-      {#if bucket}
+      {#if account}
         <ul class="tabs tabs-transparent black lighten-2">
           <li class="tab">
             <a class="active" href="#profile" on:click={() => section = 'profile'}>
-              {bucket.name}
+              {account.accountname}
             </a>
           </li>
-          <li class="tab"><a href="#files" on:click={() => section = 'files'}>files</a></li>
+          <li class="tab"><a href="#supplier" on:click={() => section = 'supplier'}>supplier</a></li>
+          <li class="tab"><a href="#employee" on:click={() => section = 'employee'}>employee</a></li>
+          <li class="tab"><a href="#customer" on:click={() => section = 'customer'}>customer</a></li>
         </ul>
       {/if}
     </div>
@@ -115,34 +117,34 @@
 
 <div class="container">
   <div class="card main">
-    {#if bucket && section === 'profile'}
+    {#if account && section === 'profile'}
       <div id="profile" class="col s12">
         <div class="card-content">
           <p>raw data:</p>
-          <Code text={JSON.stringify(bucket, null, 2)} lang="json" />
+          <Code text={JSON.stringify(account, null, 2)} lang="json" />
         </div>
       </div>
     {/if}
-    {#if bucket && organization && section === 'files'}
+    {#if account && organization && section === 'files'}
       <div id="files" class="col s12">
-        <Files bucket={bucket} organization={organization} />
+        <!-- <Files account={account} organization={organization} /> -->
       </div>
     {/if}
   </div>
 
-  {#if bucket && organization}
+  {#if account && organization}
     <div class="controls">
-      <Settings user={user} bucketId={bucket.id} />
+      <Settings user={user} accountId={account.id} />
     </div>
     <div class="controls">
-      <CreateBucket organizationId={organization.id} />
+      <CreateAccount organizationId={organization.id} />
     </div>
     <div class="controls">
-      <Delete bucket={bucket} organization={organization} />
+      <Delete account={account} organization={organization} />
     </div>
   {/if}
 
-  {#if !bucket}
+  {#if !account}
     <br />
     <br />
     <br />
