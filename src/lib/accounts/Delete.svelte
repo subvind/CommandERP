@@ -10,7 +10,7 @@
 	async function submit(event: any) {
     event.preventDefault()
     
-    if (confirm !== `delete ${account.name}`) return alert('Confirm must be valid.')
+    if (confirm !== `delete ${account.accountname}`) return alert('Confirm must be valid.')
 
     loading = true
 
@@ -26,8 +26,8 @@
 
       if (response.ok) {
         // 200 success
-				alert('Bucket deleted successfully.')
-        window.location.href = `/${organization.owner.username}/${organization.orgname}#accounts`
+				alert('Account deleted successfully.')
+        window.location.href = `/${organization.owner.username}/${organization.orgname}#employees`
       } else {
         const errorData = await response.json();
         alert(errorData.error);
@@ -60,7 +60,7 @@
         <div class="input-field col s12">
           <input id="confirm" type="text" class="validate" bind:value={confirm}>
           <label for="confirm">Confirm</label>
-          <span class="helper-text">Type the phrase "delete {account.name}" to remove this account.</span>
+          <span class="helper-text">Type the phrase "delete {account.accountname}" to remove this account.</span>
         </div>
       </div>
     </div>
