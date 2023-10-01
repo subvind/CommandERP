@@ -4,8 +4,8 @@
   import Settings from '$lib/accounts/Settings.svelte';
   import Code from "$lib/Code.svelte";
   import CreateAccount from "$lib/organizations/CreateAccount.svelte";
-  import Files from "$lib/accounts/Files.svelte";
   import Delete from "$lib/accounts/Delete.svelte";
+  import Supplier from "$lib/accounts/Supplier.svelte";
 
   export let data: any;
   let user: any = null;
@@ -125,9 +125,9 @@
         </div>
       </div>
     {/if}
-    {#if account && organization && section === 'files'}
-      <div id="files" class="col s12">
-        <!-- <Files account={account} organization={organization} /> -->
+    {#if account && organization && section === 'supplier'}
+      <div id="supplier" class="col s12">
+        <Supplier accountId={account.id} />
       </div>
     {/if}
   </div>
