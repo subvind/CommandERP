@@ -6,6 +6,8 @@
   import CreateAccount from "$lib/organizations/CreateAccount.svelte";
   import Delete from "$lib/accounts/Delete.svelte";
   import Supplier from "$lib/accounts/Supplier.svelte";
+  import Employee from "$lib/accounts/Employee.svelte";
+  import Customer from "$lib/accounts/Customer.svelte";
 
   export let data: any;
   let user: any = null;
@@ -128,6 +130,16 @@
     {#if account && organization && section === 'supplier'}
       <div id="supplier" class="col s12">
         <Supplier accountId={account.id} />
+      </div>
+    {/if}
+    {#if account && organization && section === 'employee'}
+      <div id="employee" class="col s12">
+        <Employee accountId={account.id} />
+      </div>
+    {/if}
+    {#if account && organization && section === 'customer'}
+      <div id="customer" class="col s12">
+        <Customer accountId={account.id} />
       </div>
     {/if}
   </div>
