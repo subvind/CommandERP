@@ -2,8 +2,8 @@
   import { onMount } from "svelte";
   import jwt_decode from 'jwt-decode';
 
+  export let organization: any;
   let instances: any = undefined;
-  let user: any = null;
   let decodedToken: any;
   let loading: boolean = false;
 
@@ -16,24 +16,9 @@
     var elems = document.querySelectorAll('.jnerdfjkbgsdlkjgn');
     instances = M.Modal.init(elems, {});
 
-    console.log('user')
-    const response = await fetch(`https://api.subvind.com/users/username/${decodedToken.username}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-
-    if (response.ok) {
-      user = await response.json();
-
-      setTimeout(() => {
-        M.updateTextFields();
-      }, 0)
-    } else {
-      const errorData = await response.json();
-      alert(errorData.error);
-    }
+    setTimeout(() => {
+      M.updateTextFields();
+    }, 0)
   })
 
   let building = ''
@@ -67,13 +52,15 @@
           rackLevel,
           rackSection,
           container,
-          organization: user.defaultOrganization.id
+          organization: {
+            id: organization.id
+          }
         }),
       });
 
       if (response.ok) {
         let inventory = await response.json();
-        window.location.href = `/${user.username}/${user.defaultOrganization.orgname}/materials/inventory/${inventory.id}`
+        window.location.href = `/${organization.owner.username}/${organization.orgname}/materials/inventory/${inventory.id}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);

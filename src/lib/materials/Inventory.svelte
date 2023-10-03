@@ -92,7 +92,7 @@
 <div class="table">
   <Table url={url} columns={columns} limit={limit} mapResultsFunc={mapResultsFunc} sort={sort} />
   {#if organization}
-    <CreateInventory />
+    <CreateInventory organization={organization} />
   {/if}
 </div>
 

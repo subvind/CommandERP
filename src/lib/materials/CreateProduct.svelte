@@ -4,7 +4,6 @@
 
   export let organization: any;
   let instances: any = undefined;
-  let user: any = null;
   let decodedToken: any;
   let loading: boolean = false;
 
@@ -16,21 +15,6 @@
 
     var elems = document.querySelectorAll('.sdjhvbsefjhbezsbfjh');
     instances = M.Modal.init(elems, {});
-
-    console.log('user')
-    const response = await fetch(`https://api.subvind.com/users/username/${decodedToken.username}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-
-    if (response.ok) {
-      user = await response.json();
-    } else {
-      const errorData = await response.json();
-      alert(errorData.error);
-    }
 
     setTimeout(() => {
       M.updateTextFields();
@@ -70,13 +54,15 @@
           detail,
           price: price || 0,
           shippingCost: shippingCost || 0,
-          organization: user.defaultOrganization.id
+          organization: {
+            id: organization.id
+          }
         }),
       });
 
       if (response.ok) {
         let product = await response.json();
-        window.location.href = `/${user.username}/${user.defaultOrganization.orgname}/materials/products/${product.stockKeepingUnit}`
+        window.location.href = `/${organization.owner.username}/${organization.orgname}/materials/products/${product.stockKeepingUnit}`
       } else {
         const errorData = await response.json();
         alert(errorData.error);
