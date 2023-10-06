@@ -58,14 +58,14 @@
 
     // Get individual query parameters
     code = searchParams.get('code'); // "kefjnlwfafjfajk"
-    // code = searchParams.get('param1'); // "value1"
+    console.log('code', code)
 
     let accessToken: any = localStorage.getItem('access_token');
 
     // Decode the JWT
     decodedToken = jwt_decode(accessToken);
 
-    let orgId = await load()
+    await load()
     
     /**
      * updateEbayAccessToken
@@ -86,6 +86,8 @@
       alert(errorData.error);
     }
 
+    // show result
+    console.log('ebayAccessToken', ebayAccessToken)
 	})
 </script>
 
@@ -102,8 +104,8 @@
       <h4>Accepted!</h4>
     
       <p>Allow subvind to access ebay.</p>
-      <code>{code}</code>
-      <code>{ebayAccessToken}</code>
+      <!-- <code>{code}</code>
+      <code>{ebayAccessToken}</code> -->
     </div>
   </div>
 </div>
