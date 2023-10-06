@@ -70,7 +70,7 @@
     /**
      * updateEbayAccessToken
      **/ 
-      const response2 = await fetch(`https://api.subvind.com/organizations/ebayAccessToken/${organizationId}?code=${code}`, {
+      const response2 = await fetch(`https://api.subvind.com/organizations/ebayAccessToken/${organizationId}?code=${encodeURIComponent(code)}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
