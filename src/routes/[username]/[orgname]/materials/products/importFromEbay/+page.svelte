@@ -40,25 +40,17 @@
 <nav class="nav-extended grey darken-4">
   <div class="container">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo white-text">Products</a>
+      <a href="../products" class="brand-logo white-text">Products: Import From Ebay</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
     </div>
-    <a href="#" data-target='dropdown1' class="btn-floating btn-large waves-effect waves-light black dropdown-trigger right" style="margin-top: -1.9em;"><i class="material-icons">more_vert</i></a>
-    <!-- Dropdown Structure -->
-    <ul id='dropdown1' class='dropdown-content'>
-      <li><a href="./products/importFromEbay">import from ebay</a></li>
-      <li><a href="./products/exportToEbay">export to ebay</a></li>
-      <li class="divider" tabindex="-1"></li>
-      <li><a href="./products/importFromEtsy">import from etsy</a></li>
-      <li><a href="./products/exportToEtsy">export to etsy</a></li>
-    </ul>
   </div>
 </nav>
 
 <div class="container">
   {#if organization}
-    <Products organization={organization} />
+    <!-- <Products organization={organization} /> -->
+    <br />
+    <a href="https://auth.ebay.com/oauth2/authorize?client_id=TravisBu-subvind-PRD-efcb77900-ac00e58c&response_type=code&redirect_uri=Travis_Burandt-TravisBu-subvin-ufmnppv&scope=https://api.ebay.com/oauth/api_scope https://api.ebay.com/oauth/api_scope/sell.marketing.readonly https://api.ebay.com/oauth/api_scope/sell.marketing https://api.ebay.com/oauth/api_scope/sell.inventory.readonly https://api.ebay.com/oauth/api_scope/sell.inventory https://api.ebay.com/oauth/api_scope/sell.account.readonly https://api.ebay.com/oauth/api_scope/sell.account https://api.ebay.com/oauth/api_scope/sell.fulfillment.readonly https://api.ebay.com/oauth/api_scope/sell.fulfillment https://api.ebay.com/oauth/api_scope/sell.analytics.readonly https://api.ebay.com/oauth/api_scope/sell.finances https://api.ebay.com/oauth/api_scope/sell.payment.dispute https://api.ebay.com/oauth/api_scope/commerce.identity.readonly https://api.ebay.com/oauth/api_scope/commerce.notification.subscription https://api.ebay.com/oauth/api_scope/commerce.notification.subscription.readonly" class="btn red darken-2" target="_blank">allow ebay access</a>
   {/if}
 </div>
 
