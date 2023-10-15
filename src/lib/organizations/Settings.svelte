@@ -22,7 +22,7 @@
       organization = await response.json();
       orgname = organization.orgname
       displayName = organization.displayName
-      hostname = organization.hostname
+      erpHostname = organization.erpHostname
 
       setTimeout(() => {
         M.updateTextFields();
@@ -36,14 +36,14 @@
 
   let orgname = ''
   let displayName = ''
-	let hostname = ''
+	let erpHostname = ''
 
 	async function submit(event: any) {
     event.preventDefault()
 
     if (orgname === '') return alert('Username must be defined.')
     if (displayName === '') return alert('First name must be defined.')
-    if (hostname === '') return alert('Email must be defined.')
+    if (erpHostname === '') return alert('Email must be defined.')
     
     loading = true 
 
@@ -57,7 +57,7 @@
         body: JSON.stringify({
           orgname,
           displayName,
-          hostname,
+          erpHostname,
         }),
       });
 
@@ -106,14 +106,14 @@
           </div>
         {/if}
         <div class="input-field col s12">
-          <input id="hostname" type="text" class="validate" bind:value={hostname}>
-          <label for="hostname">Hostname</label>
+          <input id="erpHostname" type="text" class="validate" bind:value={erpHostname}>
+          <label for="erpHostname">ERP Hostname</label>
           <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
         </div>
-        {#if hostname}
+        {#if erpHostname}
           <div class="col s12">
             <span>Point to Catalog:</span><br />
-            <a href={`https://${hostname}`} target="_blank">https://{hostname}</a>
+            <a href={`https://${erpHostname}`} target="_blank">https://{erpHostname}</a>
             <br />
             <br />
           </div>
