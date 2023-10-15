@@ -22,7 +22,13 @@
       organization = await response.json();
       orgname = organization.orgname
       displayName = organization.displayName
+      homepageLink = organization.homepageLink
+      description = organization.description
+      shortName = organization.shortName
       erpHostname = organization.erpHostname
+      tubeHostname = organization.tubeHostname
+      deskHostname = organization.deskHostname
+      contactCenterEmail = organization.contactCenterEmail
 
       setTimeout(() => {
         M.updateTextFields();
@@ -36,14 +42,19 @@
 
   let orgname = ''
   let displayName = ''
+  let shortName = ''
+  let description = ''
 	let erpHostname = ''
+	let tubeHostname = ''
+	let deskHostname = ''
+  let homepageLink = ''
+  let contactCenterEmail = ''
 
 	async function submit(event: any) {
     event.preventDefault()
 
     if (orgname === '') return alert('Username must be defined.')
     if (displayName === '') return alert('First name must be defined.')
-    if (erpHostname === '') return alert('Email must be defined.')
     
     loading = true 
 
@@ -57,7 +68,13 @@
         body: JSON.stringify({
           orgname,
           displayName,
+          shortName,
+          description,
           erpHostname,
+          tubeHostname,
+          deskHostname,
+          homepageLink,
+          contactCenterEmail
         }),
       });
 
@@ -93,14 +110,31 @@
           <span class="helper-text">Use all lowercase here. No spaces. Keep it less than 30 letters. Must start and end with a lowercase letter or number.</span>
         </div>
         <div class="input-field col s6">
+          <input id="shortName" type="text" class="validate" bind:value={shortName}>
+          <label for="shortName">Short Name</label>
+          <span class="helper-text">Shown when the navigation bar opens. Must be less than 200px.</span>
+        </div>
+        <div class="input-field col s12">
           <input id="displayName" type="text" class="validate" bind:value={displayName}>
           <label for="displayName">Display Name</label>
           <span class="helper-text">Anything is allowed here.</span>
         </div>
+        <div class="input-field col s12">
+          <input id="description" type="text" class="validate" bind:value={description}>
+          <label for="description">Description</label>
+          <span class="helper-text">Shown when the navigation bar opens directly under the title.</span>
+        </div>
+        <div class="input-field col s12">
+          <input id="erpHostname" type="text" class="validate" bind:value={homepageLink}>
+          <label for="erpHostname">Homepage Link</label>
+          <span class="helper-text">Should be a valid browser domain url including https://</span>
+        </div>
         {#if orgname}
           <div class="col s12">
-            <span>Catalog:</span><br />
+            <span>µSaaS Modules:</span><br />
             <a href={`https://${orgname}.erpnomy.com`} target="_blank">https://{orgname}.erpnomy.com</a>
+            <a href={`https://${orgname}.tubenomy.com`} target="_blank">https://{orgname}.tubenomy.com</a>
+            <a href={`https://${orgname}.desknomy.com`} target="_blank">https://{orgname}.desknomy.com</a>
             <br />
             <br />
           </div>
@@ -110,14 +144,33 @@
           <label for="erpHostname">ERP Hostname</label>
           <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
         </div>
+        <div class="input-field col s12">
+          <input id="tubeHostname" type="text" class="validate" bind:value={tubeHostname}>
+          <label for="tubeHostname">TUBE Hostname</label>
+          <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
+        </div>
+        <div class="input-field col s12">
+          <input id="deskHostname" type="text" class="validate" bind:value={deskHostname}>
+          <label for="deskHostname">DESK Hostname</label>
+          <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
+        </div>
         {#if erpHostname}
           <div class="col s12">
-            <span>Point to Catalog:</span><br />
-            <a href={`https://${erpHostname}`} target="_blank">https://{erpHostname}</a>
+            <span>Bolt-ons:</span><br />
+            <a href={`https://${erpHostname}`} target="_blank">https://{erpHostname}</a> --> erpnomy
+            <br />
+            <a href={`https://${tubeHostname}`} target="_blank">https://{tubeHostname}</a> --> tubenomy
+            <br />
+            <a href={`https://${deskHostname}`} target="_blank">https://{deskHostname}</a> --> desknomy
             <br />
             <br />
           </div>
         {/if}
+        <div class="input-field col s12">
+          <input id="contactCenterEmail" type="text" class="validate" bind:value={contactCenterEmail}>
+          <label for="contactCenterEmail">Contact Center Email</label>
+          <span class="helper-text">An email that users should use in order to contact this organization.</span>
+        </div>
       </div>
     </div>
     <div class="modal-footer">
