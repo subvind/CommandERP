@@ -25,6 +25,9 @@
       homepageLink = organization.homepageLink
       description = organization.description
       shortName = organization.shortName
+      isErpModule = organization.isErpModule
+      isTubeModule = organization.isTubeModule
+      isDeskModule = organization.isDeskModule
       erpHostname = organization.erpHostname
       tubeHostname = organization.tubeHostname
       deskHostname = organization.deskHostname
@@ -44,6 +47,9 @@
   let displayName = ''
   let shortName = ''
   let description = ''
+  let isErpModule: boolean = true;
+  let isTubeModule: boolean = true;
+  let isDeskModule: boolean = true;
 	let erpHostname = ''
 	let tubeHostname = ''
 	let deskHostname = ''
@@ -70,6 +76,9 @@
           displayName,
           shortName,
           description,
+          isErpModule,
+          isTubeModule,
+          isDeskModule,
           erpHostname,
           tubeHostname,
           deskHostname,
@@ -127,42 +136,71 @@
         <div class="input-field col s12">
           <input id="erpHostname" type="text" class="validate" bind:value={homepageLink}>
           <label for="erpHostname">Homepage Link</label>
-          <span class="helper-text">Should be a valid browser domain url including https://</span>
+          <span class="helper-text">Should be a valid browser domain url including https://.</span>
         </div>
         {#if orgname}
           <div class="col s12">
             <span>µSaaS Modules:</span><br />
+            <label>
+              <input type="checkbox" bind:checked={isErpModule}>
+              <span>Enable ERP</span>
+            </label>
+            <br />
             <a href={`https://${orgname}.erpnomy.com`} target="_blank">https://{orgname}.erpnomy.com</a>
+            <br />
+            <label>
+              <input type="checkbox" bind:checked={isTubeModule}>
+              <span>Enable TUBE</span>
+            </label>
+            <br />
             <a href={`https://${orgname}.tubenomy.com`} target="_blank">https://{orgname}.tubenomy.com</a>
+            <br />
+            <label>
+              <input type="checkbox" bind:checked={isDeskModule}>
+              <span>Enable DESK</span>
+            </label>
+            <br />
             <a href={`https://${orgname}.desknomy.com`} target="_blank">https://{orgname}.desknomy.com</a>
             <br />
             <br />
           </div>
         {/if}
-        <div class="input-field col s12">
-          <input id="erpHostname" type="text" class="validate" bind:value={erpHostname}>
-          <label for="erpHostname">ERP Hostname</label>
-          <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
-        </div>
-        <div class="input-field col s12">
-          <input id="tubeHostname" type="text" class="validate" bind:value={tubeHostname}>
-          <label for="tubeHostname">TUBE Hostname</label>
-          <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
-        </div>
-        <div class="input-field col s12">
-          <input id="deskHostname" type="text" class="validate" bind:value={deskHostname}>
-          <label for="deskHostname">DESK Hostname</label>
-          <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
-        </div>
+        {#if isErpModule}
+          <div class="input-field col s12">
+            <input id="erpHostname" type="text" class="validate" bind:value={erpHostname}>
+            <label for="erpHostname">ERP Hostname</label>
+            <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
+          </div>
+        {/if}
+        {#if isTubeModule}
+          <div class="input-field col s12">
+            <input id="tubeHostname" type="text" class="validate" bind:value={tubeHostname}>
+            <label for="tubeHostname">TUBE Hostname</label>
+            <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
+          </div>
+        {/if}
+        {#if isDeskModule}
+          <div class="input-field col s12">
+            <input id="deskHostname" type="text" class="validate" bind:value={deskHostname}>
+            <label for="deskHostname">DESK Hostname</label>
+            <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
+          </div>
+        {/if}
         {#if erpHostname}
           <div class="col s12">
             <span>Bolt-ons:</span><br />
-            <a href={`https://${erpHostname}`} target="_blank">https://{erpHostname}</a> --> erpnomy
-            <br />
-            <a href={`https://${tubeHostname}`} target="_blank">https://{tubeHostname}</a> --> tubenomy
-            <br />
-            <a href={`https://${deskHostname}`} target="_blank">https://{deskHostname}</a> --> desknomy
-            <br />
+            {#if isErpModule}
+              <a href={`https://${erpHostname}`} target="_blank">https://{erpHostname}</a> --> ERP
+              <br />
+            {/if}
+            {#if isTubeModule}
+              <a href={`https://${tubeHostname}`} target="_blank">https://{tubeHostname}</a> --> TUBE
+              <br />
+            {/if}
+            {#if isDeskModule}
+              <a href={`https://${deskHostname}`} target="_blank">https://{deskHostname}</a> --> DESK
+              <br />
+            {/if}
             <br />
           </div>
         {/if}
