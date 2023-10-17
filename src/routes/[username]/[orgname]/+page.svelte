@@ -93,6 +93,9 @@
         {#if organization && organization.etsyShop}
           <li><a class="black-text" href={`https://www.etsy.com/shop/${organization.etsyShop}`} target="_blank">Etsy</a></li>
         {/if}
+        {#if organization && organization.youtubeChannel}
+          <li><a class="black-text" href={`https://youtube.com/${organization.youtubeChannel}`} target="_blank">YouTube</a></li>
+        {/if}
       </ul>
     </div>
     <div class="nav-content">

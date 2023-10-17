@@ -34,6 +34,9 @@
       contactCenterEmail = organization.contactCenterEmail
       privacyPolicy = organization.privacyPolicy
       termsAndConditions = organization.termsAndConditions
+      ebayUser = organization.ebayUser
+      etsyShop = organization.etsyShop
+      youtubeChannel = organization.youtubeChannel
 
       setTimeout(() => {
         M.updateTextFields();
@@ -59,6 +62,9 @@
   let contactCenterEmail = ''
   let privacyPolicy = ''
   let termsAndConditions = ''
+  let ebayUser = ''
+  let etsyShop = ''
+  let youtubeChannel = ''
 
 	async function submit(event: any) {
     event.preventDefault()
@@ -89,7 +95,10 @@
           homepageLink,
           contactCenterEmail,
           privacyPolicy,
-          termsAndConditions
+          termsAndConditions,
+          ebayUser,
+          etsyShop,
+          youtubeChannel
         }),
       });
 
@@ -224,6 +233,21 @@
           <textarea id="termsAndConditions" class="materialize-textarea" bind:value={termsAndConditions}></textarea>
           <label for="termsAndConditions">Terms & Conditions</label>
           <span class="helper-text">For instance, "Everyone needs to behave."</span>
+        </div>
+        <div class="input-field col s12">
+          <input id="ebayUser" type="text" class="validate" bind:value={ebayUser}>
+          <label for="ebayUser">eBay User</label>
+          <span class="helper-text">https://www.ebay.com/usr/{ebayUser}</span>
+        </div>
+        <div class="input-field col s12">
+          <input id="etsyShop" type="text" class="validate" bind:value={etsyShop}>
+          <label for="etsyShop">Etsy Shop</label>
+          <span class="helper-text">https://www.etsy.com/shop/{etsyShop}</span>
+        </div>
+        <div class="input-field col s12">
+          <input id="youtubeChannel" type="text" class="validate" bind:value={youtubeChannel}>
+          <label for="youtubeChannel">YouTube Channel</label>
+          <span class="helper-text">https://youtube.com/{youtubeChannel}</span>
         </div>
       </div>
     </div>
