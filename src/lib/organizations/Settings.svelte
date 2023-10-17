@@ -32,6 +32,8 @@
       tubeHostname = organization.tubeHostname
       deskHostname = organization.deskHostname
       contactCenterEmail = organization.contactCenterEmail
+      privacyPolicy = organization.privacyPolicy
+      termsAndConditions = organization.termsAndConditions
 
       setTimeout(() => {
         M.updateTextFields();
@@ -55,6 +57,8 @@
 	let deskHostname = ''
   let homepageLink = ''
   let contactCenterEmail = ''
+  let privacyPolicy = ''
+  let termsAndConditions = ''
 
 	async function submit(event: any) {
     event.preventDefault()
@@ -83,7 +87,9 @@
           tubeHostname,
           deskHostname,
           homepageLink,
-          contactCenterEmail
+          contactCenterEmail,
+          privacyPolicy,
+          termsAndConditions
         }),
       });
 
@@ -208,6 +214,16 @@
           <input id="contactCenterEmail" type="text" class="validate" bind:value={contactCenterEmail}>
           <label for="contactCenterEmail">Contact Center Email</label>
           <span class="helper-text">An email that users should use in order to contact this organization.</span>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="privacyPolicy" class="materialize-textarea" bind:value={privacyPolicy}></textarea>
+          <label for="privacyPolicy">Privacy Policy</label>
+          <span class="helper-text">For instance, "Everyone needs to respect one another."</span>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="termsAndConditions" class="materialize-textarea" bind:value={termsAndConditions}></textarea>
+          <label for="termsAndConditions">Terms & Conditions</label>
+          <span class="helper-text">For instance, "Everyone needs to behave."</span>
         </div>
       </div>
     </div>
