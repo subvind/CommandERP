@@ -176,28 +176,31 @@
             </label>
             <br />
             <a href={`https://${orgname}.desknomy.com`} target="_blank">https://{orgname}.desknomy.com</a>
-            <br />
-            <br />
           </div>
         {/if}
+        <div class="col s12">
+          <p>
+            *NOTICE: The following hostnames require additional configuration in order to work. We have settings that need to be manually changed on our end that we have yet to automate. So go ahead and open up a support ticket with us and we'll get you squared away.
+          </p>
+        </div>
         {#if isErpModule}
           <div class="input-field col s12">
             <input id="erpHostname" type="text" class="validate" bind:value={erpHostname}>
-            <label for="erpHostname">ERP Hostname</label>
+            <label for="erpHostname">ERP Hostname*</label>
             <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
           </div>
         {/if}
         {#if isTubeModule}
           <div class="input-field col s12">
             <input id="tubeHostname" type="text" class="validate" bind:value={tubeHostname}>
-            <label for="tubeHostname">TUBE Hostname</label>
+            <label for="tubeHostname">TUBE Hostname*</label>
             <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
           </div>
         {/if}
         {#if isDeskModule}
           <div class="input-field col s12">
             <input id="deskHostname" type="text" class="validate" bind:value={deskHostname}>
-            <label for="deskHostname">DESK Hostname</label>
+            <label for="deskHostname">DESK Hostname*</label>
             <span class="helper-text">Should be a valid browser domain name. May include sub domain.</span>
           </div>
         {/if}
