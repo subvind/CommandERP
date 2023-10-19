@@ -64,7 +64,7 @@
   <div class="container">
     <div class="nav-wrapper">
       <img src="/anchor.png" alt="underwind.solutions" style="margin: 0.5em; height: 50px; float: left;">
-      <a href="https://underwind.solutions" target="_blank" class="brand-logo black-text hide-on-med-and-down">underwind.solutions</a>
+      <a href="https://underwind.solutions" class="brand-logo black-text hide-on-med-and-down">underwind.solutions</a>
     </div>
     
     <!-- <a href="#" data-target='dropdown1' class="btn-floating btn-large waves-effect waves-light black dropdown-trigger right" style="margin-top: -1.9em;"><i class="material-icons">share</i></a> -->

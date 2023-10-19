@@ -19,9 +19,9 @@
       </p>
     </div>
     <div class="col s12 m8 hide-on-med-and-down">
-      <a href="https://tubenomy.com" class="nav" target="_blank">tubenomy</a>
-      <a href="https://desknomy.com" class="nav" target="_blank">desknomy</a>
-      <a href="https://erpnomy.com" class="nav" target="_blank">erpnomy</a>
+      <a href="https://tubenomy.com" class="nav">nomy.TUBE</a>
+      <a href="https://desknomy.com" class="nav">nomy.DESK</a>
+      <a href="https://erpnomy.com" class="nav">nomy.ERP</a>
     </div>
   </div>
 </div>

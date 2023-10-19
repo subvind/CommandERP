@@ -104,7 +104,7 @@
     
     {#if !decodedToken}
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="https://subvind.com" target="_blank">powered by subvind</a></li>
+        <li><a href="https://subvind.com">powered by subvind</a></li>
       </ul>
     {/if}
 
