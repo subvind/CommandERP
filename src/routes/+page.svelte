@@ -41,6 +41,10 @@
         </h4>
         <p>in an organization.</p>
         <br />
+        <p>Easily create and manage your e-commerce business.</p>
+        <br />
+        <p>Accept orders, manage products and sell online using your very own storefront in minutes. No code needed.</p>
+        <br />
         {#if accessToken}
           <a href={`/${decoded.type === 'user' ? decoded.username : `${decoded.ownername}/${decoded.orgname}/accounts/${decoded.accountname}`}`} class="waves-effect yellow black-text lighten-2 btn username">{decoded.username || decoded.accountname}</a>
           <a href="/auth/logout" class="waves-effect black white-text btn">Logout</a>
