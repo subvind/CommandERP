@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import Header from "$lib/Header.svelte"
+  import SubHeader from "$lib/SubHeader.svelte"
   import Footer from "$lib/Footer.svelte"
 
   onMount(() => {
@@ -10,7 +10,7 @@
   })
 </script>
 
-<Header />
+<SubHeader />
 
 <slot />
 
