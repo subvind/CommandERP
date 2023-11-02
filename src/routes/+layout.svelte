@@ -1,15 +1,42 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  import Header from "$lib/Header.svelte"
   import SubHeader from "$lib/SubHeader.svelte"
   import Footer from "$lib/Footer.svelte"
 
-  onMount(() => {
-    // todo: auto signin person as john doe
-    // if stayLogout = true in the cache
+  let organization: any;
+	let backendHostname: any = '';
+
+  onMount(async () => {
+    backendHostname = window.location.hostname
+    if (backendHostname === 'localhost') {
+      backendHostname = 'desknomy.subvind.com'
+    }
+    const response = await fetch(`https://api.subvind.com/organizations/backendHostname/${backendHostname}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+
+    if (response.ok) {
+      organization = await response.json();
+    } else {
+      const errorData = await response.json();
+      alert(errorData.error);
+    }
   })
 </script>
 
+{#if organization}
+  <Header organization={organization} />
+{:else}
+  <nav class="grey darken-3">
+    <div class="nav-wrapper">
+    </div>
+  </nav>
+{/if}
 <SubHeader />
 
 <slot />
