@@ -143,7 +143,7 @@
         <div class="row">
           <div class="col s12">
             <span>Catalog:</span><br />
-            <a href={`https://${product.organization.orgname}.erpnomy.com/products/${stockKeepingUnit}`} target="_blank">https://{product.organization.orgname}.erpnomy.com/products/{stockKeepingUnit}</a>
+            <a href={`https://${product.organization.orgname}.erpnomy.subvind.com/products/${stockKeepingUnit}`} target="_blank">https://{product.organization.orgname}.erpnomy.subvind.com/products/{stockKeepingUnit}</a>
             <br />
             <br />
           </div>

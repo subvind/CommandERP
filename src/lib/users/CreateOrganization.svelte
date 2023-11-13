@@ -93,7 +93,7 @@
         {#if orgname}
           <div class="col s12">
             <span>Catalog:</span><br />
-            <a href={`https://${orgname}.erpnomy.com`} target="_blank">https://{orgname}.erpnomy.com</a>
+            <a href={`https://${orgname}.erpnomy.subvind.com`} target="_blank">https://{orgname}.erpnomy.subvind.com</a>
             <br />
             <br />
           </div>

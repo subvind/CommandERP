@@ -84,7 +84,7 @@
       </div>
       <div class="col s12 m6">
         {#if product}
-          <div style="text-align: right;"><a href={`https://${organization.orgname}.erpnomy.com/products/${product.stockKeepingUnit}`} target="_blank">{organization.orgname}.erpnomy.com/products/{product.stockKeepingUnit}</a></div>
+          <div style="text-align: right;"><a href={`https://${organization.orgname}.erpnomy.subvind.com/products/${product.stockKeepingUnit}`} target="_blank">{organization.orgname}.erpnomy.subvind.com/products/{product.stockKeepingUnit}</a></div>
         {/if}
       </div>
     </div>

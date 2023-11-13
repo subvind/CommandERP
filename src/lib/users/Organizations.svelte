@@ -32,10 +32,10 @@
       name: 'Store',
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `https://${row.cells[2].data}.erpnomy.com`,
+          href: `https://${row.cells[2].data}.erpnomy.subvind.com`,
           target: "_blank",
           className: '',
-        }, `${row.cells[2].data}.erpnomy.com`);
+        }, `${row.cells[2].data}.erpnomy.subvind.com`);
       }
     },
     {

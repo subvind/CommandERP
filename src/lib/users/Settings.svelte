@@ -102,7 +102,7 @@
         {#if username}
           <div class="col s12">
             <span>Profile:</span><br />
-            <a href={`https://erpnomy.com/${username}`} target="_blank">https://erpnomy.com/{username}</a>
+            <a href={`https://erpnomy.subvind.com/${username}`} target="_blank">https://erpnomy.subvind.com/{username}</a>
             <br />
             <br />
           </div>

@@ -57,9 +57,9 @@
       width: '475px',
       formatter: (cell: any, row: any) => {
         return gridjs.h('a', {
-          href: `https://${category.organization.orgname}.erpnomy.com/categories/${row.cells[5].data}`,
+          href: `https://${category.organization.orgname}.erpnomy.subvind.com/categories/${row.cells[5].data}`,
           target: '_blank'
-        }, `${category.organization.orgname}.erpnomy.com/categories/${row.cells[5].data}`);
+        }, `${category.organization.orgname}.erpnomy.subvind.com/categories/${row.cells[5].data}`);
       }
     },
     {

@@ -50,7 +50,7 @@
 						{#if organization.erpHostname}
 							<li><a href={`https://${organization.erpHostname}`} target="_self" class="waves-effect"><i class="material-icons">local_grocery_store</i>Store</a></li>
 						{:else}
-							<li><a href={`https://${organization.orgname}.erpnomy.com`} target="_self" class="waves-effect"><i class="material-icons">local_grocery_store</i>Store</a></li>
+							<li><a href={`https://${organization.orgname}.erpnomy.subvind.com`} target="_self" class="waves-effect"><i class="material-icons">local_grocery_store</i>Store</a></li>
 						{/if}
 					{/if}
 					{#if organization.isTubeModule}
