@@ -23,7 +23,7 @@
 	"dependencies": {
 		"gridjs": "^6.0.6",
 		"jwt-decode": "^3.1.2",
-		"subvind-components": "^0.0.7",
+		"subvind-components": "^0.0.14",
 		"svelte-ace": "^1.0.21",
 		"svelte-select": "^5.6.1"
 	}
