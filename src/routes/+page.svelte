@@ -100,11 +100,11 @@
         <div>For Example:</div>
         <div class="input-field" style="margin-top: 0;">
           <i class="material-icons prefix">public</i>
-          <input id="example" class="validate" disabled type="text" value="https://www.brokenrecord.store">
+          <input id="example" class="validate" disabled type="text" value="https://shop.brokenrecord.store">
           <!-- <label for="example">For Example:</label> -->
         </div>
         <div class="" style="height: 600px; overflow: hidden;">
-          <iframe class="zoomedIframe" src="https://www.brokenrecord.store" frameborder="0" style="width: 200%; height: 2400px; padding: 0; margin: 0;"></iframe>
+          <iframe class="zoomedIframe" src="https://shop.brokenrecord.store" frameborder="0" style="width: 200%; height: 2400px; padding: 0; margin: 0;"></iframe>
         </div>
       </div>
     </div>
